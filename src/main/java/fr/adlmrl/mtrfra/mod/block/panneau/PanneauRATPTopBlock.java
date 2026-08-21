@@ -15,12 +15,12 @@ public class PanneauRATPTopBlock extends PanneauRATPBase {
 
     @Override
     public float textY() {
-        return 9.5F;
+        return 2.261F;
     }
 
     @Override
     public float textZ() {
-        return 6.7F;
+        return 7.548F;
     }
 
 }
