@@ -20,7 +20,7 @@ public class PanneauRATPPilierBlock extends PanneauRATPBase {
 
     @Override
     public float textZ() {
-        return 11.7F;
+        return 11.95F;
     }
 
     @Override
