@@ -1,18 +1,26 @@
 package fr.adlmrl.mtrfra.mod.block.barrier;
 
+import fr.adlmrl.mtrfra.mod.barrier.PacketOpenTicketBarrierConfigScreen;
+import fr.adlmrl.mtrfra.mod.barrier.TicketBarrierMode;
+import fr.adlmrl.mtrfra.mod.registry.MTRFRARegistry;
+import org.mtr.mapping.holder.ActionResult;
+import org.mtr.mapping.holder.BlockHitResult;
 import org.mtr.mapping.holder.BlockPos;
 import org.mtr.mapping.holder.BlockRenderType;
 import org.mtr.mapping.holder.BlockState;
 import org.mtr.mapping.holder.BlockView;
 import org.mtr.mapping.holder.Blocks;
 import org.mtr.mapping.holder.Direction;
+import org.mtr.mapping.holder.Hand;
 import org.mtr.mapping.holder.PlayerEntity;
+import org.mtr.mapping.holder.ServerPlayerEntity;
 import org.mtr.mapping.holder.ShapeContext;
 import org.mtr.mapping.holder.VoxelShape;
 import org.mtr.mapping.holder.VoxelShapes;
 import org.mtr.mapping.holder.World;
 import org.mtr.mapping.mapper.BlockExtension;
 import org.mtr.mapping.mapper.DirectionHelper;
+import org.mtr.mod.Items;
 import org.mtr.mod.block.BlockTicketBarrier;
 import org.mtr.mod.block.IBlock;
 import org.mtr.mod.data.TicketSystem.EnumTicketBarrierOpen;
@@ -81,6 +89,24 @@ public class RATPTicketBarrierUpperBlock extends BlockExtension {
             }
         }
         super.onBreak2(world, pos, state, player);
+    }
+
+    @Override
+    public ActionResult onUse2(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+        if (!player.getStackInHand(hand).getItem().equals(Items.BRUSH.get().asItem())) {
+            return ActionResult.PASS;
+        }
+        final BlockPos anchorPos = pos.down();
+        if (!(world.getBlockState(anchorPos).getBlock().data instanceof RATPTicketBarrierBlock)) {
+            return ActionResult.PASS;
+        }
+        if (!world.isClient()) {
+            final RATPTicketBarrierBlock.BarrierBlockEntity barrierBlockEntity = RATPTicketBarrierBlock.getBarrierBlockEntity(world, anchorPos);
+            final TicketBarrierMode mode = barrierBlockEntity == null ? TicketBarrierMode.MTR_BALANCE : barrierBlockEntity.mode;
+            final String acceptedTicketIdsCsv = barrierBlockEntity == null ? "" : barrierBlockEntity.acceptedTicketIdsCsv;
+            MTRFRARegistry.REGISTRY.sendPacketToClient(ServerPlayerEntity.cast(player), new PacketOpenTicketBarrierConfigScreen(anchorPos, mode.ordinal(), acceptedTicketIdsCsv));
+        }
+        return ActionResult.SUCCESS;
     }
 
 }

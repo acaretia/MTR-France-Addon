@@ -103,7 +103,7 @@ public class RATPTicketBarrierBlock extends BlockTicketBarrier implements BlockW
         return ActionResult.SUCCESS;
     }
 
-    private static BarrierBlockEntity getBarrierBlockEntity(World world, BlockPos pos) {
+    static BarrierBlockEntity getBarrierBlockEntity(World world, BlockPos pos) {
         final BlockEntity blockEntity = world.getBlockEntity(pos);
         return blockEntity != null && blockEntity.data instanceof BarrierBlockEntity ? (BarrierBlockEntity) blockEntity.data : null;
     }
