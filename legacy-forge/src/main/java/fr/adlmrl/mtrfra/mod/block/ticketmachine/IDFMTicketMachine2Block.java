@@ -1,5 +1,6 @@
 package fr.adlmrl.mtrfra.mod.block.ticketmachine;
 
+import fr.adlmrl.mtrfra.mod.block.HitboxCompanionBlock;
 import fr.adlmrl.mtrfra.mod.registry.ModBlocks;
 import org.mtr.mapping.holder.BlockPos;
 import org.mtr.mapping.holder.BlockState;
