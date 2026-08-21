@@ -12,6 +12,7 @@ public class LogoEntity extends SupportedPlacedEntity {
 
     private static final double HALF_WIDTH = 0.45;
     private static final double HALF_DEPTH = 0.02;
+    private static final double HALF_DEPTH_SNCF_SIGN = 0.05;
 
     public LogoEntity(EntityType<?> type, World world) {
         super(type, world);
@@ -35,16 +36,17 @@ public class LogoEntity extends SupportedPlacedEntity {
         final double y = getY();
         final double z = getZ();
         final float pitch = getXRot();
+        final double halfDepth = this.getType() == ModEntities.LOGO_SNCF_SIGN.get().data ? HALF_DEPTH_SNCF_SIGN : HALF_DEPTH;
 
         if (pitch > 45.0F || pitch < -45.0F) {
-            return new AABB(x - HALF_WIDTH, y - HALF_DEPTH, z - HALF_WIDTH, x + HALF_WIDTH, y + HALF_DEPTH, z + HALF_WIDTH);
+            return new AABB(x - HALF_WIDTH, y - halfDepth, z - HALF_WIDTH, x + HALF_WIDTH, y + halfDepth, z + HALF_WIDTH);
         }
 
         final float normalizedYaw = ((getYRot() % 360.0F) + 360.0F) % 360.0F;
         if (normalizedYaw < 45.0F || normalizedYaw >= 315.0F || (normalizedYaw >= 135.0F && normalizedYaw < 225.0F)) {
-            return new AABB(x - HALF_WIDTH, y - HALF_WIDTH, z - HALF_DEPTH, x + HALF_WIDTH, y + HALF_WIDTH, z + HALF_DEPTH);
+            return new AABB(x - HALF_WIDTH, y - HALF_WIDTH, z - halfDepth, x + HALF_WIDTH, y + HALF_WIDTH, z + halfDepth);
         }
-        return new AABB(x - HALF_DEPTH, y - HALF_WIDTH, z - HALF_WIDTH, x + HALF_DEPTH, y + HALF_WIDTH, z + HALF_WIDTH);
+        return new AABB(x - halfDepth, y - HALF_WIDTH, z - HALF_WIDTH, x + halfDepth, y + HALF_WIDTH, z + HALF_WIDTH);
     }
 
     @Override
