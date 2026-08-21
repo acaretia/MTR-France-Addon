@@ -3,76 +3,77 @@
   "credit": "Made with Blockbench",
   "ambientocclusion": false,
   "texture_size": [
-    64,
-    64
+    16,
+    16
   ],
   "textures": {
+    "0": "mtrfranceaddon:block/panneau_ratp/pilier_ratp",
     "particle": "#0"
   },
   "elements": [
     {
       "from": [
-        -15,
-        3,
-        14
+        6.5,
+        0,
+        12.5
       ],
       "to": [
-        31,
-        11,
-        16
+        9.5,
+        16,
+        13.5
       ],
       "faces": {
         "north": {
           "uv": [
             0,
             0,
-            46,
-            8
+            3,
+            16
           ],
           "texture": "#0"
         },
         "east": {
           "uv": [
+            6,
             0,
-            20,
-            2,
-            28
+            7,
+            16
           ],
           "texture": "#0"
         },
         "south": {
           "uv": [
+            3,
             0,
-            8,
-            46,
+            6,
             16
           ],
           "texture": "#0"
         },
         "west": {
           "uv": [
-            2,
-            20,
-            4,
-            28
+            7,
+            0,
+            8,
+            16
           ],
           "texture": "#0"
         },
         "up": {
           "uv": [
-            46,
-            18,
-            0,
-            16
+            11,
+            1,
+            8,
+            0
           ],
           "texture": "#0"
         },
         "down": {
           "uv": [
-            46,
-            18,
-            0,
-            20
+            11,
+            1,
+            8,
+            2
           ],
           "texture": "#0"
         }
