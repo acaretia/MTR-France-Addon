@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "${mod_id}",
+  "version": "${version}",
+  "name": "${mod_name}",
+  "description": "The French railway universe for Minecraft Transit Railway: signage, logos, station equipment and rolling stock inspired by the SNCF, RATP and Ile-de-France Mobilites networks.\nL'univers ferroviaire francais pour Minecraft Transit Railway : signaletique, logos, equipements de gare et materiel roulant inspires des reseaux SNCF, RATP et Ile-de-France Mobilites.\n\nCreated by the French community - Cree par la communaute francaise.",
+  "authors": ["Team MTR-FRA"],
+  "contact": {
+    "homepage": "https://github.com/MTR-France-Team/MTR-France-Addon",
+    "sources": "https://github.com/MTR-France-Team/MTR-France-Addon",
+    "issues": "https://github.com/MTR-France-Team/MTR-France-Addon/issues"
+  },
+  "license": "MIT",
+  "icon": "assets/${mod_id}/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": ["fr.adlmrl.mtrfra.fabric.MainFabric"],
+    "client": ["fr.adlmrl.mtrfra.fabric.MainFabricClient"]
+  },
+  "mixins": ["${mod_id}.mixins.json"],
+  "depends": {
+    "fabricloader": ">=0.15.0",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}",
+    "mtr": "${mtr_dependency}"
+  },
+  "custom": {
+    "modmenu": {
+      "links": {
+        "modmenu.discord": "https://discord.gg/485Mam2fM3"
+      },
+      "update_checker": true
+    }
+  }
+}

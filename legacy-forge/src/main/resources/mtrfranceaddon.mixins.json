@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "fr.adlmrl.mtrfra.mod.mixin",
+  "mixins": ["RailTypeMixin", "RailSchemaAccessor", "InitAccessorMixin", "MainAccessorMixin", "DirectionsConnectionAccessorMixin"],
+  "client": [${banner_section_mixins}],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  }
+}

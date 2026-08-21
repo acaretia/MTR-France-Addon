@@ -1,0 +1,41 @@
+# Gradle
+.gradle/
+build/
+out/
+classes/
+releases/
+*.bak
+*.bak_*
+
+# Stonecutter per-version build caches (each versions/<name> only keeps
+# its own gradle.properties under version control)
+versions/*/.gradle/
+versions/*/build/
+
+# Dev files
+run/
+runs/
+run-shared/
+tools/
+CHANGELOG.md
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.settings/
+.classpath
+.project
+bin/
+*.launch
+
+# macOS
+*.DS_Store
+
+# Java
+hs_err_*.log
+replay_*.log
+*.hprof
+*.jfr

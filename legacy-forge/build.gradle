@@ -1,0 +1,141 @@
+plugins {
+    id "eclipse"
+    id "idea"
+    id "net.minecraftforge.gradle" version "[6.0.16,6.2)"
+    id "org.spongepowered.mixin" version "0.7.+"
+}
+
+version = "${mod_version}+${minecraft_version}"
+group = maven_group
+
+ext.bannerSectionsSupported = project.properties["banner_sections_versions"].split(",").contains(minecraft_version)
+
+base {
+    archivesName = "${archives_base_name}-forge"
+}
+
+sourceSets {
+    main {
+        output.resourcesDir = file("${buildDir}/classes/java/main")
+
+        if (!bannerSectionsSupported) {
+            java {
+                exclude "fr/adlmrl/mtrfra/mod/registry/CreativeTabBannerRenderer.java"
+                exclude "fr/adlmrl/mtrfra/mod/mixin/CreativeModeTabMixin.java"
+                exclude "fr/adlmrl/mtrfra/mod/mixin/CreativeModeInventoryScreenMixin.java"
+                exclude "fr/adlmrl/mtrfra/mod/mixin/CreativeModeInventoryScreenAccessor.java"
+                exclude "fr/adlmrl/mtrfra/mod/mixin/ItemPickerMenuMixin.java"
+            }
+        }
+    }
+}
+
+minecraft {
+    mappings channel: "official", version: minecraft_version
+    runs {
+        client {
+            property "forge.logging.console.level", "info"
+            mods {
+                mtrfranceaddon {
+                    source sourceSets.main
+                }
+            }
+        }
+        server {
+            args "--nogui"
+            mods {
+                mtrfranceaddon {
+                    source sourceSets.main
+                }
+            }
+        }
+    }
+}
+
+repositories {
+    exclusiveContent {
+        forRepository {
+            maven { url = "https://api.modrinth.com/maven" }
+        }
+        forRepositories(fg.repository)
+        filter { includeGroup "maven.modrinth" }
+    }
+}
+
+dependencies {
+    minecraft "net.minecraftforge:forge:${minecraft_version}-${project.properties["forge_version_$minecraft_version"]}"
+    implementation fg.deobf("maven.modrinth:minecraft-transit-railway:FORGE-${mtr_version}+${minecraft_version}")
+    annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
+}
+
+processResources {
+    from("${projectDir}/../src/main/resources") {
+        include "assets/**"
+    }
+}
+
+mixin {
+    add sourceSets.main, "${mod_id}.refmap.json"
+    config "${mod_id}.mixins.json"
+}
+
+java {
+    withSourcesJar()
+    toolchain.languageVersion = JavaLanguageVersion.of(17)
+}
+
+compileJava {
+    options.encoding = "UTF-8"
+}
+
+processResources {
+    def forgeLoaderRange = project.properties["forge_loader_range_$minecraft_version"]
+    def packFormat = project.properties["pack_format_$minecraft_version"]
+
+    inputs.property "version", version
+    inputs.property "minecraft_version", minecraft_version
+    inputs.property "pack_format", packFormat
+    inputs.property "forge_loader_range", forgeLoaderRange
+    inputs.property "bannerSectionsSupported", bannerSectionsSupported
+
+    filesMatching("${mod_id}.mixins.json") {
+        expand (
+                "banner_section_mixins": bannerSectionsSupported
+                        ? '"GraphicsHolderAccessor", "CreativeModeTabMixin", "CreativeModeInventoryScreenMixin", "CreativeModeInventoryScreenAccessor", "ItemPickerMenuMixin"'
+                        : '"GraphicsHolderAccessor"'
+        )
+    }
+
+    filesMatching("META-INF/mods.toml") {
+        expand (
+                "version": version,
+                "minecraft_version": minecraft_version,
+                "mod_id": mod_id,
+                "mod_name": mod_name,
+                "mod_author": "Team MTR-FRA",
+                "mod_issues": "https://github.com/MTR-France-Team/MTR-France-Addon/issues",
+                "forge_loader_range": forgeLoaderRange,
+                "mtr_version_range": mtr_version_range
+        )
+    }
+
+    filesMatching("pack.mcmeta") {
+        expand ("pack_format": packFormat)
+    }
+}
+
+jar {
+    from(rootProject.file("LICENSE.txt")) {
+        rename { "${it}_${base.archivesName.get()}" }
+    }
+}
+
+reobf {
+    jar {}
+}
+
+tasks.register("collectRelease", Copy) {
+    dependsOn tasks.reobfJar
+    from(jar.archiveFile)
+    into rootProject.file("../releases")
+}

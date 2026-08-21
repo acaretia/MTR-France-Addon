@@ -1,0 +1,95 @@
+package fr.adlmrl.mtrfra.mod.entity;
+
+import com.mojang.blaze3d.vertex.PoseStack;
+import fr.adlmrl.mtrfra.mod.mixin.GraphicsHolderAccessor;
+import fr.adlmrl.mtrfra.mod.util.Constants;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.block.BlockRenderDispatcher;
+import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.minecraft.core.BlockPos;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.state.BlockState;
+import org.mtr.mapping.holder.Identifier;
+import org.mtr.mapping.mapper.EntityRenderer;
+import org.mtr.mapping.mapper.GraphicsHolder;
+import org.mtr.mapping.registry.BlockRegistryObject;
+
+import java.util.function.Supplier;
+
+public class LogoEntityRenderer extends EntityRenderer<LogoEntity> {
+
+    private final Supplier<BlockRegistryObject> blockSupplier;
+
+    public LogoEntityRenderer(Argument argument, Supplier<BlockRegistryObject> blockSupplier) {
+        super(argument);
+        this.blockSupplier = blockSupplier;
+    }
+
+    @Override
+    public void render(LogoEntity entity, float yaw, float tickDelta, GraphicsHolder graphicsHolder, int light) {
+        final GraphicsHolderAccessor accessor = (GraphicsHolderAccessor) (Object) graphicsHolder;
+        final PoseStack poseStack = accessor.getMatrixStack();
+        final MultiBufferSource bufferSource = accessor.getVertexConsumerProvider();
+        final BlockState state = (BlockState) blockSupplier.get().get().getDefaultState().data;
+        final float pitch = entity.getPitch2(tickDelta);
+
+        final BlockRenderDispatcher dispatcher = Minecraft.getInstance().getBlockRenderer();
+
+        poseStack.pushPose();
+        //? if >=1.19.4 {
+        poseStack.mulPose(new org.joml.Quaternionf().rotationY((float) Math.toRadians(-yaw)));
+        poseStack.mulPose(new org.joml.Quaternionf().rotationX((float) Math.toRadians(pitch)));
+        //? } else {
+        /*poseStack.mulPose(com.mojang.math.Vector3f.YP.rotationDegrees(-yaw));
+        poseStack.mulPose(com.mojang.math.Vector3f.XP.rotationDegrees(pitch));*/
+        //? }
+        poseStack.translate(-0.5, -0.5, -1.01);
+
+        dispatcher.renderSingleBlock(state, poseStack, bufferSource, light, OverlayTexture.NO_OVERLAY);
+
+        poseStack.popPose();
+    }
+
+    @Override
+    protected int getBlockLightLevel(LogoEntity entity, BlockPos pos) {
+        return super.getBlockLightLevel(entity, pos.relative(outwardFace(entity)));
+    }
+
+    @Override
+    protected int getSkyLightLevel(LogoEntity entity, BlockPos pos) {
+        return super.getSkyLightLevel(entity, pos.relative(outwardFace(entity)));
+    }
+
+    private static net.minecraft.core.Direction outwardFace(LogoEntity entity) {
+        final float pitch = entity.getXRot();
+        if (pitch > 45.0F) {
+            return net.minecraft.core.Direction.DOWN;
+        }
+        if (pitch < -45.0F) {
+            return net.minecraft.core.Direction.UP;
+        }
+        final float normalizedYaw = ((entity.getYRot() % 360.0F) + 360.0F) % 360.0F;
+        if (normalizedYaw < 45.0F || normalizedYaw >= 315.0F) {
+            return net.minecraft.core.Direction.NORTH;
+        }
+        if (normalizedYaw < 135.0F) {
+            return net.minecraft.core.Direction.EAST;
+        }
+        if (normalizedYaw < 225.0F) {
+            return net.minecraft.core.Direction.SOUTH;
+        }
+        return net.minecraft.core.Direction.WEST;
+    }
+
+    @Override
+    public Identifier getTexture2(LogoEntity entity) {
+        return new Identifier(Constants.MOD_ID, "textures/entity/empty.png");
+    }
+
+    @Override
+    public ResourceLocation getTextureLocation(LogoEntity entity) {
+        return (ResourceLocation) getTexture2(entity).data;
+    }
+
+}
