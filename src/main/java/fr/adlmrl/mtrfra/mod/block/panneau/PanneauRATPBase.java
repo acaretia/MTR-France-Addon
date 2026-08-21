@@ -14,6 +14,8 @@ import org.mtr.mapping.holder.CompoundTag;
 import org.mtr.mapping.holder.Direction;
 import org.mtr.mapping.holder.Hand;
 import org.mtr.mapping.holder.IntegerProperty;
+import org.mtr.mapping.holder.ItemStack;
+import org.mtr.mapping.holder.LivingEntity;
 import org.mtr.mapping.holder.PlayerEntity;
 import org.mtr.mapping.holder.Property;
 import org.mtr.mapping.holder.ServerPlayerEntity;
@@ -30,7 +32,7 @@ import org.mtr.mod.block.IBlock;
 
 import java.util.List;
 
-public abstract class PanneauRATPBase extends DirectionalBlock implements BlockWithEntity {
+public abstract class PanneauRATPBase extends DirectionalBlock implements BlockWithEntity, HasBoundingBox {
 
     public static final IntegerProperty CATEGORY = IntegerProperty.of("category", 0, 7);
 
@@ -50,6 +52,22 @@ public abstract class PanneauRATPBase extends DirectionalBlock implements BlockW
     @Override
     public BlockEntityExtension createBlockEntity(BlockPos blockPos, BlockState blockState) {
         return new BlockEntityBase(blockPos, blockState);
+    }
+
+    @Override
+    public void onPlaced2(World world, BlockPos pos, BlockState state, LivingEntity placer, ItemStack itemStack) {
+        super.onPlaced2(world, pos, state, placer, itemStack);
+        if (!world.isClient()) {
+            PanneauRATPCollisionExtensionBlock.placeAround(world, pos, IBlock.getStatePropertySafe(state, FACING), boundingBox());
+        }
+    }
+
+    @Override
+    public void onBreak2(World world, BlockPos pos, BlockState state, PlayerEntity player) {
+        if (!world.isClient()) {
+            PanneauRATPCollisionExtensionBlock.removeAround(world, pos, IBlock.getStatePropertySafe(state, FACING), boundingBox());
+        }
+        super.onBreak2(world, pos, state, player);
     }
 
     private VoxelShape computeShape(BlockState state) {

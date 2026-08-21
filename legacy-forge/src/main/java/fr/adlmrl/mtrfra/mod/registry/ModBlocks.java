@@ -26,6 +26,7 @@ import fr.adlmrl.mtrfra.mod.block.sign.RATPNoSmokingSign;
 import fr.adlmrl.mtrfra.mod.block.barrier.RATPTicketBarrierBlock;
 import fr.adlmrl.mtrfra.mod.block.barrier.RATPTicketBarrierSideCoverBlock;
 import fr.adlmrl.mtrfra.mod.block.barrier.RATPTicketBarrierUpperBlock;
+import fr.adlmrl.mtrfra.mod.block.panneau.PanneauRATPCollisionExtensionBlock;
 import fr.adlmrl.mtrfra.mod.block.panneau.PanneauRATPDoubleBlock;
 import fr.adlmrl.mtrfra.mod.block.panneau.PanneauRATPMurMetroGrandBlock;
 import fr.adlmrl.mtrfra.mod.block.panneau.PanneauRATPMurMetroPetitBlock;
@@ -470,6 +471,9 @@ public final class ModBlocks {
     );
     public static final BlockRegistryObject PILIER_BASE_RATP = MTRFRARegistry.registerBlockWithItem(
             "pilier_base_ratp", () -> new Block(new PilierBaseRATPBlock(Blocks.createDefaultBlockSettings(true))), ModItemGroups.STATION_EQUIPMENT
+    );
+    public static final BlockRegistryObject PANNEAU_RATP_COLLISION_EXTENSION = MTRFRARegistry.registerBlock(
+            "panneau_ratp_collision_extension", () -> new Block(new PanneauRATPCollisionExtensionBlock())
     );
 
     private ModBlocks() {}

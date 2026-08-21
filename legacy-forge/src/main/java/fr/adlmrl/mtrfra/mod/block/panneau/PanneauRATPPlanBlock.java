@@ -6,17 +6,26 @@ import org.mtr.mapping.holder.BlockSettings;
 import org.mtr.mapping.holder.BlockState;
 import org.mtr.mapping.holder.BlockView;
 import org.mtr.mapping.holder.Direction;
+import org.mtr.mapping.holder.ItemStack;
+import org.mtr.mapping.holder.LivingEntity;
+import org.mtr.mapping.holder.PlayerEntity;
 import org.mtr.mapping.holder.ShapeContext;
 import org.mtr.mapping.holder.VoxelShape;
 import org.mtr.mapping.holder.VoxelShapes;
+import org.mtr.mapping.holder.World;
 import org.mtr.mod.block.IBlock;
 
-public class PanneauRATPPlanBlock extends DirectionalBlock {
+public class PanneauRATPPlanBlock extends DirectionalBlock implements HasBoundingBox {
 
     private static final double[] BOUNDING_BOX = {-16, 0, 7, 32, 32, 9};
 
     public PanneauRATPPlanBlock(BlockSettings blockSettings) {
         super(blockSettings);
+    }
+
+    @Override
+    public double[] boundingBox() {
+        return BOUNDING_BOX;
     }
 
     private VoxelShape computeShape(BlockState state) {
@@ -42,6 +51,22 @@ public class PanneauRATPPlanBlock extends DirectionalBlock {
     @Override
     public float getAmbientOcclusionLightLevel2(BlockState state, BlockView world, BlockPos pos) {
         return 1;
+    }
+
+    @Override
+    public void onPlaced2(World world, BlockPos pos, BlockState state, LivingEntity placer, ItemStack itemStack) {
+        super.onPlaced2(world, pos, state, placer, itemStack);
+        if (!world.isClient()) {
+            PanneauRATPCollisionExtensionBlock.placeAround(world, pos, IBlock.getStatePropertySafe(state, FACING), BOUNDING_BOX);
+        }
+    }
+
+    @Override
+    public void onBreak2(World world, BlockPos pos, BlockState state, PlayerEntity player) {
+        if (!world.isClient()) {
+            PanneauRATPCollisionExtensionBlock.removeAround(world, pos, IBlock.getStatePropertySafe(state, FACING), BOUNDING_BOX);
+        }
+        super.onBreak2(world, pos, state, player);
     }
 
 }
