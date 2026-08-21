@@ -39,4 +39,9 @@ public class PilierBaseRATPBlock extends DirectionalBlock {
         return VoxelShapes.empty();
     }
 
+    @Override
+    public float getAmbientOcclusionLightLevel2(BlockState state, BlockView world, BlockPos pos) {
+        return 1;
+    }
+
 }

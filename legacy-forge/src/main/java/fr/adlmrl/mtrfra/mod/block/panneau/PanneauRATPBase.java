@@ -74,6 +74,11 @@ public abstract class PanneauRATPBase extends DirectionalBlock implements BlockW
     }
 
     @Override
+    public float getAmbientOcclusionLightLevel2(BlockState state, BlockView world, BlockPos pos) {
+        return 1;
+    }
+
+    @Override
     public void addBlockProperties(List<HolderBase<?>> properties) {
         super.addBlockProperties(properties);
         properties.add(CATEGORY);
