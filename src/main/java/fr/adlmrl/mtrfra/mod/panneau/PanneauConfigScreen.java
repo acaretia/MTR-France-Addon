@@ -25,6 +25,8 @@ public class PanneauConfigScreen extends ScreenExtension {
 
     private TextFieldWidget titleField;
     private TextFieldWidget subtitleField;
+    private int categoryButtonX;
+    private int categoryButtonY;
 
     public PanneauConfigScreen(BlockPos pos, String title, String subtitle, int category, int maxCategory) {
         super(TextHelper.translatable("gui.mtrfranceaddon.panneau.config.title"));
@@ -51,11 +53,12 @@ public class PanneauConfigScreen extends ScreenExtension {
         addChild(new ClickableWidget(subtitleField.data));
 
         if (maxCategory > 0) {
-            final int categoryY = TOP_OFFSET + 2 * (FIELD_HEIGHT + ROW_GAP);
+            categoryButtonX = x;
+            categoryButtonY = TOP_OFFSET + 2 * (FIELD_HEIGHT + ROW_GAP);
             addChild(new ClickableWidget(new ButtonWidgetExtension(
-                    x, categoryY, FIELD_WIDTH, FIELD_HEIGHT,
+                    categoryButtonX, categoryButtonY, FIELD_WIDTH, FIELD_HEIGHT,
                     TextHelper.translatable("gui.mtrfranceaddon.panneau.config.category." + category),
-                    pressed -> cycleCategory()
+                    pressed -> cycleCategoryForward()
             )));
         }
 
@@ -71,9 +74,30 @@ public class PanneauConfigScreen extends ScreenExtension {
         )));
     }
 
-    private void cycleCategory() {
+    private void cycleCategoryForward() {
         category = category >= maxCategory ? 0 : category + 1;
         MinecraftClient.getInstance().openScreen(new org.mtr.mapping.holder.Screen(new PanneauConfigScreen(pos, titleField.getText(), subtitleField.getText(), category, maxCategory)));
+    }
+
+    private void cycleCategoryBackward() {
+        category = category <= 0 ? maxCategory : category - 1;
+        MinecraftClient.getInstance().openScreen(new org.mtr.mapping.holder.Screen(new PanneauConfigScreen(pos, titleField.getText(), subtitleField.getText(), category, maxCategory)));
+    }
+
+    @Override
+    public boolean mouseClicked2(double mouseX, double mouseY, int button) {
+        if (button == 1 && maxCategory > 0
+                && mouseX >= categoryButtonX && mouseX < categoryButtonX + FIELD_WIDTH
+                && mouseY >= categoryButtonY && mouseY < categoryButtonY + FIELD_HEIGHT) {
+            cycleCategoryBackward();
+            return true;
+        }
+        return super.mouseClicked2(mouseX, mouseY, button);
+    }
+
+    @Override
+    public void onClose2() {
+        save();
     }
 
     private void save() {
