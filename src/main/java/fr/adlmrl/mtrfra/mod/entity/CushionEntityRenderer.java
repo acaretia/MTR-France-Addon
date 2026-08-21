@@ -40,8 +40,8 @@ public class CushionEntityRenderer extends EntityRenderer<CushionEntity> {
         //? if >=1.19.4 {
         poseStack.mulPose(new org.joml.Quaternionf().rotationY((float) Math.toRadians(180.0F - yaw)));
         //? } else {
-        /*poseStack.mulPose(com.mojang.math.Vector3f.YP.rotationDegrees(180.0F - yaw));*/
-        //? }
+        /*poseStack.mulPose(com.mojang.math.Vector3f.YP.rotationDegrees(180.0F - yaw));
+        *///? }
         poseStack.translate(-0.5, 0, -0.5);
 
         currentTintColor = resolveColor(entity);

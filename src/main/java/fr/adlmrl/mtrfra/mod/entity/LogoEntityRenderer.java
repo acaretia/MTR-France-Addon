@@ -42,8 +42,8 @@ public class LogoEntityRenderer extends EntityRenderer<LogoEntity> {
         poseStack.mulPose(new org.joml.Quaternionf().rotationX((float) Math.toRadians(pitch)));
         //? } else {
         /*poseStack.mulPose(com.mojang.math.Vector3f.YP.rotationDegrees(-yaw));
-        poseStack.mulPose(com.mojang.math.Vector3f.XP.rotationDegrees(pitch));*/
-        //? }
+        poseStack.mulPose(com.mojang.math.Vector3f.XP.rotationDegrees(pitch));
+        *///? }
         poseStack.translate(-0.5, -0.5, -1.01);
 
         dispatcher.renderSingleBlock(state, poseStack, bufferSource, light, OverlayTexture.NO_OVERLAY);

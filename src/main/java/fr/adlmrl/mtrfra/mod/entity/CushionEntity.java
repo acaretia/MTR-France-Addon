@@ -102,8 +102,8 @@ public class CushionEntity extends SupportedPlacedEntity {
     /*@Override
     public double getPassengersRidingOffset() {
         return SEAT_HEIGHT;
-    }*/
-    //? }
+    }
+    *///? }
 
     @Override
     public Vector3d updatePassengerForDismount2(LivingEntity passenger) {

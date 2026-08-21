@@ -22,7 +22,9 @@ import net.minecraft.network.protocol.Packet;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+//? if >=1.19 {
 import net.minecraft.util.RandomSource;
+//? }
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.EmptyBlockGetter;
@@ -234,8 +236,8 @@ public abstract class CopycatBlockBase extends BlockExtension implements BlockWi
             //? if >=1.19.4 {
             return BuiltInRegistries.BLOCK.getKey(mimic.getBlock()).toString();
             //? } else {
-            /*return net.minecraft.core.Registry.BLOCK.getKey(mimic.getBlock()).toString();*/
-            //? }
+            /*return net.minecraft.core.Registry.BLOCK.getKey(mimic.getBlock()).toString();
+            *///? }
         }
 
         public static net.minecraft.world.level.block.state.BlockState idToMimic(String idString) {
@@ -243,8 +245,8 @@ public abstract class CopycatBlockBase extends BlockExtension implements BlockWi
             //? if >=1.19.4 {
             final Block block = id == null ? null : BuiltInRegistries.BLOCK.get(id);
             //? } else {
-            /*final net.minecraft.world.level.block.Block block = id == null ? null : net.minecraft.core.Registry.BLOCK.get(id);*/
-            //? }
+            /*final net.minecraft.world.level.block.Block block = id == null ? null : net.minecraft.core.Registry.BLOCK.get(id);
+            *///? }
             return block == null ? null : block.defaultBlockState();
         }
 
@@ -297,7 +299,11 @@ public abstract class CopycatBlockBase extends BlockExtension implements BlockWi
             final VertexConsumer consumer = bufferSource.getBuffer(renderType);
 
             final BakedModel bakedModel = Minecraft.getInstance().getBlockRenderer().getBlockModel(mimic);
+            //? if >=1.19 {
             final RandomSource random = RandomSource.create(42L);
+            //? } else {
+            /*final java.util.Random random = new java.util.Random(42L);
+            *///? }
             final BlockColors blockColors = Minecraft.getInstance().getBlockColors();
 
             for (final net.minecraft.core.Direction direction : new net.minecraft.core.Direction[]{

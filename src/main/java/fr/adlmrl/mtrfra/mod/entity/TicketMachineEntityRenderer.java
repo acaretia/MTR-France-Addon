@@ -45,8 +45,8 @@ public class TicketMachineEntityRenderer extends EntityRenderer<TicketMachineEnt
         //? if >=1.19.4 {
         poseStack.mulPose(new org.joml.Quaternionf().rotationY((float) Math.toRadians(-yaw)));
         //? } else {
-        /*poseStack.mulPose(com.mojang.math.Vector3f.YP.rotationDegrees(-yaw));*/
-        //? }
+        /*poseStack.mulPose(com.mojang.math.Vector3f.YP.rotationDegrees(-yaw));
+        *///? }
         poseStack.translate(-0.5, 0, -0.5);
 
         dispatcher.renderSingleBlock(state, poseStack, bufferSource, light, OverlayTexture.NO_OVERLAY);
