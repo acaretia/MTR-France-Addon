@@ -70,7 +70,7 @@ public class MainForge {
 
     private static Pack createPack(Path modFile, Object packConstructor) throws ReflectiveOperationException {
         final String id = Constants.MOD_ID + "_resources";
-        final Component title = Component.literal(Constants.MOD_NAME + " built-in resources");
+        final Component title = literalComponent(Constants.MOD_NAME + " built-in resources");
 
         for (Method method : Pack.class.getMethods()) {
             if (method.getName().equals("readMetaAndCreate") && method.getParameterCount() == 7) {
@@ -87,6 +87,15 @@ public class MainForge {
         }
 
         throw new IllegalStateException("Unsupported Forge version: no matching Pack#readMetaAndCreate or Pack#create overload found");
+    }
+
+    private static Component literalComponent(String text) throws ReflectiveOperationException {
+        try {
+            return (Component) Component.class.getMethod("literal", String.class).invoke(null, text);
+        } catch (NoSuchMethodException noLiteralFactory) {
+            final Class<?> textComponentClass = Class.forName("net.minecraft.network.chat.TextComponent");
+            return (Component) textComponentClass.getConstructor(String.class).newInstance(text);
+        }
     }
 
     private static Object createResourcesSupplier(Class<?> supplierType, Path modFile, String id) throws ReflectiveOperationException {
