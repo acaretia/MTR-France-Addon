@@ -3,6 +3,10 @@ package fr.adlmrl.mtrfra.mod.registry;
 import fr.adlmrl.mtrfra.mod.block.platform.BlockPlatformLayer;
 import fr.adlmrl.mtrfra.mod.block.BlockSystemMap;
 import fr.adlmrl.mtrfra.mod.block.BufferBlock;
+import fr.adlmrl.mtrfra.mod.block.copycat.CopycatLayerBlock;
+import fr.adlmrl.mtrfra.mod.block.copycat.CopycatLayerPlatformBlock;
+import fr.adlmrl.mtrfra.mod.block.copycat.CopycatPlatformBlock;
+import fr.adlmrl.mtrfra.mod.item.CopycatLayerBlockItem;
 import fr.adlmrl.mtrfra.mod.block.sign.ConfigurableSignBlock;
 import fr.adlmrl.mtrfra.mod.block.HitboxCompanionBlock;
 import fr.adlmrl.mtrfra.mod.block.ticketmachine.IDFMTicketMachine2Block;
@@ -12,6 +16,9 @@ import fr.adlmrl.mtrfra.mod.block.platform.InvisibleSlabPlatform;
 import fr.adlmrl.mtrfra.mod.block.LogoBlock;
 import fr.adlmrl.mtrfra.mod.block.SeatBlock;
 import fr.adlmrl.mtrfra.mod.block.platform.SittablePlatformSlab;
+import fr.adlmrl.mtrfra.mod.block.sign.MotteLightBlock;
+import fr.adlmrl.mtrfra.mod.block.sign.MotteLightStationColorBlock;
+import fr.adlmrl.mtrfra.mod.item.MotteLightStationColorBlockItem;
 import fr.adlmrl.mtrfra.mod.block.sign.RATPCurvedPlatformSign;
 import fr.adlmrl.mtrfra.mod.block.sign.RATPDoorCloseSign;
 import fr.adlmrl.mtrfra.mod.block.sign.RATPFireExitSign;
@@ -19,9 +26,9 @@ import fr.adlmrl.mtrfra.mod.block.sign.RATPNoSmokingSign;
 import fr.adlmrl.mtrfra.mod.block.barrier.RATPTicketBarrierBlock;
 import fr.adlmrl.mtrfra.mod.block.barrier.RATPTicketBarrierSideCoverBlock;
 import fr.adlmrl.mtrfra.mod.block.barrier.RATPTicketBarrierUpperBlock;
-import fr.adlmrl.mtrfra.mod.block.VendingMachine;
 import fr.adlmrl.mtrfra.mod.block.base.HangingSignBlock;
 import org.mtr.mapping.holder.Block;
+import org.mtr.mapping.mapper.BlockExtension;
 import org.mtr.mapping.mapper.BlockHelper;
 import org.mtr.mapping.registry.BlockRegistryObject;
 import org.mtr.mod.Blocks;
@@ -85,18 +92,50 @@ public final class ModBlocks {
             "hitbox_companion", () -> new Block(new HitboxCompanionBlock())
     );
 
-    public static final BlockRegistryObject IDFM_TICKET_MACHINE = MTRFRARegistry.registerBlockWithItem(
-            "idfm_ticket_machine", () -> new Block(new IDFMTicketMachineBlock()), ModItemGroups.STATION_EQUIPMENT
+    public static final BlockRegistryObject IDFM_TICKET_MACHINE = MTRFRARegistry.registerBlock(
+            "idfm_ticket_machine", () -> new Block(new IDFMTicketMachineBlock())
     );
-    public static final BlockRegistryObject IDFM_TICKET_MACHINE_2 = MTRFRARegistry.registerBlockWithItem(
-            "idfm_ticket_machine_2", () -> new Block(new IDFMTicketMachine2Block()), ModItemGroups.STATION_EQUIPMENT
+    public static final BlockRegistryObject IDFM_TICKET_MACHINE_2 = MTRFRARegistry.registerBlock(
+            "idfm_ticket_machine_2", () -> new Block(new IDFMTicketMachine2Block())
     );
 
-    public static final BlockRegistryObject GREEN_VENDING_MACHINE = MTRFRARegistry.registerBlockWithItem(
-            "green_vending_machine", () -> new Block(new VendingMachine()), ModItemGroups.STATION_EQUIPMENT
+    public static final BlockRegistryObject GREEN_VENDING_MACHINE = MTRFRARegistry.registerBlock(
+            "green_vending_machine", () -> new Block(new BlockExtension(Blocks.createDefaultBlockSettings(true).nonOpaque()))
     );
-    public static final BlockRegistryObject RED_VENDING_MACHINE = MTRFRARegistry.registerBlockWithItem(
-            "red_vending_machine", () -> new Block(new VendingMachine()), ModItemGroups.STATION_EQUIPMENT
+    public static final BlockRegistryObject RED_VENDING_MACHINE = MTRFRARegistry.registerBlock(
+            "red_vending_machine", () -> new Block(new BlockExtension(Blocks.createDefaultBlockSettings(true).nonOpaque()))
+    );
+
+    public static final BlockRegistryObject COPYCAT_LAYER = MTRFRARegistry.registerBlockWithItem(
+            "copycat_layer",
+            () -> new Block(new CopycatLayerBlock(BlockHelper.createBlockSettings(false, false).strength(0.2f).nonOpaque().dynamicBounds())),
+            CopycatLayerBlockItem::new,
+            ModItemGroups.BUILDING_MATERIALS
+    );
+    public static final BlockRegistryObject COPYCAT_LAYER_PLACEHOLDER = MTRFRARegistry.registerBlock(
+            "copycat_layer_placeholder", () -> new Block(new BlockExtension(Blocks.createDefaultBlockSettings(true)))
+    );
+    public static final BlockRegistryObject COPYCAT_PLATFORM = MTRFRARegistry.registerBlockWithItem(
+            "copycat_platform",
+            () -> new Block(new CopycatPlatformBlock(BlockHelper.createBlockSettings(false, false).strength(0.2f).nonOpaque().dynamicBounds())),
+            CopycatLayerBlockItem::new,
+            ModItemGroups.BUILDING_MATERIALS
+    );
+    public static final BlockRegistryObject COPYCAT_LAYER_PLATFORM = MTRFRARegistry.registerBlockWithItem(
+            "copycat_layer_platform",
+            () -> new Block(new CopycatLayerPlatformBlock(BlockHelper.createBlockSettings(false, false).strength(0.2f).nonOpaque().dynamicBounds())),
+            CopycatLayerBlockItem::new,
+            ModItemGroups.BUILDING_MATERIALS
+    );
+
+    public static final BlockRegistryObject MOTTE_LIGHT = MTRFRARegistry.registerBlockWithItem(
+            "motte_light", () -> new Block(new MotteLightBlock(Blocks.createDefaultBlockSettings(false).nonOpaque(), 0, 0, 4, 16, 15, 12)), ModItemGroups.STATION_EQUIPMENT
+    );
+    public static final BlockRegistryObject MOTTE_LIGHT_STATION_COLOR = MTRFRARegistry.registerBlockWithItem(
+            "motte_light_station_color",
+            () -> new Block(new MotteLightStationColorBlock(Blocks.createDefaultBlockSettings(false).nonOpaque(), 0, 0, 4, 16, 15, 12)),
+            MotteLightStationColorBlockItem::new,
+            ModItemGroups.STATION_EQUIPMENT
     );
 
     public static final BlockRegistryObject RATP_ALARM_SIGN = MTRFRARegistry.registerBlockWithItem(

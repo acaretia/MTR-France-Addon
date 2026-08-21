@@ -1,5 +1,6 @@
 package fr.adlmrl.mtrfra.mod.registry;
 
+import fr.adlmrl.mtrfra.mod.block.copycat.CopycatBlockBase;
 import fr.adlmrl.mtrfra.mod.block.platform.InvisiblePlatform;
 import fr.adlmrl.mtrfra.mod.block.platform.InvisibleSlabPlatform;
 
@@ -12,6 +13,8 @@ public final class ModBlockEntityRenderers {
                 ModBlockEntities.INVISIBLE_SLAB_PLATFORM, InvisibleSlabPlatform.Renderer::new);
         MTRFRARegistryClient.REGISTRY_CLIENT.registerBlockEntityRenderer(
                 ModBlockEntities.INVISIBLE_PLATFORM, InvisiblePlatform.Renderer::new);
+        MTRFRARegistryClient.REGISTRY_CLIENT.registerBlockEntityRenderer(
+                ModBlockEntities.COPYCAT, CopycatBlockBase.Renderer::new);
     }
 
 }

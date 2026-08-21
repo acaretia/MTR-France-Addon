@@ -1,15 +1,48 @@
 package fr.adlmrl.mtrfra.mod.registry;
 
+import fr.adlmrl.mtrfra.mod.entity.CushionEntity;
+import fr.adlmrl.mtrfra.mod.entity.CushionEntityRenderer;
 import fr.adlmrl.mtrfra.mod.entity.LogoEntity;
 import fr.adlmrl.mtrfra.mod.entity.LogoEntityRenderer;
 import fr.adlmrl.mtrfra.mod.entity.SeatEntity;
 import fr.adlmrl.mtrfra.mod.entity.SeatEntityRenderer;
+import fr.adlmrl.mtrfra.mod.entity.TicketMachineEntity;
+import fr.adlmrl.mtrfra.mod.entity.TicketMachineEntityRenderer;
+import fr.adlmrl.mtrfra.mod.entity.VendingMachineEntity;
+import fr.adlmrl.mtrfra.mod.entity.VendingMachineEntityRenderer;
 import org.mtr.mapping.registry.EntityTypeRegistryObject;
 
 public final class ModEntities {
 
     public static final EntityTypeRegistryObject<SeatEntity> SEAT = MTRFRARegistry.registerEntity(
             "seat", SeatEntity::new, 0.01f, 0.01f
+    );
+
+    public static final EntityTypeRegistryObject<CushionEntity> CUSHION_IDFM_SEAT = MTRFRARegistry.registerEntity(
+            "cushion_idfm_seat", CushionEntity::new, 1.0f, 1.0f
+    );
+    public static final EntityTypeRegistryObject<CushionEntity> CUSHION_IDFM_SEAT_WITH_POLE = MTRFRARegistry.registerEntity(
+            "cushion_idfm_seat_with_pole", CushionEntity::new, 1.0f, 1.0f
+    );
+    public static final EntityTypeRegistryObject<CushionEntity> CUSHION_IDFM_SEAT_STATION_COLOR = MTRFRARegistry.registerEntity(
+            "cushion_idfm_seat_station_color", CushionEntity::new, 1.0f, 1.0f
+    );
+    public static final EntityTypeRegistryObject<CushionEntity> CUSHION_IDFM_SEAT_WITH_POLE_STATION_COLOR = MTRFRARegistry.registerEntity(
+            "cushion_idfm_seat_with_pole_station_color", CushionEntity::new, 1.0f, 1.0f
+    );
+
+    public static final EntityTypeRegistryObject<VendingMachineEntity> VENDING_MACHINE_GREEN = MTRFRARegistry.registerEntity(
+            "green_vending_machine", VendingMachineEntity::new, 1.75f, 2.0f
+    );
+    public static final EntityTypeRegistryObject<VendingMachineEntity> VENDING_MACHINE_RED = MTRFRARegistry.registerEntity(
+            "red_vending_machine", VendingMachineEntity::new, 1.75f, 2.0f
+    );
+
+    public static final EntityTypeRegistryObject<TicketMachineEntity> TICKET_MACHINE_IDFM = MTRFRARegistry.registerEntity(
+            "ticket_machine_idfm", TicketMachineEntity::new, 1.0f, 1.875f
+    );
+    public static final EntityTypeRegistryObject<TicketMachineEntity> TICKET_MACHINE_IDFM_WIDE = MTRFRARegistry.registerEntity(
+            "ticket_machine_idfm_wide", TicketMachineEntity::new, 1.9f, 1.875f
     );
 
     public static final EntityTypeRegistryObject<LogoEntity> LOGO_MTRFRANCEADDON = MTRFRARegistry.registerEntity(
@@ -58,6 +91,14 @@ public final class ModEntities {
 
     public static void registerClient() {
         MTRFRARegistryClient.REGISTRY_CLIENT.registerEntityRenderer(SEAT, SeatEntityRenderer::new);
+        MTRFRARegistryClient.REGISTRY_CLIENT.registerEntityRenderer(CUSHION_IDFM_SEAT, argument -> new CushionEntityRenderer(argument, () -> ModBlocks.IDFM_SEAT));
+        MTRFRARegistryClient.REGISTRY_CLIENT.registerEntityRenderer(CUSHION_IDFM_SEAT_WITH_POLE, argument -> new CushionEntityRenderer(argument, () -> ModBlocks.IDFM_SEAT_WITH_POLE));
+        MTRFRARegistryClient.REGISTRY_CLIENT.registerEntityRenderer(CUSHION_IDFM_SEAT_STATION_COLOR, argument -> new CushionEntityRenderer(argument, () -> ModBlocks.IDFM_SEAT));
+        MTRFRARegistryClient.REGISTRY_CLIENT.registerEntityRenderer(CUSHION_IDFM_SEAT_WITH_POLE_STATION_COLOR, argument -> new CushionEntityRenderer(argument, () -> ModBlocks.IDFM_SEAT_WITH_POLE));
+        MTRFRARegistryClient.REGISTRY_CLIENT.registerEntityRenderer(VENDING_MACHINE_GREEN, argument -> new VendingMachineEntityRenderer(argument, () -> ModBlocks.GREEN_VENDING_MACHINE));
+        MTRFRARegistryClient.REGISTRY_CLIENT.registerEntityRenderer(VENDING_MACHINE_RED, argument -> new VendingMachineEntityRenderer(argument, () -> ModBlocks.RED_VENDING_MACHINE));
+        MTRFRARegistryClient.REGISTRY_CLIENT.registerEntityRenderer(TICKET_MACHINE_IDFM, argument -> new TicketMachineEntityRenderer(argument, () -> ModBlocks.IDFM_TICKET_MACHINE));
+        MTRFRARegistryClient.REGISTRY_CLIENT.registerEntityRenderer(TICKET_MACHINE_IDFM_WIDE, argument -> new TicketMachineEntityRenderer(argument, () -> ModBlocks.IDFM_TICKET_MACHINE_2));
         MTRFRARegistryClient.REGISTRY_CLIENT.registerEntityRenderer(LOGO_MTRFRANCEADDON, argument -> new LogoEntityRenderer(argument, () -> ModBlocks.LOGO_MTRFRANCEADDON));
         MTRFRARegistryClient.REGISTRY_CLIENT.registerEntityRenderer(LOGO_SNCF_ACTUEL, argument -> new LogoEntityRenderer(argument, () -> ModBlocks.LOGO_SNCF_ACTUEL));
         MTRFRARegistryClient.REGISTRY_CLIENT.registerEntityRenderer(LOGO_SNCF_1992_2005, argument -> new LogoEntityRenderer(argument, () -> ModBlocks.LOGO_SNCF_1992_2005));

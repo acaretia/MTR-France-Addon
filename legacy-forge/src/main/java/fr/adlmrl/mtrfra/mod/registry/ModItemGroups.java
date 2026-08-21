@@ -27,8 +27,11 @@ public final class ModItemGroups {
     public static final CreativeTabSection SIGNS = new CreativeTabSection(
             "sign_group", TextHelper.translatable("itemGroup.mtrfranceaddon.sign_group"), "tab_banner/sign_group", 0xCCCCCC
     );
+    public static final CreativeTabSection BUILDING_MATERIALS = new CreativeTabSection(
+            "building_materials", TextHelper.translatable("itemGroup.mtrfranceaddon.building_materials"), "tab_banner/building_materials", 0x93C976
+    );
 
-    public static final List<CreativeTabSection> SECTION_ORDER = List.of(STATION_EQUIPMENT, LOGOS, SIGNS, RAIL_CONNECTORS);
+    public static final List<CreativeTabSection> SECTION_ORDER = List.of(STATION_EQUIPMENT, LOGOS, SIGNS, BUILDING_MATERIALS, RAIL_CONNECTORS);
 
     private ModItemGroups() {}
 

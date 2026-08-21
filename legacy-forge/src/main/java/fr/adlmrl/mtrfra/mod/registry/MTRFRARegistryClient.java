@@ -1,11 +1,15 @@
 package fr.adlmrl.mtrfra.mod.registry;
 
+import fr.adlmrl.mtrfra.mod.block.sign.MotteLightBlock;
+import fr.adlmrl.mtrfra.mod.entity.CushionEntityRenderer;
 import fr.adlmrl.mtrfra.mod.util.Constants;
+import org.mtr.mapping.holder.BlockEntity;
 import org.mtr.mapping.holder.Identifier;
 import org.mtr.mapping.holder.RenderLayer;
 import org.mtr.mapping.registry.BlockRegistryObject;
 import org.mtr.mapping.registry.ItemRegistryObject;
 import org.mtr.mapping.registry.RegistryClient;
+import org.mtr.mod.InitClient;
 import org.mtr.mod.item.ItemBlockClickingBase;
 
 public final class MTRFRARegistryClient {
@@ -24,6 +28,22 @@ public final class MTRFRARegistryClient {
         for (ItemRegistryObject item : ModItems.RAIL_CONNECTORS.values()) {
             REGISTRY_CLIENT.registerItemModelPredicate(item, new Identifier(Constants.MTR_MOD_ID, "selected"), checkItemPredicateTag());
         }
+
+        REGISTRY_CLIENT.registerBlockColors((blockState, world, pos, tintIndex) -> {
+                    if (tintIndex != 0) {
+                        return 0xFFFFFF;
+                    }
+
+                    final BlockEntity entity = world.getBlockEntity(pos);
+                    return entity != null && entity.data instanceof MotteLightBlock.BlockEntity motteLightEntity ? motteLightEntity.getColor() : 0xFFFFFF;
+                },
+                ModBlocks.MOTTE_LIGHT);
+
+        REGISTRY_CLIENT.registerBlockColors((blockState, world, pos, tintIndex) ->
+                        tintIndex == 0 ? InitClient.getStationColor(pos) : 0xFFFFFF, ModBlocks.MOTTE_LIGHT_STATION_COLOR);
+
+        REGISTRY_CLIENT.registerBlockColors((blockState, world, pos, tintIndex) ->
+                        tintIndex == 0 ? CushionEntityRenderer.currentTintColor : 0xFFFFFF, ModBlocks.IDFM_SEAT, ModBlocks.IDFM_SEAT_WITH_POLE);
 
         for (BlockRegistryObject block : new BlockRegistryObject[]{
                 ModBlocks.LOGO_MTRFRANCEADDON, ModBlocks.LOGO_SNCF_ACTUEL, ModBlocks.LOGO_SNCF_1992_2005,
@@ -54,7 +74,8 @@ public final class MTRFRARegistryClient {
                 ModBlocks.POLE_CONNECTION_LEFT, ModBlocks.POLE_CONNECTION_RIGHT, ModBlocks.POLE_CONNECTION_HORIZONTAL, ModBlocks.POLE_CONNECTION_MIDDLE,
                 ModBlocks.SIGN_SPEED_20_GALLOWS, ModBlocks.SIGN_SPEED_40_GALLOWS, ModBlocks.SIGN_SPEED_60_GALLOWS, ModBlocks.SIGN_SPEED_80_GALLOWS,
                 ModBlocks.SIGN_SPEED_120_GALLOWS, ModBlocks.SIGN_SPEED_160_GALLOWS, ModBlocks.SIGN_SPEED_200_GALLOWS,
-                ModBlocks.SIGN_SPEED_300_GALLOWS, ModBlocks.SIGN_SQUARE_GALLOWS
+                ModBlocks.SIGN_SPEED_300_GALLOWS, ModBlocks.SIGN_SQUARE_GALLOWS,
+                ModBlocks.GREEN_VENDING_MACHINE, ModBlocks.RED_VENDING_MACHINE
         }) {
             REGISTRY_CLIENT.registerBlockRenderType(RenderLayer.getCutout(), block);
         }

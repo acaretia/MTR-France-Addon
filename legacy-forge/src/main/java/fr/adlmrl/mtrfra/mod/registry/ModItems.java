@@ -1,8 +1,12 @@
 package fr.adlmrl.mtrfra.mod.registry;
 
 import fr.adlmrl.mtrfra.mod.data.CustomRailData;
+import fr.adlmrl.mtrfra.mod.item.CushionItem;
 import fr.adlmrl.mtrfra.mod.item.CustomItemRailModifier;
+import fr.adlmrl.mtrfra.mod.item.EnchantedCushionItem;
 import fr.adlmrl.mtrfra.mod.item.LogoPlacementItem;
+import fr.adlmrl.mtrfra.mod.item.TicketMachineItem;
+import fr.adlmrl.mtrfra.mod.item.VendingMachineItem;
 import org.mtr.mapping.holder.Item;
 import org.mtr.mapping.registry.ItemRegistryObject;
 import org.mtr.mod.data.RailType;
@@ -78,6 +82,49 @@ public final class ModItems {
             "ratp_logo_actuel_block",
             itemSettings -> new Item(new LogoPlacementItem(itemSettings, ModEntities.LOGO_RATP_ACTUEL)),
             ModItemGroups.LOGOS
+    );
+
+    public static final ItemRegistryObject IDFM_SEAT_CUSHION = MTRFRARegistry.registerItem(
+            "idfm_seat_cushion",
+            itemSettings -> new Item(new CushionItem(itemSettings, ModEntities.CUSHION_IDFM_SEAT)),
+            ModItemGroups.STATION_EQUIPMENT
+    );
+    public static final ItemRegistryObject IDFM_SEAT_WITH_POLE_CUSHION = MTRFRARegistry.registerItem(
+            "idfm_seat_with_pole_cushion",
+            itemSettings -> new Item(new CushionItem(itemSettings, ModEntities.CUSHION_IDFM_SEAT_WITH_POLE)),
+            ModItemGroups.STATION_EQUIPMENT
+    );
+    public static final ItemRegistryObject IDFM_SEAT_CUSHION_STATION_COLOR = MTRFRARegistry.registerItem(
+            "idfm_seat_cushion_station_color",
+            itemSettings -> new Item(new EnchantedCushionItem(itemSettings, ModEntities.CUSHION_IDFM_SEAT_STATION_COLOR)),
+            ModItemGroups.STATION_EQUIPMENT
+    );
+    public static final ItemRegistryObject IDFM_SEAT_WITH_POLE_CUSHION_STATION_COLOR = MTRFRARegistry.registerItem(
+            "idfm_seat_with_pole_cushion_station_color",
+            itemSettings -> new Item(new EnchantedCushionItem(itemSettings, ModEntities.CUSHION_IDFM_SEAT_WITH_POLE_STATION_COLOR)),
+            ModItemGroups.STATION_EQUIPMENT
+    );
+
+    public static final ItemRegistryObject GREEN_VENDING_MACHINE = MTRFRARegistry.registerItem(
+            "green_vending_machine",
+            itemSettings -> new Item(new VendingMachineItem(itemSettings, ModEntities.VENDING_MACHINE_GREEN)),
+            ModItemGroups.STATION_EQUIPMENT
+    );
+    public static final ItemRegistryObject RED_VENDING_MACHINE = MTRFRARegistry.registerItem(
+            "red_vending_machine",
+            itemSettings -> new Item(new VendingMachineItem(itemSettings, ModEntities.VENDING_MACHINE_RED)),
+            ModItemGroups.STATION_EQUIPMENT
+    );
+
+    public static final ItemRegistryObject IDFM_TICKET_MACHINE = MTRFRARegistry.registerItem(
+            "idfm_ticket_machine",
+            itemSettings -> new Item(new TicketMachineItem(itemSettings, ModEntities.TICKET_MACHINE_IDFM)),
+            ModItemGroups.STATION_EQUIPMENT
+    );
+    public static final ItemRegistryObject IDFM_TICKET_MACHINE_2 = MTRFRARegistry.registerItem(
+            "idfm_ticket_machine_2",
+            itemSettings -> new Item(new TicketMachineItem(itemSettings, ModEntities.TICKET_MACHINE_IDFM_WIDE)),
+            ModItemGroups.STATION_EQUIPMENT
     );
 
     private ModItems() {}
