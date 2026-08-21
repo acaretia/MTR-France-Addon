@@ -127,6 +127,11 @@ public final class ModItems {
             itemSettings -> new Item(new LogoPlacementItem(itemSettings, ModEntities.LOGO_RATP_ACTUEL)),
             ModItemGroups.LOGOS
     );
+    public static final ItemRegistryObject LOGO_SNCF_SIGN = MTRFRARegistry.registerItem(
+            "sncf_sign_block",
+            itemSettings -> new Item(new LogoPlacementItem(itemSettings, ModEntities.LOGO_SNCF_SIGN)),
+            ModItemGroups.LOGOS
+    );
 
     private ModItems() {}
 

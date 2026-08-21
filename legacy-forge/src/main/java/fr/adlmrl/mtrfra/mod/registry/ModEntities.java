@@ -84,6 +84,9 @@ public final class ModEntities {
     public static final EntityTypeRegistryObject<LogoEntity> LOGO_RATP_ACTUEL = MTRFRARegistry.registerEntity(
             "ratp_logo_actuel", LogoEntity::new, 1.0f, 1.0f
     );
+    public static final EntityTypeRegistryObject<LogoEntity> LOGO_SNCF_SIGN = MTRFRARegistry.registerEntity(
+            "sncf_sign", LogoEntity::new, 1.0f, 1.0f
+    );
 
     private ModEntities() {}
 
@@ -112,6 +115,7 @@ public final class ModEntities {
         MTRFRARegistryClient.REGISTRY_CLIENT.registerEntityRenderer(LOGO_RATP_1960_1976, argument -> new LogoEntityRenderer(argument, () -> ModBlocks.LOGO_RATP_1960_1976));
         MTRFRARegistryClient.REGISTRY_CLIENT.registerEntityRenderer(LOGO_RATP_1976_1992, argument -> new LogoEntityRenderer(argument, () -> ModBlocks.LOGO_RATP_1976_1992));
         MTRFRARegistryClient.REGISTRY_CLIENT.registerEntityRenderer(LOGO_RATP_ACTUEL, argument -> new LogoEntityRenderer(argument, () -> ModBlocks.LOGO_RATP_ACTUEL));
+        MTRFRARegistryClient.REGISTRY_CLIENT.registerEntityRenderer(LOGO_SNCF_SIGN, argument -> new LogoEntityRenderer(argument, () -> ModBlocks.LOGO_SNCF_SIGN));
     }
 
 }

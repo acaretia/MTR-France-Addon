@@ -80,6 +80,9 @@ public final class ModEntities {
     public static final EntityTypeRegistryObject<LogoEntity> LOGO_RATP_ACTUEL = MTRFRARegistry.registerEntity(
             "ratp_logo_actuel", LogoEntity::new, 1.0f, 1.0f
     );
+    public static final EntityTypeRegistryObject<LogoEntity> LOGO_SNCF_SIGN = MTRFRARegistry.registerEntity(
+            "sncf_sign", LogoEntity::new, 1.0f, 1.0f
+    );
 
     private ModEntities() {}
 

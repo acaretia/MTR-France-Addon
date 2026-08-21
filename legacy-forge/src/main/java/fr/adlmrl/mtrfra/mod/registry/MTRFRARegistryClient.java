@@ -50,6 +50,7 @@ public final class MTRFRARegistryClient {
                 ModBlocks.LOGO_SNCF_1985_1992_V1, ModBlocks.LOGO_SNCF_1985_1992_V2, ModBlocks.LOGO_SNCF_1967_1985_V1,
                 ModBlocks.LOGO_SNCF_1967_1985_V2, ModBlocks.LOGO_SNCF_1947_1967, ModBlocks.LOGO_SNCF_1938_1947,
                 ModBlocks.LOGO_RATP_1951_1960, ModBlocks.LOGO_RATP_1960_1976, ModBlocks.LOGO_RATP_1976_1992, ModBlocks.LOGO_RATP_ACTUEL,
+                ModBlocks.LOGO_SNCF_SIGN,
                 ModBlocks.SYSTEM_MAP, ModBlocks.SNCF_BUFFER,
                 ModBlocks.RATP_ALARM_SIGN, ModBlocks.RATP_DOORCLOSE_SIGN, ModBlocks.RATP_FIREEXIT_SIGN,
                 ModBlocks.RATP_CURVEDPLATFORM_SIGN, ModBlocks.RATP_NOSMOKING_SIGN,

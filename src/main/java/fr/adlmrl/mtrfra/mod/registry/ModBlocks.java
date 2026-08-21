@@ -210,6 +210,9 @@ public final class ModBlocks {
     public static final BlockRegistryObject LOGO_RATP_ACTUEL = MTRFRARegistry.registerBlock(
             "ratp_logo_actuel_block", () -> new Block(new LogoBlock(Blocks.createDefaultBlockSettings(false).strength(0.2f)))
     );
+    public static final BlockRegistryObject LOGO_SNCF_SIGN = MTRFRARegistry.registerBlock(
+            "sncf_sign_block", () -> new Block(new LogoBlock(Blocks.createDefaultBlockSettings(false).strength(0.2f)))
+    );
 
     public static final BlockRegistryObject POLE = MTRFRARegistry.registerBlockWithItem(
             "pole", () -> new Block(new ConfigurableSignBlock(Blocks.createDefaultBlockSettings(false), 7, 0, 7, 9, 16, 9)), ModItemGroups.SIGNS

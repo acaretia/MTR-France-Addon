@@ -98,6 +98,9 @@ public class LogoEntity extends SupportedPlacedEntity {
         if (myType == ModEntities.LOGO_RATP_ACTUEL.get().data) {
             return (Item) ModItems.LOGO_RATP_ACTUEL.get().data;
         }
+        if (myType == ModEntities.LOGO_SNCF_SIGN.get().data) {
+            return (Item) ModItems.LOGO_SNCF_SIGN.get().data;
+        }
         return null;
     }
 

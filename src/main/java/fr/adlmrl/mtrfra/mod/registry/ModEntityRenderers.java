@@ -33,6 +33,7 @@ public final class ModEntityRenderers {
         MTRFRARegistryClient.REGISTRY_CLIENT.registerEntityRenderer(ModEntities.LOGO_RATP_1960_1976, argument -> new LogoEntityRenderer(argument, () -> ModBlocks.LOGO_RATP_1960_1976));
         MTRFRARegistryClient.REGISTRY_CLIENT.registerEntityRenderer(ModEntities.LOGO_RATP_1976_1992, argument -> new LogoEntityRenderer(argument, () -> ModBlocks.LOGO_RATP_1976_1992));
         MTRFRARegistryClient.REGISTRY_CLIENT.registerEntityRenderer(ModEntities.LOGO_RATP_ACTUEL, argument -> new LogoEntityRenderer(argument, () -> ModBlocks.LOGO_RATP_ACTUEL));
+        MTRFRARegistryClient.REGISTRY_CLIENT.registerEntityRenderer(ModEntities.LOGO_SNCF_SIGN, argument -> new LogoEntityRenderer(argument, () -> ModBlocks.LOGO_SNCF_SIGN));
     }
 
 }
