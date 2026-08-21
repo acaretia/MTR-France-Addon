@@ -15,12 +15,12 @@ public class PanneauRATPMurMetroPetitBlock extends PanneauRATPBase {
 
     @Override
     public float textY() {
-        return 2.5F;
+        return 8F;
     }
 
     @Override
     public float textZ() {
-        return 7.725F;
+        return 15.2F;
     }
 
 }
