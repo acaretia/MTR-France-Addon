@@ -44,10 +44,11 @@ public class PanneauRATPRenderer extends BlockEntityRenderer<PanneauRATPBase.Blo
         poseStack.scale(SCALE, -SCALE, SCALE);
 
         if (!title.isEmpty()) {
-            graphicsHolder.drawCenteredText(title, 0, 0, 0xFFFFFF);
+            graphicsHolder.drawText(title, -GraphicsHolder.getTextWidth(title) / 2, 0, 0xFFFFFF, false, GraphicsHolder.getDefaultLight());
         }
         if (!subtitle.isEmpty()) {
-            graphicsHolder.drawCenteredText(TextHelper.literal(subtitle).formatted(TextFormatting.ITALIC), 0, 10, 0xFFFFFF);
+            final org.mtr.mapping.holder.MutableText formattedSubtitle = TextHelper.literal(subtitle).formatted(TextFormatting.ITALIC);
+            graphicsHolder.drawText(formattedSubtitle, -GraphicsHolder.getTextWidth(formattedSubtitle) / 2, 10, 0xFFFFFF, false, GraphicsHolder.getDefaultLight());
         }
 
         poseStack.popPose();
