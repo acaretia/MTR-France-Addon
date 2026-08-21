@@ -106,12 +106,12 @@ public final class ModItems {
     );
 
     public static final ItemRegistryObject GREEN_VENDING_MACHINE = MTRFRARegistry.registerItem(
-            "green_vending_machine",
+            "vending_machine_green",
             itemSettings -> new Item(new VendingMachineItem(itemSettings, ModEntities.VENDING_MACHINE_GREEN)),
             ModItemGroups.STATION_EQUIPMENT
     );
     public static final ItemRegistryObject RED_VENDING_MACHINE = MTRFRARegistry.registerItem(
-            "red_vending_machine",
+            "vending_machine_red",
             itemSettings -> new Item(new VendingMachineItem(itemSettings, ModEntities.VENDING_MACHINE_RED)),
             ModItemGroups.STATION_EQUIPMENT
     );

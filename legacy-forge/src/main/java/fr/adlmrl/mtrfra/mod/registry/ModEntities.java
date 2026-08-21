@@ -32,10 +32,10 @@ public final class ModEntities {
     );
 
     public static final EntityTypeRegistryObject<VendingMachineEntity> VENDING_MACHINE_GREEN = MTRFRARegistry.registerEntity(
-            "green_vending_machine", VendingMachineEntity::new, 1.75f, 2.0f
+            "vending_machine_green", VendingMachineEntity::new, 1.75f, 2.0f
     );
     public static final EntityTypeRegistryObject<VendingMachineEntity> VENDING_MACHINE_RED = MTRFRARegistry.registerEntity(
-            "red_vending_machine", VendingMachineEntity::new, 1.75f, 2.0f
+            "vending_machine_red", VendingMachineEntity::new, 1.75f, 2.0f
     );
 
     public static final EntityTypeRegistryObject<TicketMachineEntity> TICKET_MACHINE_IDFM = MTRFRARegistry.registerEntity(

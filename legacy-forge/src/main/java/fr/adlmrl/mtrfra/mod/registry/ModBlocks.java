@@ -100,10 +100,10 @@ public final class ModBlocks {
     );
 
     public static final BlockRegistryObject GREEN_VENDING_MACHINE = MTRFRARegistry.registerBlock(
-            "green_vending_machine", () -> new Block(new BlockExtension(Blocks.createDefaultBlockSettings(true).nonOpaque()))
+            "vending_machine_green", () -> new Block(new BlockExtension(Blocks.createDefaultBlockSettings(true).nonOpaque()))
     );
     public static final BlockRegistryObject RED_VENDING_MACHINE = MTRFRARegistry.registerBlock(
-            "red_vending_machine", () -> new Block(new BlockExtension(Blocks.createDefaultBlockSettings(true).nonOpaque()))
+            "vending_machine_red", () -> new Block(new BlockExtension(Blocks.createDefaultBlockSettings(true).nonOpaque()))
     );
 
     public static final BlockRegistryObject COPYCAT_LAYER = MTRFRARegistry.registerBlockWithItem(
