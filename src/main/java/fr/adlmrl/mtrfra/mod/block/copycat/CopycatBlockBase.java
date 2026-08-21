@@ -392,8 +392,13 @@ public abstract class CopycatBlockBase extends BlockExtension implements BlockWi
         ) {
             final float u0 = sprite.getU0();
             final float u1 = sprite.getU1();
+            //? if >=1.20.4 {
             final float vTop = sprite.getV(1.0F - yMax);
             final float vBottom = sprite.getV(1.0F - yMin);
+            //? } else {
+            /*final float vTop = sprite.getV((1.0F - yMax) * 16.0F);
+            final float vBottom = sprite.getV((1.0F - yMin) * 16.0F);
+            *///? }
 
             final float[][] corners;
             final float[] normal;
