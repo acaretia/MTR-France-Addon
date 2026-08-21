@@ -4,6 +4,7 @@ import fr.adlmrl.mtrfra.mod.Init;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.phys.AABB;
 import org.mtr.mapping.holder.BlockPos;
 import org.mtr.mapping.holder.BlockState;
 import org.mtr.mapping.holder.BlockView;
@@ -85,6 +86,28 @@ public abstract class SupportedPlacedEntity extends EntityExtension {
     }
 
     protected void onClientTick() {}
+
+    protected AABB makeRotatedBoundingBox(double localMinX, double localMaxX, double localMinZ, double localMaxZ, double height) {
+        final double theta = Math.toRadians(-getYRot());
+        final double cosTheta = Math.cos(theta);
+        final double sinTheta = Math.sin(theta);
+        final double[] cornerX = {localMinX, localMaxX, localMinX, localMaxX};
+        final double[] cornerZ = {localMinZ, localMinZ, localMaxZ, localMaxZ};
+        double minOffsetX = Double.POSITIVE_INFINITY, maxOffsetX = Double.NEGATIVE_INFINITY;
+        double minOffsetZ = Double.POSITIVE_INFINITY, maxOffsetZ = Double.NEGATIVE_INFINITY;
+        for (int i = 0; i < 4; i++) {
+            final double worldOffsetX = cornerX[i] * cosTheta + cornerZ[i] * sinTheta;
+            final double worldOffsetZ = -cornerX[i] * sinTheta + cornerZ[i] * cosTheta;
+            minOffsetX = Math.min(minOffsetX, worldOffsetX);
+            maxOffsetX = Math.max(maxOffsetX, worldOffsetX);
+            minOffsetZ = Math.min(minOffsetZ, worldOffsetZ);
+            maxOffsetZ = Math.max(maxOffsetZ, worldOffsetZ);
+        }
+        final double x = getX();
+        final double y = getY();
+        final double z = getZ();
+        return new AABB(x + minOffsetX, y, z + minOffsetZ, x + maxOffsetX, y + height, z + maxOffsetZ);
+    }
 
     private boolean hasSupport() {
         try {

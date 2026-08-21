@@ -5,6 +5,7 @@ import org.mtr.mapping.holder.Block;
 import org.mtr.mapping.holder.EntityType;
 import org.mtr.mapping.holder.Item;
 import org.mtr.mapping.holder.World;
+import org.mtr.mapping.mapper.BlockItemExtension;
 import org.mtr.mapping.mapper.EntityExtension;
 import org.mtr.mapping.registry.BlockRegistryObject;
 import org.mtr.mapping.registry.EntityTypeRegistryObject;
@@ -41,6 +42,12 @@ public final class MTRFRARegistry {
 
     public static BlockRegistryObject registerBlockWithItem(String id, Supplier<Block> supplier, CreativeTabSection section) {
         final BlockRegistryObject registered = REGISTRY.registerBlockWithBlockItem(Constants.id(id), supplier, ModItemGroups.MAIN);
+        CreativeTabSections.recordBlock(registered, section);
+        return registered;
+    }
+
+    public static BlockRegistryObject registerBlockWithItem(String id, Supplier<Block> supplier, BiFunction<Block, ItemSettings, BlockItemExtension> itemFactory, CreativeTabSection section) {
+        final BlockRegistryObject registered = REGISTRY.registerBlockWithBlockItem(Constants.id(id), supplier, itemFactory, ModItemGroups.MAIN);
         CreativeTabSections.recordBlock(registered, section);
         return registered;
     }
