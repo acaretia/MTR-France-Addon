@@ -23,4 +23,9 @@ public class PanneauRATPPilierBlock extends PanneauRATPBase {
         return 14.3F;
     }
 
+    @Override
+    public double[] boundingBox() {
+        return new double[]{-15, 0, 12, 31, 11, 14};
+    }
+
 }

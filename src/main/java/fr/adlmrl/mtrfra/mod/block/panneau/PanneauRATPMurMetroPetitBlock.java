@@ -23,4 +23,9 @@ public class PanneauRATPMurMetroPetitBlock extends PanneauRATPBase {
         return 15.2F;
     }
 
+    @Override
+    public double[] boundingBox() {
+        return new double[]{-8, 3, 15.5, 24, 13, 16};
+    }
+
 }

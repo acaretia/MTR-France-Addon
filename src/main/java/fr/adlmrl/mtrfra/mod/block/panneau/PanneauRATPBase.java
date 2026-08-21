@@ -9,18 +9,24 @@ import org.mtr.mapping.holder.BlockHitResult;
 import org.mtr.mapping.holder.BlockPos;
 import org.mtr.mapping.holder.BlockSettings;
 import org.mtr.mapping.holder.BlockState;
+import org.mtr.mapping.holder.BlockView;
 import org.mtr.mapping.holder.CompoundTag;
+import org.mtr.mapping.holder.Direction;
 import org.mtr.mapping.holder.Hand;
 import org.mtr.mapping.holder.IntegerProperty;
 import org.mtr.mapping.holder.PlayerEntity;
 import org.mtr.mapping.holder.Property;
 import org.mtr.mapping.holder.ServerPlayerEntity;
+import org.mtr.mapping.holder.ShapeContext;
+import org.mtr.mapping.holder.VoxelShape;
+import org.mtr.mapping.holder.VoxelShapes;
 import org.mtr.mapping.holder.World;
 import org.mtr.mapping.mapper.BlockEntityExtension;
 import org.mtr.mapping.mapper.BlockWithEntity;
 import org.mtr.mapping.tool.HolderBase;
 import org.mtr.mod.InitClient;
 import org.mtr.mod.Items;
+import org.mtr.mod.block.IBlock;
 
 import java.util.List;
 
@@ -39,9 +45,32 @@ public abstract class PanneauRATPBase extends DirectionalBlock implements BlockW
 
     public abstract float textZ();
 
+    public abstract double[] boundingBox();
+
     @Override
     public BlockEntityExtension createBlockEntity(BlockPos blockPos, BlockState blockState) {
         return new BlockEntityBase(blockPos, blockState);
+    }
+
+    private VoxelShape computeShape(BlockState state) {
+        final Direction facing = IBlock.getStatePropertySafe(state, FACING);
+        final double[] box = boundingBox();
+        return IBlock.getVoxelShapeByDirection(box[0], box[1], box[2], box[3], box[4], box[5], facing);
+    }
+
+    @Override
+    public VoxelShape getOutlineShape2(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        return computeShape(state);
+    }
+
+    @Override
+    public VoxelShape getCollisionShape2(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        return computeShape(state);
+    }
+
+    @Override
+    public VoxelShape getCullingShape2(BlockState state, BlockView world, BlockPos pos) {
+        return VoxelShapes.empty();
     }
 
     @Override

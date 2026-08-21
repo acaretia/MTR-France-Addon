@@ -23,4 +23,9 @@ public class PanneauRATPDoubleBlock extends PanneauRATPBase {
         return 9.6F;
     }
 
+    @Override
+    public double[] boundingBox() {
+        return new double[]{-16, 0, 7, 32, 9, 9};
+    }
+
 }

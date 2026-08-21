@@ -23,4 +23,9 @@ public class PanneauRATPMurRerBlock extends PanneauRATPBase {
         return 13.7F;
     }
 
+    @Override
+    public double[] boundingBox() {
+        return new double[]{-15, 3, 14, 31, 11, 16};
+    }
+
 }
