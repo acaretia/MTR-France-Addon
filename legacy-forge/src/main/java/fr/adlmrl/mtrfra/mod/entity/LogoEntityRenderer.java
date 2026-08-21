@@ -3,6 +3,7 @@ package fr.adlmrl.mtrfra.mod.entity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import fr.adlmrl.mtrfra.mod.mixin.GraphicsHolderAccessor;
 import fr.adlmrl.mtrfra.mod.util.Constants;
+import fr.adlmrl.mtrfra.mod.util.VersionCompat;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.block.BlockRenderDispatcher;
@@ -36,8 +37,8 @@ public class LogoEntityRenderer extends EntityRenderer<LogoEntity> {
         final BlockRenderDispatcher dispatcher = Minecraft.getInstance().getBlockRenderer();
 
         poseStack.pushPose();
-        poseStack.mulPose(new org.joml.Quaternionf().rotationY((float) Math.toRadians(-yaw)));
-        poseStack.mulPose(new org.joml.Quaternionf().rotationX((float) Math.toRadians(pitch)));
+        VersionCompat.mulPoseY(poseStack, -yaw);
+        VersionCompat.mulPoseX(poseStack, pitch);
         poseStack.translate(-0.5, -0.5, -1.01);
 
         dispatcher.renderSingleBlock(state, poseStack, bufferSource, light, OverlayTexture.NO_OVERLAY);
