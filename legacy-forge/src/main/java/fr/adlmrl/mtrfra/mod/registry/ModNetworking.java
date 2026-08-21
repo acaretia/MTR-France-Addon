@@ -5,6 +5,8 @@ import fr.adlmrl.mtrfra.mod.barrier.PacketSaveTicketBarrierConfig;
 import fr.adlmrl.mtrfra.mod.itinerary.PacketItineraryResult;
 import fr.adlmrl.mtrfra.mod.itinerary.PacketOpenItineraryScreen;
 import fr.adlmrl.mtrfra.mod.itinerary.PacketSearchItinerary;
+import fr.adlmrl.mtrfra.mod.panneau.PacketOpenPanneauConfigScreen;
+import fr.adlmrl.mtrfra.mod.panneau.PacketSavePanneauConfig;
 
 public final class ModNetworking {
 
@@ -16,6 +18,8 @@ public final class ModNetworking {
         MTRFRARegistry.REGISTRY.registerPacket(PacketItineraryResult.class, PacketItineraryResult::new);
         MTRFRARegistry.REGISTRY.registerPacket(PacketOpenTicketBarrierConfigScreen.class, PacketOpenTicketBarrierConfigScreen::new);
         MTRFRARegistry.REGISTRY.registerPacket(PacketSaveTicketBarrierConfig.class, PacketSaveTicketBarrierConfig::new);
+        MTRFRARegistry.REGISTRY.registerPacket(PacketOpenPanneauConfigScreen.class, PacketOpenPanneauConfigScreen::new);
+        MTRFRARegistry.REGISTRY.registerPacket(PacketSavePanneauConfig.class, PacketSavePanneauConfig::new);
     }
 
     public static void registerClient() {}

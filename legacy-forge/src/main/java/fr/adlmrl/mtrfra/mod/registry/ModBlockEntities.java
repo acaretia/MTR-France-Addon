@@ -6,6 +6,7 @@ import fr.adlmrl.mtrfra.mod.block.platform.InvisibleSlabPlatform;
 import fr.adlmrl.mtrfra.mod.block.sign.MotteLightBlock;
 import fr.adlmrl.mtrfra.mod.block.sign.MotteLightStationColorBlock;
 import fr.adlmrl.mtrfra.mod.block.barrier.RATPTicketBarrierBlock;
+import fr.adlmrl.mtrfra.mod.block.panneau.PanneauRATPBase;
 import fr.adlmrl.mtrfra.mod.util.Constants;
 import org.mtr.mapping.registry.BlockEntityTypeRegistryObject;
 
@@ -50,6 +51,17 @@ public final class ModBlockEntities {
             Constants.id("motte_light_station_color"),
             MotteLightStationColorBlock.BlockEntity::new,
             () -> ModBlocks.MOTTE_LIGHT_STATION_COLOR.get()
+    );
+
+    public static final BlockEntityTypeRegistryObject<PanneauRATPBase.BlockEntityBase> PANNEAU_RATP = MTRFRARegistry.REGISTRY.registerBlockEntityType(
+            Constants.id("panneau_ratp"),
+            PanneauRATPBase.BlockEntityBase::new,
+            () -> ModBlocks.PANNEAU_RATP_DOUBLE.get(),
+            () -> ModBlocks.PANNEAU_RATP_PILIER.get(),
+            () -> ModBlocks.PANNEAU_RATP_MUR_RER.get(),
+            () -> ModBlocks.PANNEAU_RATP_TOP.get(),
+            () -> ModBlocks.PANNEAU_RATP_MUR_METRO_GRAND.get(),
+            () -> ModBlocks.PANNEAU_RATP_MUR_METRO_PETIT.get()
     );
 
     private ModBlockEntities() {}
