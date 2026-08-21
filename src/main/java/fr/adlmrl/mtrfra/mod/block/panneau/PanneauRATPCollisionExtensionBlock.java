@@ -70,11 +70,11 @@ public class PanneauRATPCollisionExtensionBlock extends BlockExtension {
             final int dy = pos.getY() - anchorPos.getY();
             final int dz = pos.getZ() - anchorPos.getZ();
             final boolean overlapsHere =
-                    (dx > 0 && bounds.getMaxXMapped() > 16) ||
+                    (dx > 0 && bounds.getMaxXMapped() > 1) ||
                             (dx < 0 && bounds.getMinXMapped() < 0) ||
-                            (dz > 0 && bounds.getMaxZMapped() > 16) ||
+                            (dz > 0 && bounds.getMaxZMapped() > 1) ||
                             (dz < 0 && bounds.getMinZMapped() < 0) ||
-                            (dy > 0 && bounds.getMaxYMapped() > 16) ||
+                            (dy > 0 && bounds.getMaxYMapped() > 1) ||
                             (dy < 0 && bounds.getMinYMapped() < 0);
             if (overlapsHere) {
                 shape = VoxelShapes.union(shape, anchorShape.offset(-dx, -dy, -dz));
@@ -95,16 +95,16 @@ public class PanneauRATPCollisionExtensionBlock extends BlockExtension {
         if (bounds.getMinXMapped() < 0) {
             placeAt(world, anchorPos.offset(Direction.WEST));
         }
-        if (bounds.getMaxXMapped() > 16) {
+        if (bounds.getMaxXMapped() > 1) {
             placeAt(world, anchorPos.offset(Direction.EAST));
         }
         if (bounds.getMinZMapped() < 0) {
             placeAt(world, anchorPos.offset(Direction.NORTH));
         }
-        if (bounds.getMaxZMapped() > 16) {
+        if (bounds.getMaxZMapped() > 1) {
             placeAt(world, anchorPos.offset(Direction.SOUTH));
         }
-        if (bounds.getMaxYMapped() > 16) {
+        if (bounds.getMaxYMapped() > 1) {
             placeAt(world, anchorPos.offset(Direction.UP));
         }
         if (bounds.getMinYMapped() < 0) {
@@ -122,16 +122,16 @@ public class PanneauRATPCollisionExtensionBlock extends BlockExtension {
         if (bounds.getMinXMapped() < 0) {
             removeAt(world, anchorPos.offset(Direction.WEST));
         }
-        if (bounds.getMaxXMapped() > 16) {
+        if (bounds.getMaxXMapped() > 1) {
             removeAt(world, anchorPos.offset(Direction.EAST));
         }
         if (bounds.getMinZMapped() < 0) {
             removeAt(world, anchorPos.offset(Direction.NORTH));
         }
-        if (bounds.getMaxZMapped() > 16) {
+        if (bounds.getMaxZMapped() > 1) {
             removeAt(world, anchorPos.offset(Direction.SOUTH));
         }
-        if (bounds.getMaxYMapped() > 16) {
+        if (bounds.getMaxYMapped() > 1) {
             removeAt(world, anchorPos.offset(Direction.UP));
         }
         if (bounds.getMinYMapped() < 0) {
@@ -163,11 +163,11 @@ public class PanneauRATPCollisionExtensionBlock extends BlockExtension {
             final int dy = pos.getY() - anchorPos.getY();
             final int dz = pos.getZ() - anchorPos.getZ();
             final boolean overlapsHere =
-                    (dx > 0 && bounds.getMaxXMapped() > 16) ||
+                    (dx > 0 && bounds.getMaxXMapped() > 1) ||
                             (dx < 0 && bounds.getMinXMapped() < 0) ||
-                            (dz > 0 && bounds.getMaxZMapped() > 16) ||
+                            (dz > 0 && bounds.getMaxZMapped() > 1) ||
                             (dz < 0 && bounds.getMinZMapped() < 0) ||
-                            (dy > 0 && bounds.getMaxYMapped() > 16) ||
+                            (dy > 0 && bounds.getMaxYMapped() > 1) ||
                             (dy < 0 && bounds.getMinYMapped() < 0);
             if (!overlapsHere) {
                 continue;
