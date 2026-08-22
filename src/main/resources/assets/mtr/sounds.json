@@ -4486,5 +4486,119 @@
         "attenuation_distance": 85
       }
     ]
+  },
+  "tgv_duplex_airhigh": {
+    "sounds": [
+      {
+        "name": "mtr:tgv_duplex/airhigh",
+        "attenuation_distance": 85
+      }
+    ]
+  },
+  "tgv_duplex_airzero": {
+    "sounds": [
+      {
+        "name": "mtr:tgv_duplex/airzero",
+        "attenuation_distance": 85
+      }
+    ]
+  },
+  "tgv_duplex_doorcls": {
+    "sounds": [
+      {
+        "name": "mtr:tgv_duplex/door_close",
+        "attenuation_distance": 20,
+        "pitch": 1
+      }
+    ]
+  },
+  "tgv_duplex_dooropn": {
+    "sounds": [
+      {
+        "name": "mtr:tgv_duplex/door_open",
+        "attenuation_distance": 20,
+        "pitch": 1
+      }
+    ]
+  },
+  "tgv_duplex_loop": {
+    "sounds": [
+      {
+        "name": "mtr:tgv_duplex/loop",
+        "attenuation_distance": 85
+      }
+    ]
+  },
+  "tgv_duplex_motor2": {
+    "sounds": [
+      {
+        "name": "mtr:tgv_duplex/motor2",
+        "attenuation_distance": 85
+      }
+    ]
+  },
+  "tgv_duplex_motor3": {
+    "sounds": [
+      {
+        "name": "mtr:tgv_duplex/motor3",
+        "attenuation_distance": 85
+      }
+    ]
+  },
+  "tgv_duplex_motor1": {
+    "sounds": [
+      {
+        "name": "mtr:tgv_duplex/motor1",
+        "attenuation_distance": 85
+      }
+    ]
+  },
+  "tgv_duplex_motor4": {
+    "sounds": [
+      {
+        "name": "mtr:tgv_duplex/motor4",
+        "attenuation_distance": 85
+      }
+    ]
+  },
+  "tgv_duplex_motor5": {
+    "sounds": [
+      {
+        "name": "mtr:tgv_duplex/motor5",
+        "attenuation_distance": 85
+      }
+    ]
+  },
+  "tgv_duplex_motor0": {
+    "sounds": [
+      {
+        "name": "mtr:tgv_duplex/motor0",
+        "attenuation_distance": 85
+      }
+    ]
+  },
+  "tgv_duplex_point": {
+    "sounds": [
+      {
+        "name": "mtr:tgv_duplex/point",
+        "attenuation_distance": 85
+      }
+    ]
+  },
+  "tgv_duplex_rub": {
+    "sounds": [
+      {
+        "name": "mtr:tgv_duplex/rub",
+        "attenuation_distance": 85
+      }
+    ]
+  },
+  "tgv_duplex_run": {
+    "sounds": [
+      {
+        "name": "mtr:tgv_duplex/run",
+        "attenuation_distance": 85
+      }
+    ]
   }
 }

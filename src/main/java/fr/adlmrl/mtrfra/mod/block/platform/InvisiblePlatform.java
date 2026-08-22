@@ -95,7 +95,7 @@ public class InvisiblePlatform extends BlockPlatform implements BlockWithEntity 
                 return;
             }
             MainRenderer.scheduleRender(
-                    new Identifier(Constants.MOD_ID, "textures/item/invisible_platform.png"),
+                    new Identifier(Constants.MOD_ID, "textures/item/station_equipment/invisible_platform.png"),
                     false,
                     QueuedRenderLayer.LIGHT_TRANSLUCENT,
                     (graphicsHolderNew, offset) -> {

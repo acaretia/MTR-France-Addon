@@ -2,6 +2,7 @@ package fr.adlmrl.mtrfra.mod.entity;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import fr.adlmrl.mtrfra.mod.mixin.GraphicsHolderAccessor;
+import fr.adlmrl.mtrfra.mod.registry.ModEntities;
 import fr.adlmrl.mtrfra.mod.util.Constants;
 import fr.adlmrl.mtrfra.mod.util.VersionCompat;
 import net.minecraft.client.Minecraft;
@@ -18,6 +19,13 @@ import org.mtr.mapping.registry.BlockRegistryObject;
 import java.util.function.Supplier;
 
 public class LogoEntityRenderer extends EntityRenderer<LogoEntity> {
+
+    private static final float DEFAULT_Z_OFFSET = -1.01F;
+    // sncf_sign_block.json's mesh is centered on the block (Z 7.24-8.76,
+    // unlike every other logo's flat quad flush at Z=16) so it needs its own
+    // offset to land its outward face at the same world position the shared
+    // -1.01 offset puts the others' flush face at.
+    private static final float SNCF_SIGN_Z_OFFSET = -0.5572F;
 
     private final Supplier<BlockRegistryObject> blockSupplier;
 
@@ -39,7 +47,8 @@ public class LogoEntityRenderer extends EntityRenderer<LogoEntity> {
         poseStack.pushPose();
         VersionCompat.mulPoseY(poseStack, -yaw);
         VersionCompat.mulPoseX(poseStack, pitch);
-        poseStack.translate(-0.5, -0.5, -1.01);
+        final boolean isSncfSign = entity.getType() == ModEntities.LOGO_SNCF_SIGN.get().data;
+        poseStack.translate(-0.5, -0.5, isSncfSign ? SNCF_SIGN_Z_OFFSET : DEFAULT_Z_OFFSET);
 
         dispatcher.renderSingleBlock(state, poseStack, bufferSource, light, OverlayTexture.NO_OVERLAY);
 

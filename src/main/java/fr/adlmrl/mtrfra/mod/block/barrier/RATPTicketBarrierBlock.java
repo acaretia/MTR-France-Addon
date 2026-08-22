@@ -39,7 +39,7 @@ import org.mtr.mod.block.BlockTicketBarrier;
 import org.mtr.mod.block.IBlock;
 import org.mtr.mod.data.TicketSystem.EnumTicketBarrierOpen;
 
-public class RATPTicketBarrierBlock extends BlockTicketBarrier implements BlockWithEntity {
+public class RATPTicketBarrierBlock extends BlockTicketBarrier implements BlockWithEntity, HasCompanionShape {
 
     private final boolean hasSideCover;
 
@@ -72,16 +72,27 @@ public class RATPTicketBarrierBlock extends BlockTicketBarrier implements BlockW
     public void onPlaced2(World world, BlockPos pos, BlockState state, LivingEntity placer, ItemStack itemStack) {
         super.onPlaced2(world, pos, state, placer, itemStack);
         if (!world.isClient()) {
-            world.setBlockState(pos.up(), ModBlocks.RATP_TICKET_BARRIER_UPPER.get().getDefaultState(), 3);
+            final BlockPos upperPos = pos.up();
+            world.setBlockState(upperPos, ModBlocks.RATP_TICKET_BARRIER_UPPER.get().getDefaultState(), 3);
+            RATPTicketBarrierCollisionExtensionBlock.placeSideCompanions(world, pos, companionShape(BlockView.cast(world), pos, state));
+            RATPTicketBarrierCollisionExtensionBlock.placeSideCompanions(world, upperPos, RATPTicketBarrierUpperBlock.computeShape(BlockView.cast(world), upperPos));
         }
     }
 
     @Override
     public void onBreak2(World world, BlockPos pos, BlockState state, PlayerEntity player) {
         if (!world.isClient()) {
-            world.setBlockState(pos.up(), Blocks.getAirMapped().getDefaultState(), 35);
+            final BlockPos upperPos = pos.up();
+            RATPTicketBarrierCollisionExtensionBlock.removeSideCompanions(world, pos, companionShape(BlockView.cast(world), pos, state));
+            RATPTicketBarrierCollisionExtensionBlock.removeSideCompanions(world, upperPos, RATPTicketBarrierUpperBlock.computeShape(BlockView.cast(world), upperPos));
+            world.setBlockState(upperPos, Blocks.getAirMapped().getDefaultState(), 35);
         }
         super.onBreak2(world, pos, state, player);
+    }
+
+    @Override
+    public VoxelShape companionShape(BlockView world, BlockPos pos, BlockState state) {
+        return computeShape(state, IBlock.getStatePropertySafe(state, FACING));
     }
 
     @Override

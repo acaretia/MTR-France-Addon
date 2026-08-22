@@ -26,16 +26,16 @@ import fr.adlmrl.mtrfra.mod.block.sign.RATPNoSmokingSign;
 import fr.adlmrl.mtrfra.mod.block.barrier.RATPTicketBarrierBlock;
 import fr.adlmrl.mtrfra.mod.block.barrier.RATPTicketBarrierSideCoverBlock;
 import fr.adlmrl.mtrfra.mod.block.barrier.RATPTicketBarrierUpperBlock;
-import fr.adlmrl.mtrfra.mod.block.panneau.PanneauRATPCollisionExtensionBlock;
-import fr.adlmrl.mtrfra.mod.block.panneau.PanneauRATPDoubleBlock;
-import fr.adlmrl.mtrfra.mod.block.panneau.PanneauRATPMurMetroGrandBlock;
-import fr.adlmrl.mtrfra.mod.block.panneau.PanneauRATPMurMetroPetitBlock;
-import fr.adlmrl.mtrfra.mod.block.panneau.PanneauRATPMurRerBlock;
-import fr.adlmrl.mtrfra.mod.block.panneau.PanneauRATPPilierBlock;
-import fr.adlmrl.mtrfra.mod.block.panneau.PanneauRATPPlanBlock;
-import fr.adlmrl.mtrfra.mod.block.panneau.PanneauRATPTopBlock;
-import fr.adlmrl.mtrfra.mod.block.panneau.PilierBaseRATPBlock;
-import fr.adlmrl.mtrfra.mod.block.panneau.PilierRATPBlock;
+import fr.adlmrl.mtrfra.mod.block.sign.RATPSignCollisionExtensionBlock;
+import fr.adlmrl.mtrfra.mod.block.sign.RATPSignDoubleBlock;
+import fr.adlmrl.mtrfra.mod.block.sign.RATPSignWallMetroLargeBlock;
+import fr.adlmrl.mtrfra.mod.block.sign.RATPSignWallMetroSmallBlock;
+import fr.adlmrl.mtrfra.mod.block.sign.RATPSignWallRERBlock;
+import fr.adlmrl.mtrfra.mod.block.sign.RATPSignPillarBlock;
+import fr.adlmrl.mtrfra.mod.block.sign.RATPSignMapBlock;
+import fr.adlmrl.mtrfra.mod.block.sign.RATPSignTopBlock;
+import fr.adlmrl.mtrfra.mod.block.sign.RATPPillarPostBaseBlock;
+import fr.adlmrl.mtrfra.mod.block.sign.RATPPillarPostBlock;
 import fr.adlmrl.mtrfra.mod.block.base.HangingSignBlock;
 import org.mtr.mapping.holder.Block;
 import org.mtr.mapping.mapper.BlockExtension;
@@ -445,35 +445,35 @@ public final class ModBlocks {
             "idfm_seat", () -> new Block(new SeatBlock(Blocks.createDefaultBlockSettings(false).nonOpaque(), 0, 0, 0, 16, 17, 16, 0)), ModItemGroups.STATION_EQUIPMENT
     );
 
-    public static final BlockRegistryObject PANNEAU_RATP_DOUBLE = MTRFRARegistry.registerBlockWithItem(
-            "panneau_ratp_double", () -> new Block(new PanneauRATPDoubleBlock(Blocks.createDefaultBlockSettings(false).nonOpaque())), ModItemGroups.STATION_EQUIPMENT
+    public static final BlockRegistryObject RATP_SIGN_DOUBLE = MTRFRARegistry.registerBlockWithItem(
+            "panneau_ratp_double", () -> new Block(new RATPSignDoubleBlock(Blocks.createDefaultBlockSettings(false).nonOpaque())), ModItemGroups.STATION_EQUIPMENT
     );
-    public static final BlockRegistryObject PANNEAU_RATP_PILIER = MTRFRARegistry.registerBlockWithItem(
-            "panneau_ratp_pilier", () -> new Block(new PanneauRATPPilierBlock(Blocks.createDefaultBlockSettings(false).nonOpaque())), ModItemGroups.STATION_EQUIPMENT
+    public static final BlockRegistryObject RATP_SIGN_PILLAR = MTRFRARegistry.registerBlockWithItem(
+            "panneau_ratp_pilier", () -> new Block(new RATPSignPillarBlock(Blocks.createDefaultBlockSettings(false).nonOpaque())), ModItemGroups.STATION_EQUIPMENT
     );
-    public static final BlockRegistryObject PANNEAU_RATP_MUR_RER = MTRFRARegistry.registerBlockWithItem(
-            "panneau_ratp_mur_rer", () -> new Block(new PanneauRATPMurRerBlock(Blocks.createDefaultBlockSettings(false).nonOpaque())), ModItemGroups.STATION_EQUIPMENT
+    public static final BlockRegistryObject RATP_SIGN_WALL_RER = MTRFRARegistry.registerBlockWithItem(
+            "panneau_ratp_mur_rer", () -> new Block(new RATPSignWallRERBlock(Blocks.createDefaultBlockSettings(false).nonOpaque())), ModItemGroups.STATION_EQUIPMENT
     );
-    public static final BlockRegistryObject PANNEAU_RATP_TOP = MTRFRARegistry.registerBlockWithItem(
-            "panneau_ratp_top", () -> new Block(new PanneauRATPTopBlock(Blocks.createDefaultBlockSettings(false).nonOpaque())), ModItemGroups.STATION_EQUIPMENT
+    public static final BlockRegistryObject RATP_SIGN_TOP = MTRFRARegistry.registerBlockWithItem(
+            "panneau_ratp_top", () -> new Block(new RATPSignTopBlock(Blocks.createDefaultBlockSettings(false).nonOpaque())), ModItemGroups.STATION_EQUIPMENT
     );
-    public static final BlockRegistryObject PANNEAU_RATP_MUR_METRO_GRAND = MTRFRARegistry.registerBlockWithItem(
-            "panneau_ratp_mur_metro_grand", () -> new Block(new PanneauRATPMurMetroGrandBlock(Blocks.createDefaultBlockSettings(false).nonOpaque())), ModItemGroups.STATION_EQUIPMENT
+    public static final BlockRegistryObject RATP_SIGN_WALL_METRO_LARGE = MTRFRARegistry.registerBlockWithItem(
+            "panneau_ratp_mur_metro_grand", () -> new Block(new RATPSignWallMetroLargeBlock(Blocks.createDefaultBlockSettings(false).nonOpaque())), ModItemGroups.STATION_EQUIPMENT
     );
-    public static final BlockRegistryObject PANNEAU_RATP_MUR_METRO_PETIT = MTRFRARegistry.registerBlockWithItem(
-            "panneau_ratp_mur_metro_petit", () -> new Block(new PanneauRATPMurMetroPetitBlock(Blocks.createDefaultBlockSettings(false).nonOpaque())), ModItemGroups.STATION_EQUIPMENT
+    public static final BlockRegistryObject RATP_SIGN_WALL_METRO_SMALL = MTRFRARegistry.registerBlockWithItem(
+            "panneau_ratp_mur_metro_petit", () -> new Block(new RATPSignWallMetroSmallBlock(Blocks.createDefaultBlockSettings(false).nonOpaque())), ModItemGroups.STATION_EQUIPMENT
     );
-    public static final BlockRegistryObject PANNEAU_RATP_PLAN = MTRFRARegistry.registerBlockWithItem(
-            "panneau_ratp_plan", () -> new Block(new PanneauRATPPlanBlock(Blocks.createDefaultBlockSettings(false).nonOpaque())), ModItemGroups.STATION_EQUIPMENT
+    public static final BlockRegistryObject RATP_SIGN_MAP = MTRFRARegistry.registerBlockWithItem(
+            "panneau_ratp_plan", () -> new Block(new RATPSignMapBlock(Blocks.createDefaultBlockSettings(false).nonOpaque())), ModItemGroups.STATION_EQUIPMENT
     );
-    public static final BlockRegistryObject PILIER_RATP = MTRFRARegistry.registerBlockWithItem(
-            "pilier_ratp", () -> new Block(new PilierRATPBlock(Blocks.createDefaultBlockSettings(true))), ModItemGroups.STATION_EQUIPMENT
+    public static final BlockRegistryObject RATP_PILLAR_POST = MTRFRARegistry.registerBlockWithItem(
+            "pilier_ratp", () -> new Block(new RATPPillarPostBlock(Blocks.createDefaultBlockSettings(true))), ModItemGroups.STATION_EQUIPMENT
     );
-    public static final BlockRegistryObject PILIER_BASE_RATP = MTRFRARegistry.registerBlockWithItem(
-            "pilier_base_ratp", () -> new Block(new PilierBaseRATPBlock(Blocks.createDefaultBlockSettings(true))), ModItemGroups.STATION_EQUIPMENT
+    public static final BlockRegistryObject RATP_PILLAR_POST_BASE = MTRFRARegistry.registerBlockWithItem(
+            "pilier_base_ratp", () -> new Block(new RATPPillarPostBaseBlock(Blocks.createDefaultBlockSettings(true))), ModItemGroups.STATION_EQUIPMENT
     );
-    public static final BlockRegistryObject PANNEAU_RATP_COLLISION_EXTENSION = MTRFRARegistry.registerBlock(
-            "panneau_ratp_collision_extension", () -> new Block(new PanneauRATPCollisionExtensionBlock())
+    public static final BlockRegistryObject RATP_SIGN_COLLISION_EXTENSION = MTRFRARegistry.registerBlock(
+            "panneau_ratp_collision_extension", () -> new Block(new RATPSignCollisionExtensionBlock())
     );
 
     private ModBlocks() {}

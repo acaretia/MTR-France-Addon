@@ -25,7 +25,7 @@ import org.mtr.mod.block.BlockTicketBarrier;
 import org.mtr.mod.block.IBlock;
 import org.mtr.mod.data.TicketSystem.EnumTicketBarrierOpen;
 
-public class RATPTicketBarrierUpperBlock extends BlockExtension {
+public class RATPTicketBarrierUpperBlock extends BlockExtension implements HasCompanionShape {
 
     public RATPTicketBarrierUpperBlock() {
         super(org.mtr.mod.Blocks.createDefaultBlockSettings(true, state -> 5).nonOpaque().dropsNothing());
@@ -56,7 +56,7 @@ public class RATPTicketBarrierUpperBlock extends BlockExtension {
         return 1;
     }
 
-    private static VoxelShape computeShape(BlockView world, BlockPos pos) {
+    static VoxelShape computeShape(BlockView world, BlockPos pos) {
         final BlockState anchorState = world.getBlockState(pos.down());
         final Object anchorBlock = anchorState.getBlock().data;
         if (anchorBlock instanceof RATPTicketBarrierBlock barrier) {
@@ -89,6 +89,11 @@ public class RATPTicketBarrierUpperBlock extends BlockExtension {
             }
         }
         super.onBreak2(world, pos, state, player);
+    }
+
+    @Override
+    public VoxelShape companionShape(BlockView world, BlockPos pos, BlockState state) {
+        return computeShape(world, pos);
     }
 
     @Override

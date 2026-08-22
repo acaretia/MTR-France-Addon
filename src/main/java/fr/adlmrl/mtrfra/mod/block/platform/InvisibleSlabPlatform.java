@@ -80,8 +80,8 @@ public class InvisibleSlabPlatform extends BlockPlatformSlab implements BlockWit
             }
             final SlabType slabType = SlabBlockExtension.getType(blockEntity.getCachedState2());
             final String texturePath = SlabType.getDoubleMapped().equals(slabType)
-                    ? "textures/item/invisible_platform.png"
-                    : "textures/item/invisible_slab_platform.png";
+                    ? "textures/item/station_equipment/invisible_platform.png"
+                    : "textures/item/station_equipment/invisible_slab_platform.png";
             MainRenderer.scheduleRender(
                     new Identifier(Constants.MOD_ID, texturePath),
                     false,

@@ -84,9 +84,9 @@ public final class MTRFRARegistryClient {
                 ModBlocks.SIGN_SPEED_120_GALLOWS, ModBlocks.SIGN_SPEED_160_GALLOWS, ModBlocks.SIGN_SPEED_200_GALLOWS,
                 ModBlocks.SIGN_SPEED_300_GALLOWS, ModBlocks.SIGN_SQUARE_GALLOWS,
                 ModBlocks.GREEN_VENDING_MACHINE, ModBlocks.RED_VENDING_MACHINE,
-                ModBlocks.PANNEAU_RATP_DOUBLE, ModBlocks.PANNEAU_RATP_PILIER, ModBlocks.PANNEAU_RATP_MUR_RER, ModBlocks.PANNEAU_RATP_TOP,
-                ModBlocks.PANNEAU_RATP_MUR_METRO_GRAND, ModBlocks.PANNEAU_RATP_MUR_METRO_PETIT, ModBlocks.PANNEAU_RATP_PLAN,
-                ModBlocks.PILIER_RATP, ModBlocks.PILIER_BASE_RATP
+                ModBlocks.RATP_SIGN_DOUBLE, ModBlocks.RATP_SIGN_PILLAR, ModBlocks.RATP_SIGN_WALL_RER, ModBlocks.RATP_SIGN_TOP,
+                ModBlocks.RATP_SIGN_WALL_METRO_LARGE, ModBlocks.RATP_SIGN_WALL_METRO_SMALL, ModBlocks.RATP_SIGN_MAP,
+                ModBlocks.RATP_PILLAR_POST, ModBlocks.RATP_PILLAR_POST_BASE
         }) {
             REGISTRY_CLIENT.registerBlockRenderType(RenderLayer.getCutout(), block);
         }
