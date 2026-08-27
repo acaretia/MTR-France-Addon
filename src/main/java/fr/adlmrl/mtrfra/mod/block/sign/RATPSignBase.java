@@ -13,6 +13,7 @@ import org.mtr.mapping.holder.BlockView;
 import org.mtr.mapping.holder.CompoundTag;
 import org.mtr.mapping.holder.Direction;
 import org.mtr.mapping.holder.Hand;
+import org.mtr.mapping.holder.Identifier;
 import org.mtr.mapping.holder.IntegerProperty;
 import org.mtr.mapping.holder.ItemStack;
 import org.mtr.mapping.holder.LivingEntity;
@@ -41,8 +42,25 @@ public class RATPSignBase extends DirectionalBlock implements BlockWithEntity, H
     private final float textZ;
     private final double[] boundingBox;
     private final boolean doubleSided;
+    private final boolean hasSubtitle;
+    private final float extraTitleMargin;
+    private final Identifier[] categoryTextures;
+    private final float[] previewUv;
+    private final float[] previewPlateBounds;
 
     public RATPSignBase(BlockSettings blockSettings, int maxCategory, TextLayout[] textLayouts, float textZ, double[] boundingBox, boolean doubleSided) {
+        this(blockSettings, maxCategory, textLayouts, textZ, boundingBox, doubleSided, true, 0F, new Identifier[0], new float[]{0F, 0F, 1F, 1F}, new float[]{0F, 0F, 16F, 16F});
+    }
+
+    public RATPSignBase(BlockSettings blockSettings, int maxCategory, TextLayout[] textLayouts, float textZ, double[] boundingBox, boolean doubleSided, boolean hasSubtitle) {
+        this(blockSettings, maxCategory, textLayouts, textZ, boundingBox, doubleSided, hasSubtitle, 0F, new Identifier[0], new float[]{0F, 0F, 1F, 1F}, new float[]{0F, 0F, 16F, 16F});
+    }
+
+    public RATPSignBase(BlockSettings blockSettings, int maxCategory, TextLayout[] textLayouts, float textZ, double[] boundingBox, boolean doubleSided, boolean hasSubtitle, float extraTitleMargin) {
+        this(blockSettings, maxCategory, textLayouts, textZ, boundingBox, doubleSided, hasSubtitle, extraTitleMargin, new Identifier[0], new float[]{0F, 0F, 1F, 1F}, new float[]{0F, 0F, 16F, 16F});
+    }
+
+    public RATPSignBase(BlockSettings blockSettings, int maxCategory, TextLayout[] textLayouts, float textZ, double[] boundingBox, boolean doubleSided, boolean hasSubtitle, float extraTitleMargin, Identifier[] categoryTextures, float[] previewUv, float[] previewPlateBounds) {
         super(blockSettings);
         setDefaultState2(getDefaultState2().with(new Property<>(CATEGORY.data), 0));
         this.maxCategory = maxCategory;
@@ -50,10 +68,35 @@ public class RATPSignBase extends DirectionalBlock implements BlockWithEntity, H
         this.textZ = textZ;
         this.boundingBox = boundingBox;
         this.doubleSided = doubleSided;
+        this.hasSubtitle = hasSubtitle;
+        this.extraTitleMargin = extraTitleMargin;
+        this.categoryTextures = categoryTextures;
+        this.previewUv = previewUv;
+        this.previewPlateBounds = previewPlateBounds;
     }
 
     public int maxCategory() {
         return maxCategory;
+    }
+
+    public boolean hasSubtitle() {
+        return hasSubtitle;
+    }
+
+    public float extraTitleMargin() {
+        return extraTitleMargin;
+    }
+
+    public Identifier categoryTexture(int category) {
+        return category >= 0 && category < categoryTextures.length ? categoryTextures[category] : null;
+    }
+
+    public float[] previewUv() {
+        return previewUv;
+    }
+
+    public float[] previewPlateBounds() {
+        return previewPlateBounds;
     }
 
     public TextLayout textLayout(int category) {
@@ -137,7 +180,7 @@ public class RATPSignBase extends DirectionalBlock implements BlockWithEntity, H
             final String customTitle = signBlockEntity == null ? "" : signBlockEntity.customTitle;
             final String subtitle = signBlockEntity == null ? "" : signBlockEntity.subtitle;
             final int category = org.mtr.mod.block.IBlock.getStatePropertySafe(state, CATEGORY);
-            MTRFRARegistry.REGISTRY.sendPacketToClient(ServerPlayerEntity.cast(player), new PacketOpenSignConfigScreen(pos, customTitle, subtitle, category, maxCategory()));
+            MTRFRARegistry.REGISTRY.sendPacketToClient(ServerPlayerEntity.cast(player), new PacketOpenSignConfigScreen(pos, customTitle, subtitle, category, maxCategory(), hasSubtitle));
         }
         return ActionResult.SUCCESS;
     }

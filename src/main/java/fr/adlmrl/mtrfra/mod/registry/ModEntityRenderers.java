@@ -1,10 +1,10 @@
 package fr.adlmrl.mtrfra.mod.registry;
 
-import fr.adlmrl.mtrfra.mod.entity.CushionEntityRenderer;
-import fr.adlmrl.mtrfra.mod.entity.LogoEntityRenderer;
-import fr.adlmrl.mtrfra.mod.entity.SeatEntityRenderer;
-import fr.adlmrl.mtrfra.mod.entity.TicketMachineEntityRenderer;
-import fr.adlmrl.mtrfra.mod.entity.VendingMachineEntityRenderer;
+import fr.adlmrl.mtrfra.mod.render.CushionEntityRenderer;
+import fr.adlmrl.mtrfra.mod.render.LogoEntityRenderer;
+import fr.adlmrl.mtrfra.mod.render.SeatEntityRenderer;
+import fr.adlmrl.mtrfra.mod.render.TicketMachineEntityRenderer;
+import fr.adlmrl.mtrfra.mod.render.VendingMachineEntityRenderer;
 
 public final class ModEntityRenderers {
 

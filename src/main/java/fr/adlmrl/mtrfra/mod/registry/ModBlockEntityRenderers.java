@@ -1,7 +1,7 @@
 package fr.adlmrl.mtrfra.mod.registry;
 
 import fr.adlmrl.mtrfra.mod.block.copycat.CopycatBlockBase;
-import fr.adlmrl.mtrfra.mod.block.sign.RATPSignRenderer;
+import fr.adlmrl.mtrfra.mod.render.RATPSignRenderer;
 import fr.adlmrl.mtrfra.mod.block.platform.InvisiblePlatform;
 import fr.adlmrl.mtrfra.mod.block.platform.InvisibleSlabPlatform;
 

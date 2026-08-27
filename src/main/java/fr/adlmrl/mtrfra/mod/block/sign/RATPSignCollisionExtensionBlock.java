@@ -163,7 +163,7 @@ public class RATPSignCollisionExtensionBlock extends BlockExtension {
             final String customTitle = signBlockEntity == null ? "" : signBlockEntity.customTitle;
             final String subtitle = signBlockEntity == null ? "" : signBlockEntity.subtitle;
             final int category = IBlock.getStatePropertySafe(anchorState, RATPSignBase.CATEGORY);
-            MTRFRARegistry.REGISTRY.sendPacketToClient(ServerPlayerEntity.cast(player), new PacketOpenSignConfigScreen(anchorPos, customTitle, subtitle, category, sign.maxCategory()));
+            MTRFRARegistry.REGISTRY.sendPacketToClient(ServerPlayerEntity.cast(player), new PacketOpenSignConfigScreen(anchorPos, customTitle, subtitle, category, sign.maxCategory(), sign.hasSubtitle()));
         }
         return ActionResult.SUCCESS;
     }

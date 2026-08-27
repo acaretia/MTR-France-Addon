@@ -11,7 +11,7 @@ import org.mtr.mod.InitClient;
 import org.mtr.mod.item.ItemBlockClickingBase;
 import fr.adlmrl.mtrfra.mod.block.copycat.CopycatBlockBase;
 import fr.adlmrl.mtrfra.mod.block.sign.MotteLightBlock;
-import fr.adlmrl.mtrfra.mod.entity.CushionEntityRenderer;
+import fr.adlmrl.mtrfra.mod.render.CushionEntityRenderer;
 import fr.adlmrl.mtrfra.mod.item.CopycatLayerBlockItem;
 import net.fabricmc.fabric.api.client.rendering.v1.BuiltinItemRendererRegistry;
 import net.minecraft.client.Minecraft;

@@ -5,15 +5,13 @@ cd "$(dirname "$0")"
 usage() {
     cat <<'EOF'
 Usage:
-  ./build.sh                          everything: every version, every loader
-  ./build.sh -v 1.20.4                 one Minecraft version (its loaders)
+  ./build.sh                          everything: every version
+  ./build.sh -v 1.20.4                 one Minecraft version
   ./build.sh -v 1.20.1 -v 1.20.4        several versions
-  ./build.sh -l fabric                 one loader, every version that has it
-  ./build.sh -v 1.20.4 -l forge         a precise combination
+  ./build.sh -l fabric                 explicit loader filter
 
 Jars land in releases/. Requires JDK 21+ on PATH (or JAVA_HOME) for the
-Stonecutter tree, and JDK 17+ for legacy-forge. On Windows, run via Git
-Bash: sh build.sh
+Stonecutter tree. On Windows, run via Git Bash: sh build.sh
 EOF
 }
 
@@ -21,10 +19,7 @@ ALL_VERSIONS=(1.18.2 1.19.2 1.19.4 1.20.1 1.20.4)
 RELEASE_DIR="releases"
 
 loaders_for() {
-    case "$1" in
-        1.18.*|1.19.*|1.20.*) echo "fabric forge" ;;
-        *)             echo "fabric" ;;
-    esac
+    echo "fabric"
 }
 
 VERSIONS=()
@@ -57,23 +52,14 @@ for MC in "${VERSIONS[@]}"; do
         echo ">> Minecraft $MC - $LOADER"
         echo "=================================================="
 
-        if [[ "$LOADER" == "forge" ]]; then
-            (
-                cd legacy-forge
-                sed -i.tmp "s/^minecraft_version=.*/minecraft_version=${MC}/" gradle.properties
-                rm -f gradle.properties.tmp
-                ./gradlew collectRelease --no-daemon
-            )
-        else
-            ./gradlew ":${MC}-${LOADER}:build" --no-daemon
-            JAR=$(find "versions/${MC}-${LOADER}/build/libs" -maxdepth 1 -name "*.jar" ! -name "*-sources.jar" ! -name "*-dev.jar" | head -1)
-            if [[ -z "$JAR" ]]; then
-                echo ">> ERROR: no jar found for ${MC}-${LOADER}"
-                exit 1
-            fi
-            cp "$JAR" "$RELEASE_DIR/"
-            echo ">> OK: ${RELEASE_DIR}/$(basename "$JAR")"
+        ./gradlew ":${MC}-${LOADER}:build" --no-daemon
+        JAR=$(find "versions/${MC}-${LOADER}/build/libs" -maxdepth 1 -name "*.jar" ! -name "*-sources.jar" ! -name "*-dev.jar" | head -1)
+        if [[ -z "$JAR" ]]; then
+            echo ">> ERROR: no jar found for ${MC}-${LOADER}"
+            exit 1
         fi
+        cp "$JAR" "$RELEASE_DIR/"
+        echo ">> OK: ${RELEASE_DIR}/$(basename "$JAR")"
     done
 done
 

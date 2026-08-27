@@ -33718,6 +33718,696 @@
       "legacyConstantPlaybackSpeed": false,
       "legacyDoorSoundBaseResource": "",
       "legacyDoorCloseSoundTime": 0.0
+    },
+    {
+      "id": "mf77_car1_green",
+      "name": "MF77 RATP Cab (F)",
+      "color": "00C4B3",
+      "transportMode": "TRAIN",
+      "length": 17.0,
+      "width": 2.0,
+      "bogie1Position": -5.3,
+      "bogie2Position": 5.3,
+      "couplingPadding1": 0.0,
+      "couplingPadding2": 0.0,
+      "description": "Cab, forwards\n\nThe MF77 entered service in 1978 as a robust and reliable metro train designed for Paris's RATP network. They were manufactured by Alsthom (Alstom's original name).",
+      "wikipediaArticle": "https://en.wikipedia.org/wiki/MF_77",
+      "tags": [],
+      "models": [
+        {
+          "modelResource": "mtr:mf77/mf77.bbmodel",
+          "textureResource": "mtr:mf77/mf77.png",
+          "modelPropertiesResource": "mtr:mf77/properties_3ba6279d.json",
+          "positionDefinitionsResource": "mtr:mf77/definition_8b091132.json",
+          "flipTextureV": true
+        }
+      ],
+      "bogie1Models": [
+        {
+          "modelResource": "mtr:mf77/mf77_bogie.bbmodel",
+          "textureResource": "mtr:mf77/mf77_bogie.png",
+          "modelPropertiesResource": "mtr:mf77/properties_397eec5d.json",
+          "positionDefinitionsResource": "mtr:mf77/definition_cfe5a28b.json",
+          "flipTextureV": true
+        }
+      ],
+      "bogie2Models": [
+        {
+          "modelResource": "mtr:mf77/mf77_bogie.bbmodel",
+          "textureResource": "mtr:mf77/mf77_bogie.png",
+          "modelPropertiesResource": "mtr:mf77/properties_32398f9d.json",
+          "positionDefinitionsResource": "mtr:mf77/definition_41e3e8f1.json",
+          "flipTextureV": false
+        }
+      ],
+      "hasGangway1": false,
+      "hasGangway2": true,
+      "hasBarrier1": false,
+      "hasBarrier2": false,
+      "legacyRiderOffset": 0.0,
+      "bveSoundBaseResource": "a_train",
+      "legacySpeedSoundBaseResource": "",
+      "legacySpeedSoundCount": 1,
+      "legacyUseAccelerationSoundsWhenCoasting": false,
+      "legacyConstantPlaybackSpeed": false,
+      "legacyDoorSoundBaseResource": "",
+      "legacyDoorCloseSoundTime": 0.0
+    },
+    {
+      "id": "mf77_car2_green",
+      "name": "MF77 RATP Car",
+      "color": "00C4B3",
+      "transportMode": "TRAIN",
+      "length": 17.0,
+      "width": 2.0,
+      "bogie1Position": -5.3,
+      "bogie2Position": 5.3,
+      "couplingPadding1": 0.0,
+      "couplingPadding2": 0.0,
+      "description": "Standard car.\n\nThe MF77 entered service in 1978 as a robust and reliable metro train designed for Paris's RATP network. They were manufactured by Alsthom (Alstom's original name).",
+      "wikipediaArticle": "https://en.wikipedia.org/wiki/MF_77",
+      "tags": [],
+      "models": [
+        {
+          "modelResource": "mtr:mf77/mf77.bbmodel",
+          "textureResource": "mtr:mf77/mf77.png",
+          "modelPropertiesResource": "mtr:mf77/properties_dc9f82f0.json",
+          "positionDefinitionsResource": "mtr:mf77/definition_25cccef7.json",
+          "flipTextureV": true
+        }
+      ],
+      "bogie1Models": [
+        {
+          "modelResource": "mtr:mf77/mf77_bogie.bbmodel",
+          "textureResource": "mtr:mf77/mf77_bogie.png",
+          "modelPropertiesResource": "mtr:mf77/properties_e5a3faa.json",
+          "positionDefinitionsResource": "mtr:mf77/definition_1c9a90b0.json",
+          "flipTextureV": true
+        }
+      ],
+      "bogie2Models": [
+        {
+          "modelResource": "mtr:mf77/mf77_bogie.bbmodel",
+          "textureResource": "mtr:mf77/mf77_bogie.png",
+          "modelPropertiesResource": "mtr:mf77/properties_dbcf2143.json",
+          "positionDefinitionsResource": "mtr:mf77/definition_51d3e019.json",
+          "flipTextureV": false
+        }
+      ],
+      "hasGangway1": true,
+      "hasGangway2": true,
+      "hasBarrier1": false,
+      "hasBarrier2": false,
+      "legacyRiderOffset": 0.0,
+      "bveSoundBaseResource": "a_train",
+      "legacySpeedSoundBaseResource": "",
+      "legacySpeedSoundCount": 1,
+      "legacyUseAccelerationSoundsWhenCoasting": false,
+      "legacyConstantPlaybackSpeed": false,
+      "legacyDoorSoundBaseResource": "",
+      "legacyDoorCloseSoundTime": 0.0
+    },
+    {
+      "id": "mf77_car1_green_b",
+      "name": "MF77 RATP Cab (B)",
+      "color": "00C4B3",
+      "transportMode": "TRAIN",
+      "length": 17.0,
+      "width": 2.0,
+      "bogie1Position": -5.3,
+      "bogie2Position": 5.3,
+      "couplingPadding1": 0.0,
+      "couplingPadding2": 0.0,
+      "description": "Cab, forwards\n\nThe MF77 entered service in 1978 as a robust and reliable metro train designed for Paris's RATP network. They were manufactured by Alsthom (Alstom's original name).",
+      "wikipediaArticle": "https://en.wikipedia.org/wiki/MF_77",
+      "tags": [],
+      "models": [
+        {
+          "modelResource": "mtr:mf77/mf77.bbmodel",
+          "textureResource": "mtr:mf77/mf77.png",
+          "modelPropertiesResource": "mtr:mf77/properties_2b607901.json",
+          "positionDefinitionsResource": "mtr:mf77/definition_18dcb402.json",
+          "flipTextureV": true
+        }
+      ],
+      "bogie1Models": [
+        {
+          "modelResource": "mtr:mf77/mf77_bogie.bbmodel",
+          "textureResource": "mtr:mf77/mf77_bogie.png",
+          "modelPropertiesResource": "mtr:mf77/properties_e8721a01.json",
+          "positionDefinitionsResource": "mtr:mf77/definition_f06696e7.json",
+          "flipTextureV": true
+        }
+      ],
+      "bogie2Models": [
+        {
+          "modelResource": "mtr:mf77/mf77_bogie.bbmodel",
+          "textureResource": "mtr:mf77/mf77_bogie.png",
+          "modelPropertiesResource": "mtr:mf77/properties_deffa2cf.json",
+          "positionDefinitionsResource": "mtr:mf77/definition_6e147f57.json",
+          "flipTextureV": false
+        }
+      ],
+      "hasGangway1": true,
+      "hasGangway2": false,
+      "hasBarrier1": false,
+      "hasBarrier2": false,
+      "legacyRiderOffset": 0.0,
+      "bveSoundBaseResource": "a_train",
+      "legacySpeedSoundBaseResource": "",
+      "legacySpeedSoundCount": 1,
+      "legacyUseAccelerationSoundsWhenCoasting": false,
+      "legacyConstantPlaybackSpeed": false,
+      "legacyDoorSoundBaseResource": "",
+      "legacyDoorCloseSoundTime": 0.0
+    },
+    {
+      "id": "mf77_car1_idfm",
+      "name": "MF77 RATP (refurbished) Cab (F)",
+      "color": "56B6E6",
+      "transportMode": "TRAIN",
+      "length": 17.0,
+      "width": 2.0,
+      "bogie1Position": -5.3,
+      "bogie2Position": 5.3,
+      "couplingPadding1": 0.0,
+      "couplingPadding2": 0.0,
+      "description": "Cab, forwards\n\nThe MF77 entered service in 1978 as a robust and reliable metro train designed for Paris's RATP network. They were manufactured by Alsthom (Alstom's original name).",
+      "wikipediaArticle": "https://en.wikipedia.org/wiki/MF_77",
+      "tags": [],
+      "models": [
+        {
+          "modelResource": "mtr:mf77/mf77.bbmodel",
+          "textureResource": "mtr:mf77/mf77_idfm.png",
+          "modelPropertiesResource": "mtr:mf77/properties_9734a021.json",
+          "positionDefinitionsResource": "mtr:mf77/definition_a8a880c5.json",
+          "flipTextureV": true
+        }
+      ],
+      "bogie1Models": [
+        {
+          "modelResource": "mtr:mf77/mf77_bogie.bbmodel",
+          "textureResource": "mtr:mf77/mf77_bogie.png",
+          "modelPropertiesResource": "mtr:mf77/properties_fd485821.json",
+          "positionDefinitionsResource": "mtr:mf77/definition_198403c6.json",
+          "flipTextureV": true
+        }
+      ],
+      "bogie2Models": [
+        {
+          "modelResource": "mtr:mf77/mf77_bogie.bbmodel",
+          "textureResource": "mtr:mf77/mf77_bogie.png",
+          "modelPropertiesResource": "mtr:mf77/properties_93db9d1b.json",
+          "positionDefinitionsResource": "mtr:mf77/definition_cbcfb4cc.json",
+          "flipTextureV": false
+        }
+      ],
+      "hasGangway1": false,
+      "hasGangway2": true,
+      "hasBarrier1": false,
+      "hasBarrier2": false,
+      "legacyRiderOffset": 0.0,
+      "bveSoundBaseResource": "a_train",
+      "legacySpeedSoundBaseResource": "",
+      "legacySpeedSoundCount": 1,
+      "legacyUseAccelerationSoundsWhenCoasting": false,
+      "legacyConstantPlaybackSpeed": false,
+      "legacyDoorSoundBaseResource": "",
+      "legacyDoorCloseSoundTime": 0.0
+    },
+    {
+      "id": "mf77_car2_idfm",
+      "name": "MF77 RATP (refurbished) Car",
+      "color": "56B6E6",
+      "transportMode": "TRAIN",
+      "length": 17.0,
+      "width": 2.0,
+      "bogie1Position": -5.3,
+      "bogie2Position": 5.3,
+      "couplingPadding1": 0.0,
+      "couplingPadding2": 0.0,
+      "description": "Standard car.\n\nThe MF77 entered service in 1978 as a robust and reliable metro train designed for Paris's RATP network. They were manufactured by Alsthom (Alstom's original name).",
+      "wikipediaArticle": "https://en.wikipedia.org/wiki/MF_77",
+      "tags": [],
+      "models": [
+        {
+          "modelResource": "mtr:mf77/mf77.bbmodel",
+          "textureResource": "mtr:mf77/mf77_idfm.png",
+          "modelPropertiesResource": "mtr:mf77/properties_ed07db29.json",
+          "positionDefinitionsResource": "mtr:mf77/definition_d0f58baa.json",
+          "flipTextureV": true
+        }
+      ],
+      "bogie1Models": [
+        {
+          "modelResource": "mtr:mf77/mf77_bogie.bbmodel",
+          "textureResource": "mtr:mf77/mf77_bogie.png",
+          "modelPropertiesResource": "mtr:mf77/properties_436d0f0b.json",
+          "positionDefinitionsResource": "mtr:mf77/definition_dd9b805a.json",
+          "flipTextureV": true
+        }
+      ],
+      "bogie2Models": [
+        {
+          "modelResource": "mtr:mf77/mf77_bogie.bbmodel",
+          "textureResource": "mtr:mf77/mf77_bogie.png",
+          "modelPropertiesResource": "mtr:mf77/properties_95aa4784.json",
+          "positionDefinitionsResource": "mtr:mf77/definition_57c18eb8.json",
+          "flipTextureV": false
+        }
+      ],
+      "hasGangway1": true,
+      "hasGangway2": true,
+      "hasBarrier1": false,
+      "hasBarrier2": false,
+      "legacyRiderOffset": 0.0,
+      "bveSoundBaseResource": "a_train",
+      "legacySpeedSoundBaseResource": "",
+      "legacySpeedSoundCount": 1,
+      "legacyUseAccelerationSoundsWhenCoasting": false,
+      "legacyConstantPlaybackSpeed": false,
+      "legacyDoorSoundBaseResource": "",
+      "legacyDoorCloseSoundTime": 0.0
+    },
+    {
+      "id": "mf77_car1_idfm_b",
+      "name": "MF77 RATP (refurbished) Cab (B)",
+      "color": "56B6E6",
+      "transportMode": "TRAIN",
+      "length": 17.0,
+      "width": 2.0,
+      "bogie1Position": -5.3,
+      "bogie2Position": 5.3,
+      "couplingPadding1": 0.0,
+      "couplingPadding2": 0.0,
+      "description": "Cab, forwards\n\nThe MF77 entered service in 1978 as a robust and reliable metro train designed for Paris's RATP network. They were manufactured by Alsthom (Alstom's original name).",
+      "wikipediaArticle": "https://en.wikipedia.org/wiki/MF_77",
+      "tags": [],
+      "models": [
+        {
+          "modelResource": "mtr:mf77/mf77.bbmodel",
+          "textureResource": "mtr:mf77/mf77_idfm.png",
+          "modelPropertiesResource": "mtr:mf77/properties_de2b4625.json",
+          "positionDefinitionsResource": "mtr:mf77/definition_820163d7.json",
+          "flipTextureV": true
+        }
+      ],
+      "bogie1Models": [
+        {
+          "modelResource": "mtr:mf77/mf77_bogie.bbmodel",
+          "textureResource": "mtr:mf77/mf77_bogie.png",
+          "modelPropertiesResource": "mtr:mf77/properties_a605b331.json",
+          "positionDefinitionsResource": "mtr:mf77/definition_1307e97f.json",
+          "flipTextureV": true
+        }
+      ],
+      "bogie2Models": [
+        {
+          "modelResource": "mtr:mf77/mf77_bogie.bbmodel",
+          "textureResource": "mtr:mf77/mf77_bogie.png",
+          "modelPropertiesResource": "mtr:mf77/properties_7fe12f3.json",
+          "positionDefinitionsResource": "mtr:mf77/definition_48ba13a6.json",
+          "flipTextureV": false
+        }
+      ],
+      "hasGangway1": true,
+      "hasGangway2": false,
+      "hasBarrier1": false,
+      "hasBarrier2": false,
+      "legacyRiderOffset": 0.0,
+      "bveSoundBaseResource": "a_train",
+      "legacySpeedSoundBaseResource": "",
+      "legacySpeedSoundCount": 1,
+      "legacyUseAccelerationSoundsWhenCoasting": false,
+      "legacyConstantPlaybackSpeed": false,
+      "legacyDoorSoundBaseResource": "",
+      "legacyDoorCloseSoundTime": 0.0
+    },
+    {
+      "id": "mf77_car1_blue",
+      "name": "MF77 RATP (old) Cab (F)",
+      "color": "173279",
+      "transportMode": "TRAIN",
+      "length": 17.0,
+      "width": 2.0,
+      "bogie1Position": -5.3,
+      "bogie2Position": 5.3,
+      "couplingPadding1": 0.0,
+      "couplingPadding2": 0.0,
+      "description": "Cab, forwards\n\nThe MF77 entered service in 1978 as a robust and reliable metro train designed for Paris's RATP network. They were manufactured by Alsthom (Alstom's original name).",
+      "wikipediaArticle": "https://en.wikipedia.org/wiki/MF_77",
+      "tags": [],
+      "models": [
+        {
+          "modelResource": "mtr:mf77/mf77.bbmodel",
+          "textureResource": "mtr:mf77/mf77_bleu.png",
+          "modelPropertiesResource": "mtr:mf77/properties_4c90ccd6.json",
+          "positionDefinitionsResource": "mtr:mf77/definition_c25fdd4e.json",
+          "flipTextureV": true
+        }
+      ],
+      "bogie1Models": [
+        {
+          "modelResource": "mtr:mf77/mf77_bogie.bbmodel",
+          "textureResource": "mtr:mf77/mf77_bogie.png",
+          "modelPropertiesResource": "mtr:mf77/properties_f798e49.json",
+          "positionDefinitionsResource": "mtr:mf77/definition_3eebbd47.json",
+          "flipTextureV": true
+        }
+      ],
+      "bogie2Models": [
+        {
+          "modelResource": "mtr:mf77/mf77_bogie.bbmodel",
+          "textureResource": "mtr:mf77/mf77_bogie.png",
+          "modelPropertiesResource": "mtr:mf77/properties_c0812353.json",
+          "positionDefinitionsResource": "mtr:mf77/definition_554594de.json",
+          "flipTextureV": false
+        }
+      ],
+      "hasGangway1": false,
+      "hasGangway2": true,
+      "hasBarrier1": false,
+      "hasBarrier2": false,
+      "legacyRiderOffset": 0.0,
+      "bveSoundBaseResource": "a_train",
+      "legacySpeedSoundBaseResource": "",
+      "legacySpeedSoundCount": 1,
+      "legacyUseAccelerationSoundsWhenCoasting": false,
+      "legacyConstantPlaybackSpeed": false,
+      "legacyDoorSoundBaseResource": "",
+      "legacyDoorCloseSoundTime": 0.0
+    },
+    {
+      "id": "mf77_car2_blue",
+      "name": "MF77 RATP (old) Car",
+      "color": "173279",
+      "transportMode": "TRAIN",
+      "length": 17.0,
+      "width": 2.0,
+      "bogie1Position": -5.3,
+      "bogie2Position": 5.3,
+      "couplingPadding1": 0.0,
+      "couplingPadding2": 0.0,
+      "description": "Standard car.\n\nThe MF77 entered service in 1978 as a robust and reliable metro train designed for Paris's RATP network. They were manufactured by Alsthom (Alstom's original name).",
+      "wikipediaArticle": "https://en.wikipedia.org/wiki/MF_77",
+      "tags": [],
+      "models": [
+        {
+          "modelResource": "mtr:mf77/mf77.bbmodel",
+          "textureResource": "mtr:mf77/mf77_bleu.png",
+          "modelPropertiesResource": "mtr:mf77/properties_575a070f.json",
+          "positionDefinitionsResource": "mtr:mf77/definition_ea36c2de.json",
+          "flipTextureV": true
+        }
+      ],
+      "bogie1Models": [
+        {
+          "modelResource": "mtr:mf77/mf77_bogie.bbmodel",
+          "textureResource": "mtr:mf77/mf77_bogie.png",
+          "modelPropertiesResource": "mtr:mf77/properties_72c24c73.json",
+          "positionDefinitionsResource": "mtr:mf77/definition_4dc4fab8.json",
+          "flipTextureV": true
+        }
+      ],
+      "bogie2Models": [
+        {
+          "modelResource": "mtr:mf77/mf77_bogie.bbmodel",
+          "textureResource": "mtr:mf77/mf77_bogie.png",
+          "modelPropertiesResource": "mtr:mf77/properties_ea145feb.json",
+          "positionDefinitionsResource": "mtr:mf77/definition_9da0f837.json",
+          "flipTextureV": false
+        }
+      ],
+      "hasGangway1": true,
+      "hasGangway2": true,
+      "hasBarrier1": false,
+      "hasBarrier2": false,
+      "legacyRiderOffset": 0.0,
+      "bveSoundBaseResource": "a_train",
+      "legacySpeedSoundBaseResource": "",
+      "legacySpeedSoundCount": 1,
+      "legacyUseAccelerationSoundsWhenCoasting": false,
+      "legacyConstantPlaybackSpeed": false,
+      "legacyDoorSoundBaseResource": "",
+      "legacyDoorCloseSoundTime": 0.0
+    },
+    {
+      "id": "mf77_car1_blue_b",
+      "name": "MF77 RATP (old) Cab (B)",
+      "color": "173279",
+      "transportMode": "TRAIN",
+      "length": 17.0,
+      "width": 2.0,
+      "bogie1Position": -5.3,
+      "bogie2Position": 5.3,
+      "couplingPadding1": 0.0,
+      "couplingPadding2": 0.0,
+      "description": "Cab, forwards\n\nThe MF77 entered service in 1978 as a robust and reliable metro train designed for Paris's RATP network. They were manufactured by Alsthom (Alstom's original name).",
+      "wikipediaArticle": "https://en.wikipedia.org/wiki/MF_77",
+      "tags": [],
+      "models": [
+        {
+          "modelResource": "mtr:mf77/mf77.bbmodel",
+          "textureResource": "mtr:mf77/mf77_bleu.png",
+          "modelPropertiesResource": "mtr:mf77/properties_27ef515b.json",
+          "positionDefinitionsResource": "mtr:mf77/definition_4e4d292.json",
+          "flipTextureV": true
+        }
+      ],
+      "bogie1Models": [
+        {
+          "modelResource": "mtr:mf77/mf77_bogie.bbmodel",
+          "textureResource": "mtr:mf77/mf77_bogie.png",
+          "modelPropertiesResource": "mtr:mf77/properties_1c8025ca.json",
+          "positionDefinitionsResource": "mtr:mf77/definition_8269eaa9.json",
+          "flipTextureV": true
+        }
+      ],
+      "bogie2Models": [
+        {
+          "modelResource": "mtr:mf77/mf77_bogie.bbmodel",
+          "textureResource": "mtr:mf77/mf77_bogie.png",
+          "modelPropertiesResource": "mtr:mf77/properties_f8d341ca.json",
+          "positionDefinitionsResource": "mtr:mf77/definition_c5e99114.json",
+          "flipTextureV": false
+        }
+      ],
+      "hasGangway1": true,
+      "hasGangway2": false,
+      "hasBarrier1": false,
+      "hasBarrier2": false,
+      "legacyRiderOffset": 0.0,
+      "bveSoundBaseResource": "a_train",
+      "legacySpeedSoundBaseResource": "",
+      "legacySpeedSoundCount": 1,
+      "legacyUseAccelerationSoundsWhenCoasting": false,
+      "legacyConstantPlaybackSpeed": false,
+      "legacyDoorSoundBaseResource": "",
+      "legacyDoorCloseSoundTime": 0.0
+    },
+    {
+      "id": "mp05_ratp_n",
+      "name": "MP 05 RATP (N)",
+      "color": "00BB77",
+      "transportMode": "TRAIN",
+      "length": 15.45,
+      "width": 2,
+      "bogie1Position": -5.5,
+      "bogie2Position": 5.5,
+      "couplingPadding1": 0,
+      "couplingPadding2": 0,
+      "description": "",
+      "wikipediaArticle": "",
+      "tags": [],
+      "models": [
+        {
+          "modelResource": "mtr:mp05/mp05_n.bbmodel",
+          "textureResource": "mtr:mp05/ratp_texture.png",
+          "modelPropertiesResource": "mtr:mp05/properties_5e478f7c.json",
+          "positionDefinitionsResource": "mtr:mp05/definition_6bc2ab56.json",
+          "flipTextureV": true
+        }
+      ],
+      "bogie1Models": [
+        {
+          "modelResource": "mtr:mp05/mp05_n.bbmodel",
+          "textureResource": "mtr:mp05/ratp_texture.png",
+          "modelPropertiesResource": "mtr:mp05/properties_fbaabe6e.json",
+          "positionDefinitionsResource": "mtr:mp05/definition_ab5e84e7.json",
+          "flipTextureV": true
+        }
+      ],
+      "bogie2Models": [
+        {
+          "modelResource": "mtr:mp05/mp05_n.bbmodel",
+          "textureResource": "mtr:mp05/ratp_texture.png",
+          "modelPropertiesResource": "mtr:mp05/properties_7979c30f.json",
+          "positionDefinitionsResource": "mtr:mp05/definition_399cfd80.json",
+          "flipTextureV": true
+        }
+      ],
+      "hasGangway1": true,
+      "hasGangway2": true,
+      "hasBarrier1": false,
+      "hasBarrier2": false,
+      "legacyRiderOffset": 0,
+      "bveSoundBaseResource": "a_train",
+      "legacySpeedSoundBaseResource": "",
+      "legacySpeedSoundCount": 1,
+      "legacyUseAccelerationSoundsWhenCoasting": false,
+      "legacyConstantPlaybackSpeed": false,
+      "legacyDoorSoundBaseResource": "",
+      "legacyDoorCloseSoundTime": 0
+    },
+    {
+      "id": "mp05_ratp_s_av",
+      "name": "MP 05 RATP (S) (av)",
+      "color": "00BB77",
+      "transportMode": "TRAIN",
+      "length": 15.45,
+      "width": 2,
+      "bogie1Position": -5.5,
+      "bogie2Position": 5.5,
+      "couplingPadding1": 0,
+      "couplingPadding2": 0,
+      "description": "",
+      "wikipediaArticle": "",
+      "tags": [],
+      "models": [
+        {
+          "modelResource": "mtr:mp05/mp05_n.bbmodel",
+          "textureResource": "mtr:mp05/ratp_texture_s.png",
+          "modelPropertiesResource": "mtr:mp05/properties_272f927d.json",
+          "positionDefinitionsResource": "mtr:mp05/definition_26eb06ba.json",
+          "flipTextureV": true
+        },
+        {
+          "modelResource": "mtr:obj_model/mp05_fcav_4.obj",
+          "textureResource": "mtr:obj_model/texture_tete_ratp.png",
+          "modelPropertiesResource": "mtr:mp05/properties_9c545a03.json",
+          "positionDefinitionsResource": "mtr:mp05/definition_8acaf056.json",
+          "flipTextureV": true
+        },
+        {
+          "modelResource": "mtr:obj_model/mp05_fcav_2.obj",
+          "textureResource": "mtr:obj_model/texture_int.png",
+          "modelPropertiesResource": "mtr:mp05/properties_a881f0f6.json",
+          "positionDefinitionsResource": "mtr:mp05/definition_29778eaf.json",
+          "flipTextureV": true
+        },
+        {
+          "modelResource": "mtr:obj_model/mp05_fcav_4.obj",
+          "textureResource": "mtr:obj_model/fix.png",
+          "modelPropertiesResource": "mtr:mp05/properties_42e94e55.json",
+          "positionDefinitionsResource": "mtr:mp05/definition_2c3468c2.json",
+          "flipTextureV": true
+        }
+      ],
+      "bogie1Models": [
+        {
+          "modelResource": "mtr:mp05/mp05_n.bbmodel",
+          "textureResource": "mtr:mp05/ratp_texture.png",
+          "modelPropertiesResource": "mtr:mp05/properties_fcea6706.json",
+          "positionDefinitionsResource": "mtr:mp05/definition_8692679b.json",
+          "flipTextureV": true
+        }
+      ],
+      "bogie2Models": [
+        {
+          "modelResource": "mtr:mp05/mp05_n.bbmodel",
+          "textureResource": "mtr:mp05/ratp_texture.png",
+          "modelPropertiesResource": "mtr:mp05/properties_e6f5b9af.json",
+          "positionDefinitionsResource": "mtr:mp05/definition_a22b423f.json",
+          "flipTextureV": true
+        }
+      ],
+      "hasGangway1": true,
+      "hasGangway2": true,
+      "hasBarrier1": false,
+      "hasBarrier2": false,
+      "legacyRiderOffset": 0,
+      "bveSoundBaseResource": "a_train",
+      "legacySpeedSoundBaseResource": "",
+      "legacySpeedSoundCount": 1,
+      "legacyUseAccelerationSoundsWhenCoasting": false,
+      "legacyConstantPlaybackSpeed": false,
+      "legacyDoorSoundBaseResource": "",
+      "legacyDoorCloseSoundTime": 0
+    },
+    {
+      "id": "mp05_ratp_s_ar",
+      "name": "MP 05 RATP (S) (ar)",
+      "color": "00BB77",
+      "transportMode": "TRAIN",
+      "length": 15.45,
+      "width": 2,
+      "bogie1Position": -5.5,
+      "bogie2Position": 5.5,
+      "couplingPadding1": 0,
+      "couplingPadding2": 0,
+      "description": "",
+      "wikipediaArticle": "",
+      "tags": [],
+      "models": [
+        {
+          "modelResource": "mtr:mp05/mp05_n.bbmodel",
+          "textureResource": "mtr:mp05/ratp_texture_s.png",
+          "modelPropertiesResource": "mtr:mp05/properties_42f9c0b.json",
+          "positionDefinitionsResource": "mtr:mp05/definition_f32852fb.json",
+          "flipTextureV": true
+        },
+        {
+          "modelResource": "mtr:obj_model/mp05_fcav_4.obj",
+          "textureResource": "mtr:obj_model/texture_tete_ratp.png",
+          "modelPropertiesResource": "mtr:mp05/properties_d60f8910.json",
+          "positionDefinitionsResource": "mtr:mp05/definition_7ac96040.json",
+          "flipTextureV": true
+        },
+        {
+          "modelResource": "mtr:obj_model/mp05_fcav_2.obj",
+          "textureResource": "mtr:obj_model/texture_int.png",
+          "modelPropertiesResource": "mtr:mp05/properties_57bf1d72.json",
+          "positionDefinitionsResource": "mtr:mp05/definition_ce993043.json",
+          "flipTextureV": true
+        },
+        {
+          "modelResource": "mtr:obj_model/mp05_fcav_4.obj",
+          "textureResource": "mtr:obj_model/fix.png",
+          "modelPropertiesResource": "mtr:mp05/properties_11e440c3.json",
+          "positionDefinitionsResource": "mtr:mp05/definition_237831b3.json",
+          "flipTextureV": true
+        }
+      ],
+      "bogie1Models": [
+        {
+          "modelResource": "mtr:mp05/mp05_n.bbmodel",
+          "textureResource": "mtr:mp05/ratp_texture.png",
+          "modelPropertiesResource": "mtr:mp05/properties_22a6fd1a.json",
+          "positionDefinitionsResource": "mtr:mp05/definition_2cf6ff7f.json",
+          "flipTextureV": true
+        }
+      ],
+      "bogie2Models": [
+        {
+          "modelResource": "mtr:mp05/mp05_n.bbmodel",
+          "textureResource": "mtr:mp05/ratp_texture.png",
+          "modelPropertiesResource": "mtr:mp05/properties_410264b0.json",
+          "positionDefinitionsResource": "mtr:mp05/definition_3223cda7.json",
+          "flipTextureV": true
+        }
+      ],
+      "hasGangway1": true,
+      "hasGangway2": true,
+      "hasBarrier1": false,
+      "hasBarrier2": false,
+      "legacyRiderOffset": 0,
+      "bveSoundBaseResource": "a_train",
+      "legacySpeedSoundBaseResource": "",
+      "legacySpeedSoundCount": 1,
+      "legacyUseAccelerationSoundsWhenCoasting": false,
+      "legacyConstantPlaybackSpeed": false,
+      "legacyDoorSoundBaseResource": "",
+      "legacyDoorCloseSoundTime": 0
     }
   ],
   "rails": [

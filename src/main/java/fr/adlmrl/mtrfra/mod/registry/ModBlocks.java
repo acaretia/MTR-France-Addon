@@ -28,9 +28,11 @@ import fr.adlmrl.mtrfra.mod.block.sign.RATPSignCollisionExtensionBlock;
 import fr.adlmrl.mtrfra.mod.block.sign.RATPSignMapBlock;
 import fr.adlmrl.mtrfra.mod.block.sign.RATPPillarPostBaseBlock;
 import fr.adlmrl.mtrfra.mod.block.sign.RATPPillarPostBlock;
+import fr.adlmrl.mtrfra.mod.block.sign.TransilienPoleBlock;
 import fr.adlmrl.mtrfra.mod.item.CopycatLayerBlockItem;
 import fr.adlmrl.mtrfra.mod.item.MotteLightStationColorBlockItem;
 import org.mtr.mapping.holder.Block;
+import org.mtr.mapping.holder.Identifier;
 import org.mtr.mapping.mapper.BlockExtension;
 import org.mtr.mapping.mapper.BlockHelper;
 import org.mtr.mapping.registry.BlockRegistryObject;
@@ -571,6 +573,9 @@ public final class ModBlocks {
             new RATPSignBase.TextLayout(8F, 9.375F, 8F, 2.175F),
             new RATPSignBase.TextLayout(8F, 6.625F, 8F, 13.675F)
     };
+    private static final RATPSignBase.TextLayout[] TRANSILIEN_SIGN_LAYOUT = {
+            new RATPSignBase.TextLayout(8F, 3F)
+    };
     private static final RATPSignBase.TextLayout[] RATP_SIGN_LAYOUT_WALL_METRO_SMALL = {
             new RATPSignBase.TextLayout(8F, 8.0F),
             new RATPSignBase.TextLayout(8F, 9.0F, 8F, 3.8F),
@@ -578,23 +583,96 @@ public final class ModBlocks {
             new RATPSignBase.TextLayout(8F, 7.0F, 8F, 12.05F)
     };
 
+    private static Identifier ratpSignTexture(String path) {
+        return new Identifier("mtrfranceaddon:block/panneau_ratp/" + path);
+    }
+
+    private static final Identifier[] RATP_SIGN_TEXTURES_DOUBLE = {
+            ratpSignTexture("panneau_ratp_double"),
+            ratpSignTexture("panneau_ratp_double_logo"),
+            ratpSignTexture("panneau_ratp_double_monument"),
+            ratpSignTexture("panneau_ratp_double_logo_monument"),
+            ratpSignTexture("panneau_ratp_double_point_interet"),
+            ratpSignTexture("panneau_ratp_double_logo_point_interet"),
+            ratpSignTexture("panneau_ratp_double_ville"),
+            ratpSignTexture("panneau_ratp_double_logo_ville")
+    };
+    private static final Identifier[] RATP_SIGN_TEXTURES_PILLAR = {
+            ratpSignTexture("panneau_ratp_pilier"),
+            ratpSignTexture("panneau_ratp_pilier_logo"),
+            ratpSignTexture("panneau_ratp_pilier_monument"),
+            ratpSignTexture("panneau_ratp_pilier_logo_monument"),
+            ratpSignTexture("panneau_ratp_pilier_point_interet"),
+            ratpSignTexture("panneau_ratp_pilier_logo_point_interet"),
+            ratpSignTexture("panneau_ratp_pilier_ville"),
+            ratpSignTexture("panneau_ratp_pilier_logo_ville")
+    };
+    private static final Identifier[] RATP_SIGN_TEXTURES_WALL_RER = {
+            ratpSignTexture("panneau_ratp_mur_rer_panneau_ratp_pilier"),
+            ratpSignTexture("panneau_ratp_mur_rer_panneau_ratp_pilier_logo"),
+            ratpSignTexture("panneau_ratp_mur_rer_panneau_ratp_pilier_monument"),
+            ratpSignTexture("panneau_ratp_mur_rer_panneau_ratp_pilier_logo_monument"),
+            ratpSignTexture("panneau_ratp_mur_rer_panneau_ratp_pilier_point_interet"),
+            ratpSignTexture("panneau_ratp_mur_rer_panneau_ratp_pilier_logo_point_interet"),
+            ratpSignTexture("panneau_ratp_mur_rer_panneau_ratp_pilier_ville"),
+            ratpSignTexture("panneau_ratp_mur_rer_panneau_ratp_pilier_logo_ville")
+    };
+    private static final Identifier[] RATP_SIGN_TEXTURES_TOP = {
+            ratpSignTexture("panneau_ratp_top"),
+            ratpSignTexture("panneau_ratp_top_logo"),
+            ratpSignTexture("panneau_ratp_top_monument"),
+            ratpSignTexture("panneau_ratp_top_logo_monument"),
+            ratpSignTexture("panneau_ratp_top_point_interet"),
+            ratpSignTexture("panneau_ratp_top_logo_point_interet"),
+            ratpSignTexture("panneau_ratp_top_ville"),
+            ratpSignTexture("panneau_ratp_top_logo_ville")
+    };
+    private static final Identifier[] RATP_SIGN_TEXTURES_WALL_METRO_LARGE = {
+            ratpSignTexture("panneau_ratp_mur_metro_grand"),
+            ratpSignTexture("panneau_ratp_mur_metro_grand_point_interet"),
+            ratpSignTexture("panneau_ratp_mur_metro_grand_monument"),
+            ratpSignTexture("panneau_ratp_mur_metro_grand_ville")
+    };
+    private static final Identifier[] RATP_SIGN_TEXTURES_WALL_METRO_SMALL = {
+            ratpSignTexture("panneau_ratp_mur_metro_petit"),
+            ratpSignTexture("panneau_ratp_mur_metro_petit_point_interet"),
+            ratpSignTexture("panneau_ratp_mur_metro_petit_monument"),
+            ratpSignTexture("panneau_ratp_mur_metro_ville")
+    };
+    private static final Identifier[] TRANSILIEN_SIGN_TEXTURES = {
+            new Identifier("mtrfranceaddon:block/panneau_transilien/panneau_transilien_body")
+    };
+
+    private static final float[] PREVIEW_UV_DOUBLE_PILLAR_WALL_RER_TOP = {0F, 0F, 11.5F / 16F, 2F / 16F};
+    private static final float[] PREVIEW_UV_WALL_METRO_LARGE = {0F, 0F, 12F / 16F, 3.5F / 16F};
+    private static final float[] PREVIEW_UV_WALL_METRO_SMALL = {0F, 0F, 1F, 5F / 16F};
+    private static final float[] PREVIEW_UV_TRANSILIEN = {0F, 0F, 6F / 16F, 1.5F / 16F};
+
+    private static final float[] PREVIEW_PLATE_BOUNDS_DOUBLE = {-15F, 1F, 31F, 9F};
+    private static final float[] PREVIEW_PLATE_BOUNDS_PILLAR = {-15F, 3F, 31F, 11F};
+    private static final float[] PREVIEW_PLATE_BOUNDS_WALL_RER = {-15F, 3F, 31F, 11F};
+    private static final float[] PREVIEW_PLATE_BOUNDS_TOP = {-15F, 3F, 31F, 11F};
+    private static final float[] PREVIEW_PLATE_BOUNDS_WALL_METRO_LARGE = {-16F, 1F, 32F, 15F};
+    private static final float[] PREVIEW_PLATE_BOUNDS_WALL_METRO_SMALL = {-8F, 3F, 24F, 13F};
+    private static final float[] PREVIEW_PLATE_BOUNDS_TRANSILIEN = {-4F, 0F, 20F, 6F};
+
     public static final BlockRegistryObject RATP_SIGN_DOUBLE = MTRFRARegistry.registerBlockWithItem(
-            "panneau_ratp_double", () -> new Block(new RATPSignBase(Blocks.createDefaultBlockSettings(false).nonOpaque(), 7, RATP_SIGN_LAYOUT_DOUBLE, 6.999F, new double[]{-16, 0, 7, 32, 9, 9}, true)), ModItemGroups.STATION_EQUIPMENT
+            "panneau_ratp_double", () -> new Block(new RATPSignBase(Blocks.createDefaultBlockSettings(false).nonOpaque(), 7, RATP_SIGN_LAYOUT_DOUBLE, 6.999F, new double[]{-16, 0, 7, 32, 9, 9}, true, true, 1F, RATP_SIGN_TEXTURES_DOUBLE, PREVIEW_UV_DOUBLE_PILLAR_WALL_RER_TOP, PREVIEW_PLATE_BOUNDS_DOUBLE)), ModItemGroups.STATION_EQUIPMENT
     );
     public static final BlockRegistryObject RATP_SIGN_PILLAR = MTRFRARegistry.registerBlockWithItem(
-            "panneau_ratp_pilier", () -> new Block(new RATPSignBase(Blocks.createDefaultBlockSettings(false).nonOpaque(), 7, RATP_SIGN_LAYOUT_PILLAR, 11.95F, new double[]{-15, 0, 12, 31, 11, 14}, false)), ModItemGroups.STATION_EQUIPMENT
+            "panneau_ratp_pilier", () -> new Block(new RATPSignBase(Blocks.createDefaultBlockSettings(false).nonOpaque(), 7, RATP_SIGN_LAYOUT_PILLAR, 11.95F, new double[]{-15, 0, 12, 31, 11, 14}, false, true, 0F, RATP_SIGN_TEXTURES_PILLAR, PREVIEW_UV_DOUBLE_PILLAR_WALL_RER_TOP, PREVIEW_PLATE_BOUNDS_PILLAR)), ModItemGroups.STATION_EQUIPMENT
     );
     public static final BlockRegistryObject RATP_SIGN_WALL_RER = MTRFRARegistry.registerBlockWithItem(
-            "panneau_ratp_mur_rer", () -> new Block(new RATPSignBase(Blocks.createDefaultBlockSettings(false).nonOpaque(), 7, RATP_SIGN_LAYOUT_WALL_RER, 13.95F, new double[]{-15, 3, 14, 31, 11, 16}, false)), ModItemGroups.STATION_EQUIPMENT
+            "panneau_ratp_mur_rer", () -> new Block(new RATPSignBase(Blocks.createDefaultBlockSettings(false).nonOpaque(), 7, RATP_SIGN_LAYOUT_WALL_RER, 13.95F, new double[]{-15, 3, 14, 31, 11, 16}, false, true, 0F, RATP_SIGN_TEXTURES_WALL_RER, PREVIEW_UV_DOUBLE_PILLAR_WALL_RER_TOP, PREVIEW_PLATE_BOUNDS_WALL_RER)), ModItemGroups.STATION_EQUIPMENT
     );
     public static final BlockRegistryObject RATP_SIGN_TOP = MTRFRARegistry.registerBlockWithItem(
-            "panneau_ratp_top", () -> new Block(new RATPSignBase(Blocks.createDefaultBlockSettings(false).nonOpaque(), 7, RATP_SIGN_LAYOUT_TOP, 6.999F, new double[]{-15, 3, 7, 31, 16, 9}, true)), ModItemGroups.STATION_EQUIPMENT
+            "panneau_ratp_top", () -> new Block(new RATPSignBase(Blocks.createDefaultBlockSettings(false).nonOpaque(), 7, RATP_SIGN_LAYOUT_TOP, 6.999F, new double[]{-15, 3, 7, 31, 16, 9}, true, true, 0F, RATP_SIGN_TEXTURES_TOP, PREVIEW_UV_DOUBLE_PILLAR_WALL_RER_TOP, PREVIEW_PLATE_BOUNDS_TOP)), ModItemGroups.STATION_EQUIPMENT
     );
     public static final BlockRegistryObject RATP_SIGN_WALL_METRO_LARGE = MTRFRARegistry.registerBlockWithItem(
-            "panneau_ratp_mur_metro_grand", () -> new Block(new RATPSignBase(Blocks.createDefaultBlockSettings(false).nonOpaque(), 3, RATP_SIGN_LAYOUT_WALL_METRO_LARGE, 15.45F, new double[]{-16, 1, 15.5, 32, 15, 16}, false)), ModItemGroups.STATION_EQUIPMENT
+            "panneau_ratp_mur_metro_grand", () -> new Block(new RATPSignBase(Blocks.createDefaultBlockSettings(false).nonOpaque(), 3, RATP_SIGN_LAYOUT_WALL_METRO_LARGE, 15.45F, new double[]{-16, 1, 15.5, 32, 15, 16}, false, true, 0F, RATP_SIGN_TEXTURES_WALL_METRO_LARGE, PREVIEW_UV_WALL_METRO_LARGE, PREVIEW_PLATE_BOUNDS_WALL_METRO_LARGE)), ModItemGroups.STATION_EQUIPMENT
     );
     public static final BlockRegistryObject RATP_SIGN_WALL_METRO_SMALL = MTRFRARegistry.registerBlockWithItem(
-            "panneau_ratp_mur_metro_petit", () -> new Block(new RATPSignBase(Blocks.createDefaultBlockSettings(false).nonOpaque(), 3, RATP_SIGN_LAYOUT_WALL_METRO_SMALL, 15.45F, new double[]{-8, 3, 15.5, 24, 13, 16}, false)), ModItemGroups.STATION_EQUIPMENT
+            "panneau_ratp_mur_metro_petit", () -> new Block(new RATPSignBase(Blocks.createDefaultBlockSettings(false).nonOpaque(), 3, RATP_SIGN_LAYOUT_WALL_METRO_SMALL, 15.45F, new double[]{-8, 3, 15.5, 24, 13, 16}, false, true, 0F, RATP_SIGN_TEXTURES_WALL_METRO_SMALL, PREVIEW_UV_WALL_METRO_SMALL, PREVIEW_PLATE_BOUNDS_WALL_METRO_SMALL)), ModItemGroups.STATION_EQUIPMENT
     );
     public static final BlockRegistryObject RATP_SIGN_MAP = MTRFRARegistry.registerBlockWithItem(
             "panneau_ratp_plan", () -> new Block(new RATPSignMapBlock(Blocks.createDefaultBlockSettings(false).nonOpaque())), ModItemGroups.STATION_EQUIPMENT
@@ -604,6 +682,12 @@ public final class ModBlocks {
     );
     public static final BlockRegistryObject RATP_PILLAR_POST_BASE = MTRFRARegistry.registerBlockWithItem(
             "pilier_base_ratp", () -> new Block(new RATPPillarPostBaseBlock(Blocks.createDefaultBlockSettings(true))), ModItemGroups.STATION_EQUIPMENT
+    );
+    public static final BlockRegistryObject TRANSILIEN_SIGN = MTRFRARegistry.registerBlockWithItem(
+            "panneau_transilien", () -> new Block(new RATPSignBase(Blocks.createDefaultBlockSettings(false).nonOpaque(), 0, TRANSILIEN_SIGN_LAYOUT, 6.999F, new double[]{-4, 0, 7, 20, 16, 9}, true, false, -0.75F, TRANSILIEN_SIGN_TEXTURES, PREVIEW_UV_TRANSILIEN, PREVIEW_PLATE_BOUNDS_TRANSILIEN)), ModItemGroups.STATION_EQUIPMENT
+    );
+    public static final BlockRegistryObject TRANSILIEN_POLE = MTRFRARegistry.registerBlockWithItem(
+            "pilier_transilien", () -> new Block(new TransilienPoleBlock(Blocks.createDefaultBlockSettings(true))), ModItemGroups.STATION_EQUIPMENT
     );
     public static final BlockRegistryObject RATP_SIGN_COLLISION_EXTENSION = MTRFRARegistry.registerBlock(
             "panneau_ratp_collision_extension", () -> new Block(new RATPSignCollisionExtensionBlock())

@@ -61,7 +61,8 @@ public final class ModBlockEntities {
             ModBlocks.RATP_SIGN_WALL_RER::get,
             ModBlocks.RATP_SIGN_TOP::get,
             ModBlocks.RATP_SIGN_WALL_METRO_LARGE::get,
-            ModBlocks.RATP_SIGN_WALL_METRO_SMALL::get
+            ModBlocks.RATP_SIGN_WALL_METRO_SMALL::get,
+            ModBlocks.TRANSILIEN_SIGN::get
     );
 
     private ModBlockEntities() {}
