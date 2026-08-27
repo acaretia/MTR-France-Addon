@@ -10,7 +10,7 @@
 ![fabric](https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/compact/supported/fabric_46h.png)
 ![forge](https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/compact/supported/forge_46h.png)
 
-An addon for [Minecraft Transit Railway (MTR)](https://github.com/Minecraft-Transit-Railway/Minecraft-Transit-Railway) bringing the French railway universe into the game: signage, logos, station equipment and rolling stock inspired by the SNCF, RATP and Ile-de-France Mobilites networks.
+French railway content for MTR.
 
 By Team MTR-FRA. (Internal package/project name is `mtrfra` / "MTRFRA" — the mod id itself stays `mtrfranceaddon` for save/resourcepack continuity with the original release.)
 

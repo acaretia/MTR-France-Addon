@@ -5,7 +5,7 @@ plugins {
 
 base.archivesName = "${property("mod.id")}-neoforge"
 version = "${property("mod.version")}+${sc.current.version}"
-group = "fr.adlmrl"
+group = "fr.mtrfra"
 
 repositories {
     maven("https://repo.essential.gg/repository/maven-public")

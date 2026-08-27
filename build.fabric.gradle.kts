@@ -6,7 +6,7 @@ plugins {
 
 base.archivesName = "${property("mod.id")}-fabric"
 version = "${property("mod.version")}+${sc.current.version}"
-group = "fr.adlmrl"
+group = "fr.mtrfra"
 
 loom {
     runs {

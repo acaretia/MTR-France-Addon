@@ -1,7 +1,7 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "fr.adlmrl.mtrfra.mod.mixin",
+  "package": "fr.mtrfra.mod.mixin",
   "mixins": [
     "rail.RailTypeMixin",
     "rail.RailSchemaAccessor",
