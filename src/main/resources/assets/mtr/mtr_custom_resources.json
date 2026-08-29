@@ -34206,8 +34206,8 @@
       "legacyDoorCloseSoundTime": 0.0
     },
     {
-      "id": "mp05_ratp_n",
-      "name": "MP 05 RATP (N)",
+      "id": "mp05_ratp_s_av",
+      "name": "MP 05 RATP (S) (F)",
       "color": "00BB77",
       "transportMode": "TRAIN",
       "length": 15.45,
@@ -34222,9 +34222,30 @@
       "models": [
         {
           "modelResource": "mtr:mp05/mp05_n.bbmodel",
-          "textureResource": "mtr:mp05/ratp_texture.png",
-          "modelPropertiesResource": "mtr:mp05/properties_5e478f7c.json",
-          "positionDefinitionsResource": "mtr:mp05/definition_6bc2ab56.json",
+          "textureResource": "mtr:mp05/ratp_texture_s.png",
+          "modelPropertiesResource": "mtr:mp05/properties_823a422f.json",
+          "positionDefinitionsResource": "mtr:mp05/definition_e75f9d14.json",
+          "flipTextureV": true
+        },
+        {
+          "modelResource": "mtr:obj_model/mp05_fcav_4.obj",
+          "textureResource": "mtr:obj_model/texture_tete_ratp.png",
+          "modelPropertiesResource": "mtr:mp05/properties_30d1879d.json",
+          "positionDefinitionsResource": "mtr:mp05/definition_adc6fda6.json",
+          "flipTextureV": true
+        },
+        {
+          "modelResource": "mtr:obj_model/mp05_fcav_2.obj",
+          "textureResource": "mtr:obj_model/texture_int.png",
+          "modelPropertiesResource": "mtr:mp05/properties_df3b8764.json",
+          "positionDefinitionsResource": "mtr:mp05/definition_45722588.json",
+          "flipTextureV": true
+        },
+        {
+          "modelResource": "mtr:obj_model/mp05_fcav_4.obj",
+          "textureResource": "mtr:obj_model/fix.png",
+          "modelPropertiesResource": "mtr:mp05/properties_71aa47bb.json",
+          "positionDefinitionsResource": "mtr:mp05/definition_e9a62bc2.json",
           "flipTextureV": true
         }
       ],
@@ -34232,8 +34253,8 @@
         {
           "modelResource": "mtr:mp05/mp05_n.bbmodel",
           "textureResource": "mtr:mp05/ratp_texture.png",
-          "modelPropertiesResource": "mtr:mp05/properties_fbaabe6e.json",
-          "positionDefinitionsResource": "mtr:mp05/definition_ab5e84e7.json",
+          "modelPropertiesResource": "mtr:mp05/properties_9358578f.json",
+          "positionDefinitionsResource": "mtr:mp05/definition_99981b30.json",
           "flipTextureV": true
         }
       ],
@@ -34241,8 +34262,8 @@
         {
           "modelResource": "mtr:mp05/mp05_n.bbmodel",
           "textureResource": "mtr:mp05/ratp_texture.png",
-          "modelPropertiesResource": "mtr:mp05/properties_7979c30f.json",
-          "positionDefinitionsResource": "mtr:mp05/definition_399cfd80.json",
+          "modelPropertiesResource": "mtr:mp05/properties_9c4ff29e.json",
+          "positionDefinitionsResource": "mtr:mp05/definition_afd7cd6b.json",
           "flipTextureV": true
         }
       ],
@@ -34260,8 +34281,8 @@
       "legacyDoorCloseSoundTime": 0
     },
     {
-      "id": "mp05_ratp_s_av",
-      "name": "MP 05 RATP (S) (av)",
+      "id": "mp05_ratp_n",
+      "name": "MP 05 RATP (N)",
       "color": "00BB77",
       "transportMode": "TRAIN",
       "length": 15.45,
@@ -34276,30 +34297,9 @@
       "models": [
         {
           "modelResource": "mtr:mp05/mp05_n.bbmodel",
-          "textureResource": "mtr:mp05/ratp_texture_s.png",
-          "modelPropertiesResource": "mtr:mp05/properties_272f927d.json",
-          "positionDefinitionsResource": "mtr:mp05/definition_26eb06ba.json",
-          "flipTextureV": true
-        },
-        {
-          "modelResource": "mtr:obj_model/mp05_fcav_4.obj",
-          "textureResource": "mtr:obj_model/texture_tete_ratp.png",
-          "modelPropertiesResource": "mtr:mp05/properties_9c545a03.json",
-          "positionDefinitionsResource": "mtr:mp05/definition_8acaf056.json",
-          "flipTextureV": true
-        },
-        {
-          "modelResource": "mtr:obj_model/mp05_fcav_2.obj",
-          "textureResource": "mtr:obj_model/texture_int.png",
-          "modelPropertiesResource": "mtr:mp05/properties_a881f0f6.json",
-          "positionDefinitionsResource": "mtr:mp05/definition_29778eaf.json",
-          "flipTextureV": true
-        },
-        {
-          "modelResource": "mtr:obj_model/mp05_fcav_4.obj",
-          "textureResource": "mtr:obj_model/fix.png",
-          "modelPropertiesResource": "mtr:mp05/properties_42e94e55.json",
-          "positionDefinitionsResource": "mtr:mp05/definition_2c3468c2.json",
+          "textureResource": "mtr:mp05/ratp_texture.png",
+          "modelPropertiesResource": "mtr:mp05/properties_513f829c.json",
+          "positionDefinitionsResource": "mtr:mp05/definition_6d85fd51.json",
           "flipTextureV": true
         }
       ],
@@ -34307,8 +34307,8 @@
         {
           "modelResource": "mtr:mp05/mp05_n.bbmodel",
           "textureResource": "mtr:mp05/ratp_texture.png",
-          "modelPropertiesResource": "mtr:mp05/properties_fcea6706.json",
-          "positionDefinitionsResource": "mtr:mp05/definition_8692679b.json",
+          "modelPropertiesResource": "mtr:mp05/properties_5bbfc87.json",
+          "positionDefinitionsResource": "mtr:mp05/definition_7bf9d8b0.json",
           "flipTextureV": true
         }
       ],
@@ -34316,8 +34316,8 @@
         {
           "modelResource": "mtr:mp05/mp05_n.bbmodel",
           "textureResource": "mtr:mp05/ratp_texture.png",
-          "modelPropertiesResource": "mtr:mp05/properties_e6f5b9af.json",
-          "positionDefinitionsResource": "mtr:mp05/definition_a22b423f.json",
+          "modelPropertiesResource": "mtr:mp05/properties_37e6c155.json",
+          "positionDefinitionsResource": "mtr:mp05/definition_37e4e3cb.json",
           "flipTextureV": true
         }
       ],
@@ -34336,7 +34336,7 @@
     },
     {
       "id": "mp05_ratp_s_ar",
-      "name": "MP 05 RATP (S) (ar)",
+      "name": "MP 05 RATP (S) (B)",
       "color": "00BB77",
       "transportMode": "TRAIN",
       "length": 15.45,
@@ -34352,29 +34352,29 @@
         {
           "modelResource": "mtr:mp05/mp05_n.bbmodel",
           "textureResource": "mtr:mp05/ratp_texture_s.png",
-          "modelPropertiesResource": "mtr:mp05/properties_42f9c0b.json",
-          "positionDefinitionsResource": "mtr:mp05/definition_f32852fb.json",
+          "modelPropertiesResource": "mtr:mp05/properties_78308105.json",
+          "positionDefinitionsResource": "mtr:mp05/definition_5302b844.json",
           "flipTextureV": true
         },
         {
           "modelResource": "mtr:obj_model/mp05_fcav_4.obj",
           "textureResource": "mtr:obj_model/texture_tete_ratp.png",
-          "modelPropertiesResource": "mtr:mp05/properties_d60f8910.json",
-          "positionDefinitionsResource": "mtr:mp05/definition_7ac96040.json",
+          "modelPropertiesResource": "mtr:mp05/properties_929af1b9.json",
+          "positionDefinitionsResource": "mtr:mp05/definition_6f9b2586.json",
           "flipTextureV": true
         },
         {
           "modelResource": "mtr:obj_model/mp05_fcav_2.obj",
           "textureResource": "mtr:obj_model/texture_int.png",
-          "modelPropertiesResource": "mtr:mp05/properties_57bf1d72.json",
-          "positionDefinitionsResource": "mtr:mp05/definition_ce993043.json",
+          "modelPropertiesResource": "mtr:mp05/properties_d561f908.json",
+          "positionDefinitionsResource": "mtr:mp05/definition_9c9f3292.json",
           "flipTextureV": true
         },
         {
           "modelResource": "mtr:obj_model/mp05_fcav_4.obj",
           "textureResource": "mtr:obj_model/fix.png",
-          "modelPropertiesResource": "mtr:mp05/properties_11e440c3.json",
-          "positionDefinitionsResource": "mtr:mp05/definition_237831b3.json",
+          "modelPropertiesResource": "mtr:mp05/properties_e678e878.json",
+          "positionDefinitionsResource": "mtr:mp05/definition_8c5681f8.json",
           "flipTextureV": true
         }
       ],
@@ -34382,8 +34382,8 @@
         {
           "modelResource": "mtr:mp05/mp05_n.bbmodel",
           "textureResource": "mtr:mp05/ratp_texture.png",
-          "modelPropertiesResource": "mtr:mp05/properties_22a6fd1a.json",
-          "positionDefinitionsResource": "mtr:mp05/definition_2cf6ff7f.json",
+          "modelPropertiesResource": "mtr:mp05/properties_eb05c8bd.json",
+          "positionDefinitionsResource": "mtr:mp05/definition_ea4b6b1a.json",
           "flipTextureV": true
         }
       ],
@@ -34391,8 +34391,212 @@
         {
           "modelResource": "mtr:mp05/mp05_n.bbmodel",
           "textureResource": "mtr:mp05/ratp_texture.png",
-          "modelPropertiesResource": "mtr:mp05/properties_410264b0.json",
-          "positionDefinitionsResource": "mtr:mp05/definition_3223cda7.json",
+          "modelPropertiesResource": "mtr:mp05/properties_856476a7.json",
+          "positionDefinitionsResource": "mtr:mp05/definition_759b6bf9.json",
+          "flipTextureV": true
+        }
+      ],
+      "hasGangway1": true,
+      "hasGangway2": true,
+      "hasBarrier1": false,
+      "hasBarrier2": false,
+      "legacyRiderOffset": 0,
+      "bveSoundBaseResource": "a_train",
+      "legacySpeedSoundBaseResource": "",
+      "legacySpeedSoundCount": 1,
+      "legacyUseAccelerationSoundsWhenCoasting": false,
+      "legacyConstantPlaybackSpeed": false,
+      "legacyDoorSoundBaseResource": "",
+      "legacyDoorCloseSoundTime": 0
+    },
+    {
+      "id": "mp05_idfm_s_av",
+      "name": "MP 05 IDFM (S) (F)",
+      "color": "00BBFA",
+      "transportMode": "TRAIN",
+      "length": 15.45,
+      "width": 2,
+      "bogie1Position": -5.5,
+      "bogie2Position": 5.5,
+      "couplingPadding1": 0,
+      "couplingPadding2": 0,
+      "description": "",
+      "wikipediaArticle": "",
+      "tags": [],
+      "models": [
+        {
+          "modelResource": "mtr:mp05/mp05_n.bbmodel",
+          "textureResource": "mtr:mp05/idfm_texture_s.png",
+          "modelPropertiesResource": "mtr:mp05/properties_c6408fe.json",
+          "positionDefinitionsResource": "mtr:mp05/definition_92d80c41.json",
+          "flipTextureV": true
+        },
+        {
+          "modelResource": "mtr:obj_model/mp05_fav_idfm.obj",
+          "textureResource": "mtr:obj_model/texture_tete_idfm.png",
+          "modelPropertiesResource": "mtr:mp05/properties_5da8888a.json",
+          "positionDefinitionsResource": "mtr:mp05/definition_9d6a64de.json",
+          "flipTextureV": true
+        },
+        {
+          "modelResource": "mtr:obj_model/mp05_fcav_2.obj",
+          "textureResource": "mtr:obj_model/texture_int.png",
+          "modelPropertiesResource": "mtr:mp05/properties_9a498f52.json",
+          "positionDefinitionsResource": "mtr:mp05/definition_d7b13a62.json",
+          "flipTextureV": true
+        },
+        {
+          "modelResource": "mtr:obj_model/mp05_fav_idfm.obj",
+          "textureResource": "mtr:obj_model/fix2.png",
+          "modelPropertiesResource": "mtr:mp05/properties_e779f969.json",
+          "positionDefinitionsResource": "mtr:mp05/definition_938eaf3b.json",
+          "flipTextureV": true
+        }
+      ],
+      "bogie1Models": [
+        {
+          "modelResource": "mtr:mp05/mp05_n.bbmodel",
+          "textureResource": "mtr:mp05/ratp_texture.png",
+          "modelPropertiesResource": "mtr:mp05/properties_40c34a5f.json",
+          "positionDefinitionsResource": "mtr:mp05/definition_fc6945dc.json",
+          "flipTextureV": true
+        }
+      ],
+      "bogie2Models": [
+        {
+          "modelResource": "mtr:mp05/mp05_n.bbmodel",
+          "textureResource": "mtr:mp05/ratp_texture.png",
+          "modelPropertiesResource": "mtr:mp05/properties_2a37f7c4.json",
+          "positionDefinitionsResource": "mtr:mp05/definition_8e4a7fdf.json",
+          "flipTextureV": true
+        }
+      ],
+      "hasGangway1": true,
+      "hasGangway2": true,
+      "hasBarrier1": false,
+      "hasBarrier2": false,
+      "legacyRiderOffset": 0,
+      "bveSoundBaseResource": "a_train",
+      "legacySpeedSoundBaseResource": "",
+      "legacySpeedSoundCount": 1,
+      "legacyUseAccelerationSoundsWhenCoasting": false,
+      "legacyConstantPlaybackSpeed": false,
+      "legacyDoorSoundBaseResource": "",
+      "legacyDoorCloseSoundTime": 0
+    },
+    {
+      "id": "mp05_idfm_n",
+      "name": "MP 05 IDFM (N)",
+      "color": "00BBFA",
+      "transportMode": "TRAIN",
+      "length": 15.45,
+      "width": 2,
+      "bogie1Position": -5.5,
+      "bogie2Position": 5.5,
+      "couplingPadding1": 0,
+      "couplingPadding2": 0,
+      "description": "",
+      "wikipediaArticle": "",
+      "tags": [],
+      "models": [
+        {
+          "modelResource": "mtr:mp05/mp05_n.bbmodel",
+          "textureResource": "mtr:mp05/idfm_texture_n.png",
+          "modelPropertiesResource": "mtr:mp05/properties_ae7de522.json",
+          "positionDefinitionsResource": "mtr:mp05/definition_273dbb43.json",
+          "flipTextureV": true
+        }
+      ],
+      "bogie1Models": [
+        {
+          "modelResource": "mtr:mp05/mp05_n.bbmodel",
+          "textureResource": "mtr:mp05/ratp_texture.png",
+          "modelPropertiesResource": "mtr:mp05/properties_6131819a.json",
+          "positionDefinitionsResource": "mtr:mp05/definition_1edebf2d.json",
+          "flipTextureV": true
+        }
+      ],
+      "bogie2Models": [
+        {
+          "modelResource": "mtr:mp05/mp05_n.bbmodel",
+          "textureResource": "mtr:mp05/ratp_texture.png",
+          "modelPropertiesResource": "mtr:mp05/properties_ab659880.json",
+          "positionDefinitionsResource": "mtr:mp05/definition_2b4caff.json",
+          "flipTextureV": true
+        }
+      ],
+      "hasGangway1": true,
+      "hasGangway2": true,
+      "hasBarrier1": false,
+      "hasBarrier2": false,
+      "legacyRiderOffset": 0,
+      "bveSoundBaseResource": "a_train",
+      "legacySpeedSoundBaseResource": "",
+      "legacySpeedSoundCount": 1,
+      "legacyUseAccelerationSoundsWhenCoasting": false,
+      "legacyConstantPlaybackSpeed": false,
+      "legacyDoorSoundBaseResource": "",
+      "legacyDoorCloseSoundTime": 0
+    },
+    {
+      "id": "mp05_idfm_s_ar",
+      "name": "MP 05 IDFM (S) (B)",
+      "color": "00BBFA",
+      "transportMode": "TRAIN",
+      "length": 15.45,
+      "width": 2,
+      "bogie1Position": -5.5,
+      "bogie2Position": 5.5,
+      "couplingPadding1": 0,
+      "couplingPadding2": 0,
+      "description": "",
+      "wikipediaArticle": "",
+      "tags": [],
+      "models": [
+        {
+          "modelResource": "mtr:mp05/mp05_n.bbmodel",
+          "textureResource": "mtr:mp05/idfm_texture_s.png",
+          "modelPropertiesResource": "mtr:mp05/properties_4a5b81c5.json",
+          "positionDefinitionsResource": "mtr:mp05/definition_5a52f72c.json",
+          "flipTextureV": true
+        },
+        {
+          "modelResource": "mtr:obj_model/mp05_fav_idfm.obj",
+          "textureResource": "mtr:obj_model/texture_tete_idfm.png",
+          "modelPropertiesResource": "mtr:mp05/properties_a80b981.json",
+          "positionDefinitionsResource": "mtr:mp05/definition_ec6b3abd.json",
+          "flipTextureV": true
+        },
+        {
+          "modelResource": "mtr:obj_model/mp05_fcav_2.obj",
+          "textureResource": "mtr:obj_model/texture_int.png",
+          "modelPropertiesResource": "mtr:mp05/properties_849dba22.json",
+          "positionDefinitionsResource": "mtr:mp05/definition_2edf41e.json",
+          "flipTextureV": true
+        },
+        {
+          "modelResource": "mtr:obj_model/mp05_fav_idfm.obj",
+          "textureResource": "mtr:obj_model/fix2.png",
+          "modelPropertiesResource": "mtr:mp05/properties_e65d80b9.json",
+          "positionDefinitionsResource": "mtr:mp05/definition_8ebd2a13.json",
+          "flipTextureV": true
+        }
+      ],
+      "bogie1Models": [
+        {
+          "modelResource": "mtr:mp05/mp05_n.bbmodel",
+          "textureResource": "mtr:mp05/ratp_texture.png",
+          "modelPropertiesResource": "mtr:mp05/properties_99596118.json",
+          "positionDefinitionsResource": "mtr:mp05/definition_63752882.json",
+          "flipTextureV": true
+        }
+      ],
+      "bogie2Models": [
+        {
+          "modelResource": "mtr:mp05/mp05_n.bbmodel",
+          "textureResource": "mtr:mp05/ratp_texture.png",
+          "modelPropertiesResource": "mtr:mp05/properties_54883f73.json",
+          "positionDefinitionsResource": "mtr:mp05/definition_f20afff2.json",
           "flipTextureV": true
         }
       ],
@@ -40199,5 +40403,13 @@
     }
   ],
   "objects": [],
-  "lifts": []
+  "lifts": [],
+  "vehicleScripts": [
+    {
+      "id": "mp05_ecran_station_v1",
+      "scriptLocations": [
+        "mtr:scripts/mp05_ecran_station_v1.js"
+      ]
+    }
+  ]
 }

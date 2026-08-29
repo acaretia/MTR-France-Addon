@@ -155,9 +155,11 @@ public class RATPSignCollisionExtensionBlock extends BlockExtension {
         if (anchorPos == null) {
             return ActionResult.PASS;
         }
+        final BlockState anchorState = world.getBlockState(anchorPos);
+        if (!(anchorState.getBlock().data instanceof RATPSignBase sign)) {
+            return ActionResult.PASS;
+        }
         if (!world.isClient()) {
-            final BlockState anchorState = world.getBlockState(anchorPos);
-            final RATPSignBase sign = (RATPSignBase) anchorState.getBlock().data;
             final BlockEntity blockEntity = world.getBlockEntity(anchorPos);
             final RATPSignBase.BlockEntityBase signBlockEntity = blockEntity != null && blockEntity.data instanceof RATPSignBase.BlockEntityBase ? (RATPSignBase.BlockEntityBase) blockEntity.data : null;
             final String customTitle = signBlockEntity == null ? "" : signBlockEntity.customTitle;
@@ -173,10 +175,10 @@ public class RATPSignCollisionExtensionBlock extends BlockExtension {
             final BlockPos anchorPos = pos.offset(direction);
             final BlockState anchorState = world.getBlockState(anchorPos);
             final Object anchorBlock = anchorState.getBlock().data;
-            if (!(anchorBlock instanceof RATPSignBase)) {
+            if (!(anchorBlock instanceof HasBoundingBox boundedAnchor)) {
                 continue;
             }
-            final VoxelShape anchorShape = anchorVoxelShape(anchorState, (HasBoundingBox) anchorBlock);
+            final VoxelShape anchorShape = anchorVoxelShape(anchorState, boundedAnchor);
             final Box bounds = anchorShape.getBoundingBox();
             final int dx = pos.getX() - anchorPos.getX();
             final int dy = pos.getY() - anchorPos.getY();

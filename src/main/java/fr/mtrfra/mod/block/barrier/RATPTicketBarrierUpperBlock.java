@@ -21,9 +21,7 @@ import org.mtr.mapping.holder.World;
 import org.mtr.mapping.mapper.BlockExtension;
 import org.mtr.mapping.mapper.DirectionHelper;
 import org.mtr.mod.Items;
-import org.mtr.mod.block.BlockTicketBarrier;
 import org.mtr.mod.block.IBlock;
-import org.mtr.mod.data.TicketSystem.EnumTicketBarrierOpen;
 
 public class RATPTicketBarrierUpperBlock extends BlockExtension implements HasCompanionShape {
 
@@ -61,14 +59,9 @@ public class RATPTicketBarrierUpperBlock extends BlockExtension implements HasCo
         final Object anchorBlock = anchorState.getBlock().data;
         if (anchorBlock instanceof RATPTicketBarrierBlock barrier) {
             final Direction facing = IBlock.getStatePropertySafe(anchorState, DirectionHelper.FACING);
-            final EnumTicketBarrierOpen open = IBlock.getStatePropertySafe(anchorState, BlockTicketBarrier.OPEN);
-            final boolean isOpen = open == EnumTicketBarrierOpen.OPEN || open == EnumTicketBarrierOpen.OPEN_CONCESSIONARY;
             VoxelShape shape = RATPTicketBarrierBlock.box(RATPTicketBarrierBlock.POST_LEFT_UPPER, facing);
             if (barrier.hasSideCover()) {
                 shape = VoxelShapes.union(shape, RATPTicketBarrierBlock.box(RATPTicketBarrierBlock.POST_RIGHT_UPPER, facing));
-            }
-            if (!isOpen) {
-                shape = VoxelShapes.union(shape, RATPTicketBarrierBlock.box(RATPTicketBarrierBlock.DOOR_CLOSED_UPPER, facing));
             }
             return shape;
         }

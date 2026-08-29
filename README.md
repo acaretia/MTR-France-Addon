@@ -20,14 +20,14 @@ By Team MTR-FRA. (Internal package/project name is `mtrfra` / "MTRFRA" — the m
 |-----------|:------:|:-----:|---------|
 | 1.16.5 (dropped) | ❌ | ❌ | 4.0.x (`org.mtr.mapping`) |
 | 1.17.1 (dropped) | ❌ | ❌ | 4.0.x (`org.mtr.mapping`) |
-| 1.18.2 (STS) | ✅ (here) | 🚧 (being reworked, see below) | 4.0.x (`org.mtr.mapping`) |
-| 1.19.2 (STS) | ✅ (here) | 🚧 (being reworked, see below) | 4.0.x (`org.mtr.mapping`) |
-| 1.19.4 (STS) | ✅ (here) | 🚧 (being reworked, see below) | 4.0.x (`org.mtr.mapping`) |
-| 1.20.1    | ✅ (here) | 🚧 (being reworked, see below) | 4.0.x (`org.mtr.mapping`) |
-| 1.20.4    | ✅ (here) | 🚧 (being reworked, see below) | 4.0.x (`org.mtr.mapping`) |
+| 1.18.2 (STS) | ✅ (here) | ✅ (`legacy-forge/`) | 4.0.x (`org.mtr.mapping`) |
+| 1.19.2 (STS) | ✅ (here) | ✅ (`legacy-forge/`) | 4.0.x (`org.mtr.mapping`) |
+| 1.19.4 (STS) | ✅ (here) | ✅ (`legacy-forge/`) | 4.0.x (`org.mtr.mapping`) |
+| 1.20.1    | ✅ (here) | ✅ (`legacy-forge/`) | 4.0.x (`org.mtr.mapping`) |
+| 1.20.4    | ✅ (here) | ✅ (`legacy-forge/`) | 4.0.x (`org.mtr.mapping`) |
 | 1.21.x (upcoming) | 🔜 | 🔜 (NeoForge, not Forge) | 4.1.x (pending stable) |
 
-1.16.5 and 1.17.1 were supported by the original pre-rewrite addon but are not carried into this tree (too low demand to justify the mapping/API work this far back). 1.18.x and 1.19.x are short-term support (a handful of players remain on them) and will be dropped once they migrate. Forge support for 1.18.x-1.20.x (previously the nested `legacy-forge/` project) is temporarily not in this repo while it's brought back up to date with the shared Fabric source tree — it had fallen behind and needs a proper pass before it's worth shipping again. It's coming back, just not yet. 1.21.x support (Fabric + NeoForge) is planned but currently shelved pending a stable MTR 4.1 release.
+1.16.5 and 1.17.1 were supported by the original pre-rewrite addon but are not carried into this tree (too low demand to justify the mapping/API work this far back). 1.18.x and 1.19.x are short-term support (a handful of players remain on them) and will be dropped once they migrate. Forge support for 1.18.x-1.20.x lives in the nested [`legacy-forge/`](legacy-forge/) project, on its own Gradle 8 wrapper — see [Repository layout](#repository-layout) for why it can't share this build. 1.21.x support (Fabric + NeoForge) is planned but currently shelved pending a stable MTR 4.1 release.
 
 ### Java / JDK requirements
 
@@ -47,22 +47,25 @@ The one extra wrinkle: Stonecutter itself (the tool that manages the multi-versi
 
 This repo is a [Stonecutter](https://stonecutter.kikugie.dev/) multi-version project: `src/main/java` and `src/main/resources` hold **one** shared source tree for every Fabric version above. Each Minecraft version is its own Gradle subproject under `versions/<name>/`, holding only that version's dependency pins (`gradle.properties`) — never source code. Stonecutter "chisels" the shared source into each subproject at build time using comment directives (`//? if ... { ... //? }`), so the checked-out source is always valid, fully-typed Java.
 
-**Forge is not in this tree.** Stonecutter requires Gradle 9+, and ForgeGradle explicitly refuses to run under Gradle 9 — one Gradle invocation can only use one Gradle version, so Forge can't share this build. It used to live in a nested `legacy-forge/` project on its own Gradle 8 wrapper; that project fell behind the shared Fabric source tree and is being brought back up to date before it returns.
+**Forge isn't part of this Stonecutter tree.** Stonecutter requires Gradle 9+, and ForgeGradle explicitly refuses to run under Gradle 9 — one Gradle invocation can only use one Gradle version, so Forge can't share this build. It lives instead in the nested [`legacy-forge/`](legacy-forge/) project, on its own Gradle 8 wrapper, with a small hand-written Gradle task that resolves the same `//? if` comments Stonecutter uses here before every compile. See [`legacy-forge/README.md`](legacy-forge/README.md) for details.
 
 ## Building
 
-Requires **JDK 21+** on `JAVA_HOME` (Stonecutter's own runtime requirement; per-version Java toolchains for compiling are 17).
+Requires **JDK 21+** on `JAVA_HOME` for this Stonecutter tree (its own runtime requirement; per-version Java toolchains for compiling are 17), and a **JDK 17** ForgeGradle accepts for `legacy-forge/`.
 
 ```bash
-./gradlew build                    # every version in this tree
+./gradlew build                    # every Fabric/NeoForge version in this tree
 ./gradlew :1.20.4-fabric:build      # just one version
+
+cd legacy-forge && ./gradlew build -Pminecraft_version=1.20.4   # Forge, one version
 ```
 
-Or use the top-level script:
+Or use the top-level script, which drives both:
 
 ```bash
-./build.sh                    # every version
-./build.sh -v 1.20.4           # one Minecraft version
+./build.sh                    # every version, every loader (Fabric + Forge)
+./build.sh -v 1.20.4           # one Minecraft version, all its loaders
+./build.sh -l forge            # Forge only, every version
 ```
 
 Jars land in `releases/`.

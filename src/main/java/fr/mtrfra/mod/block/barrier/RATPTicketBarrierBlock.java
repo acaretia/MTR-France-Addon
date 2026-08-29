@@ -168,14 +168,9 @@ public class RATPTicketBarrierBlock extends BlockTicketBarrier implements BlockW
     static final double[] DOOR_CLOSED_UPPER = {-2, 0, 5.5, 16, 14, 6.5};
 
     private VoxelShape computeShape(BlockState state, Direction facing) {
-        final EnumTicketBarrierOpen open = IBlock.getStatePropertySafe(state, OPEN);
-        final boolean isOpen = open == EnumTicketBarrierOpen.OPEN || open == EnumTicketBarrierOpen.OPEN_CONCESSIONARY;
         VoxelShape shape = box(POST_LEFT, facing);
         if (hasSideCover) {
             shape = VoxelShapes.union(shape, box(POST_RIGHT, facing));
-        }
-        if (!isOpen) {
-            shape = VoxelShapes.union(shape, box(DOOR_CLOSED, facing));
         }
         return shape;
     }

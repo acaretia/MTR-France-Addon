@@ -1,10 +1,11 @@
 package fr.mtrfra.mod.mixin.tab;
 
-//? if >=1.20.4 {
+//? if >=1.20.1 {
 import fr.mtrfra.mod.tab.CreativeTabSections;
 import fr.mtrfra.mod.registry.ModItemGroups;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.CreativeModeInventoryScreen;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.CreativeModeTab;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -20,7 +21,7 @@ public abstract class CreativeModeInventoryScreenMixin {
 
     @Inject(method = "render", at = @At("TAIL"))
     private void mtrfra$renderSectionBanners(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick, CallbackInfo ci) {
-        if (selectedTab == ModItemGroups.MAIN.creativeModeTab) {
+        if (ModItemGroups.MAIN.identifier.equals(BuiltInRegistries.CREATIVE_MODE_TAB.getKey(selectedTab))) {
             final CreativeModeInventoryScreenAccessor accessor = (CreativeModeInventoryScreenAccessor) this;
             CreativeTabSections.renderBanners(guiGraphics, accessor.getLeftPos() + 8, accessor.getTopPos() + 17, mouseX, mouseY);
         }

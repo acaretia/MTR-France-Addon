@@ -693,6 +693,178 @@ public final class ModBlocks {
             "panneau_ratp_collision_extension", () -> new Block(new RATPSignCollisionExtensionBlock())
     );
 
+    public static final BlockRegistryObject IDFM_METRO = MTRFRARegistry.registerBlockWithItem(
+            "idfm_metro", () -> new Block(new ConfigurableSignBlock(Blocks.createDefaultBlockSettings(false, state -> 8), 2, 2, 14, 14, 14, 16)), ModItemGroups.LOGOS
+    );
+    public static final BlockRegistryObject IDFM_METRO_1 = MTRFRARegistry.registerBlockWithItem(
+            "idfm_metro_1", () -> new Block(new ConfigurableSignBlock(Blocks.createDefaultBlockSettings(false, state -> 8), 2, 2, 14, 14, 14, 16)), ModItemGroups.LOGOS
+    );
+    public static final BlockRegistryObject IDFM_METRO_2 = MTRFRARegistry.registerBlockWithItem(
+            "idfm_metro_2", () -> new Block(new ConfigurableSignBlock(Blocks.createDefaultBlockSettings(false, state -> 8), 2, 2, 14, 14, 14, 16)), ModItemGroups.LOGOS
+    );
+    public static final BlockRegistryObject IDFM_METRO_3 = MTRFRARegistry.registerBlockWithItem(
+            "idfm_metro_3", () -> new Block(new ConfigurableSignBlock(Blocks.createDefaultBlockSettings(false, state -> 8), 2, 2, 14, 14, 14, 16)), ModItemGroups.LOGOS
+    );
+    public static final BlockRegistryObject IDFM_METRO_3BIS = MTRFRARegistry.registerBlockWithItem(
+            "idfm_metro_3bis", () -> new Block(new ConfigurableSignBlock(Blocks.createDefaultBlockSettings(false, state -> 8), 2, 2, 14, 14, 14, 16)), ModItemGroups.LOGOS
+    );
+    public static final BlockRegistryObject IDFM_METRO_4 = MTRFRARegistry.registerBlockWithItem(
+            "idfm_metro_4", () -> new Block(new ConfigurableSignBlock(Blocks.createDefaultBlockSettings(false, state -> 8), 2, 2, 14, 14, 14, 16)), ModItemGroups.LOGOS
+    );
+    public static final BlockRegistryObject IDFM_METRO_5 = MTRFRARegistry.registerBlockWithItem(
+            "idfm_metro_5", () -> new Block(new ConfigurableSignBlock(Blocks.createDefaultBlockSettings(false, state -> 8), 2, 2, 14, 14, 14, 16)), ModItemGroups.LOGOS
+    );
+    public static final BlockRegistryObject IDFM_METRO_6 = MTRFRARegistry.registerBlockWithItem(
+            "idfm_metro_6", () -> new Block(new ConfigurableSignBlock(Blocks.createDefaultBlockSettings(false, state -> 8), 2, 2, 14, 14, 14, 16)), ModItemGroups.LOGOS
+    );
+    public static final BlockRegistryObject IDFM_METRO_7 = MTRFRARegistry.registerBlockWithItem(
+            "idfm_metro_7", () -> new Block(new ConfigurableSignBlock(Blocks.createDefaultBlockSettings(false, state -> 8), 2, 2, 14, 14, 14, 16)), ModItemGroups.LOGOS
+    );
+    public static final BlockRegistryObject IDFM_METRO_7BIS = MTRFRARegistry.registerBlockWithItem(
+            "idfm_metro_7bis", () -> new Block(new ConfigurableSignBlock(Blocks.createDefaultBlockSettings(false, state -> 8), 2, 2, 14, 14, 14, 16)), ModItemGroups.LOGOS
+    );
+    public static final BlockRegistryObject IDFM_METRO_8 = MTRFRARegistry.registerBlockWithItem(
+            "idfm_metro_8", () -> new Block(new ConfigurableSignBlock(Blocks.createDefaultBlockSettings(false, state -> 8), 2, 2, 14, 14, 14, 16)), ModItemGroups.LOGOS
+    );
+    public static final BlockRegistryObject IDFM_METRO_9 = MTRFRARegistry.registerBlockWithItem(
+            "idfm_metro_9", () -> new Block(new ConfigurableSignBlock(Blocks.createDefaultBlockSettings(false, state -> 8), 2, 2, 14, 14, 14, 16)), ModItemGroups.LOGOS
+    );
+    public static final BlockRegistryObject IDFM_METRO_10 = MTRFRARegistry.registerBlockWithItem(
+            "idfm_metro_10", () -> new Block(new ConfigurableSignBlock(Blocks.createDefaultBlockSettings(false, state -> 8), 2, 2, 14, 14, 14, 16)), ModItemGroups.LOGOS
+    );
+    public static final BlockRegistryObject IDFM_METRO_11 = MTRFRARegistry.registerBlockWithItem(
+            "idfm_metro_11", () -> new Block(new ConfigurableSignBlock(Blocks.createDefaultBlockSettings(false, state -> 8), 2, 2, 14, 14, 14, 16)), ModItemGroups.LOGOS
+    );
+    public static final BlockRegistryObject IDFM_METRO_12 = MTRFRARegistry.registerBlockWithItem(
+            "idfm_metro_12", () -> new Block(new ConfigurableSignBlock(Blocks.createDefaultBlockSettings(false, state -> 8), 2, 2, 14, 14, 14, 16)), ModItemGroups.LOGOS
+    );
+    public static final BlockRegistryObject IDFM_METRO_13 = MTRFRARegistry.registerBlockWithItem(
+            "idfm_metro_13", () -> new Block(new ConfigurableSignBlock(Blocks.createDefaultBlockSettings(false, state -> 8), 2, 2, 14, 14, 14, 16)), ModItemGroups.LOGOS
+    );
+    public static final BlockRegistryObject IDFM_METRO_14 = MTRFRARegistry.registerBlockWithItem(
+            "idfm_metro_14", () -> new Block(new ConfigurableSignBlock(Blocks.createDefaultBlockSettings(false, state -> 8), 2, 2, 14, 14, 14, 16)), ModItemGroups.LOGOS
+    );
+    public static final BlockRegistryObject IDFM_METRO_15 = MTRFRARegistry.registerBlockWithItem(
+            "idfm_metro_15", () -> new Block(new ConfigurableSignBlock(Blocks.createDefaultBlockSettings(false, state -> 8), 2, 2, 14, 14, 14, 16)), ModItemGroups.LOGOS
+    );
+    public static final BlockRegistryObject IDFM_METRO_16 = MTRFRARegistry.registerBlockWithItem(
+            "idfm_metro_16", () -> new Block(new ConfigurableSignBlock(Blocks.createDefaultBlockSettings(false, state -> 8), 2, 2, 14, 14, 14, 16)), ModItemGroups.LOGOS
+    );
+    public static final BlockRegistryObject IDFM_METRO_17 = MTRFRARegistry.registerBlockWithItem(
+            "idfm_metro_17", () -> new Block(new ConfigurableSignBlock(Blocks.createDefaultBlockSettings(false, state -> 8), 2, 2, 14, 14, 14, 16)), ModItemGroups.LOGOS
+    );
+    public static final BlockRegistryObject IDFM_METRO_18 = MTRFRARegistry.registerBlockWithItem(
+            "idfm_metro_18", () -> new Block(new ConfigurableSignBlock(Blocks.createDefaultBlockSettings(false, state -> 8), 2, 2, 14, 14, 14, 16)), ModItemGroups.LOGOS
+    );
+    public static final BlockRegistryObject IDFM_RER = MTRFRARegistry.registerBlockWithItem(
+            "idfm_rer", () -> new Block(new ConfigurableSignBlock(Blocks.createDefaultBlockSettings(false, state -> 8), 2, 2, 14, 14, 14, 16)), ModItemGroups.LOGOS
+    );
+    public static final BlockRegistryObject IDFM_RER_A = MTRFRARegistry.registerBlockWithItem(
+            "idfm_rer_a", () -> new Block(new ConfigurableSignBlock(Blocks.createDefaultBlockSettings(false, state -> 8), 2, 2, 14, 14, 14, 16)), ModItemGroups.LOGOS
+    );
+    public static final BlockRegistryObject IDFM_RER_B = MTRFRARegistry.registerBlockWithItem(
+            "idfm_rer_b", () -> new Block(new ConfigurableSignBlock(Blocks.createDefaultBlockSettings(false, state -> 8), 2, 2, 14, 14, 14, 16)), ModItemGroups.LOGOS
+    );
+    public static final BlockRegistryObject IDFM_RER_C = MTRFRARegistry.registerBlockWithItem(
+            "idfm_rer_c", () -> new Block(new ConfigurableSignBlock(Blocks.createDefaultBlockSettings(false, state -> 8), 2, 2, 14, 14, 14, 16)), ModItemGroups.LOGOS
+    );
+    public static final BlockRegistryObject IDFM_RER_D = MTRFRARegistry.registerBlockWithItem(
+            "idfm_rer_d", () -> new Block(new ConfigurableSignBlock(Blocks.createDefaultBlockSettings(false, state -> 8), 2, 2, 14, 14, 14, 16)), ModItemGroups.LOGOS
+    );
+    public static final BlockRegistryObject IDFM_RER_E = MTRFRARegistry.registerBlockWithItem(
+            "idfm_rer_e", () -> new Block(new ConfigurableSignBlock(Blocks.createDefaultBlockSettings(false, state -> 8), 2, 2, 14, 14, 14, 16)), ModItemGroups.LOGOS
+    );
+    public static final BlockRegistryObject IDFM_TRAIN = MTRFRARegistry.registerBlockWithItem(
+            "idfm_train", () -> new Block(new ConfigurableSignBlock(Blocks.createDefaultBlockSettings(false, state -> 8), 2, 2, 14, 14, 14, 16)), ModItemGroups.LOGOS
+    );
+    public static final BlockRegistryObject IDFM_TRAIN_H = MTRFRARegistry.registerBlockWithItem(
+            "idfm_train_h", () -> new Block(new ConfigurableSignBlock(Blocks.createDefaultBlockSettings(false, state -> 8), 2, 2, 14, 14, 14, 16)), ModItemGroups.LOGOS
+    );
+    public static final BlockRegistryObject IDFM_TRAIN_J = MTRFRARegistry.registerBlockWithItem(
+            "idfm_train_j", () -> new Block(new ConfigurableSignBlock(Blocks.createDefaultBlockSettings(false, state -> 8), 2, 2, 14, 14, 14, 16)), ModItemGroups.LOGOS
+    );
+    public static final BlockRegistryObject IDFM_TRAIN_K = MTRFRARegistry.registerBlockWithItem(
+            "idfm_train_k", () -> new Block(new ConfigurableSignBlock(Blocks.createDefaultBlockSettings(false, state -> 8), 2, 2, 14, 14, 14, 16)), ModItemGroups.LOGOS
+    );
+    public static final BlockRegistryObject IDFM_TRAIN_L = MTRFRARegistry.registerBlockWithItem(
+            "idfm_train_l", () -> new Block(new ConfigurableSignBlock(Blocks.createDefaultBlockSettings(false, state -> 8), 2, 2, 14, 14, 14, 16)), ModItemGroups.LOGOS
+    );
+    public static final BlockRegistryObject IDFM_TRAIN_N = MTRFRARegistry.registerBlockWithItem(
+            "idfm_train_n", () -> new Block(new ConfigurableSignBlock(Blocks.createDefaultBlockSettings(false, state -> 8), 2, 2, 14, 14, 14, 16)), ModItemGroups.LOGOS
+    );
+    public static final BlockRegistryObject IDFM_TRAIN_P = MTRFRARegistry.registerBlockWithItem(
+            "idfm_train_p", () -> new Block(new ConfigurableSignBlock(Blocks.createDefaultBlockSettings(false, state -> 8), 2, 2, 14, 14, 14, 16)), ModItemGroups.LOGOS
+    );
+    public static final BlockRegistryObject IDFM_TRAIN_R = MTRFRARegistry.registerBlockWithItem(
+            "idfm_train_r", () -> new Block(new ConfigurableSignBlock(Blocks.createDefaultBlockSettings(false, state -> 8), 2, 2, 14, 14, 14, 16)), ModItemGroups.LOGOS
+    );
+    public static final BlockRegistryObject IDFM_TRAIN_U = MTRFRARegistry.registerBlockWithItem(
+            "idfm_train_u", () -> new Block(new ConfigurableSignBlock(Blocks.createDefaultBlockSettings(false, state -> 8), 2, 2, 14, 14, 14, 16)), ModItemGroups.LOGOS
+    );
+    public static final BlockRegistryObject IDFM_TRAIN_V = MTRFRARegistry.registerBlockWithItem(
+            "idfm_train_v", () -> new Block(new ConfigurableSignBlock(Blocks.createDefaultBlockSettings(false, state -> 8), 2, 2, 14, 14, 14, 16)), ModItemGroups.LOGOS
+    );
+    public static final BlockRegistryObject IDFM_TRAM = MTRFRARegistry.registerBlockWithItem(
+            "idfm_tram", () -> new Block(new ConfigurableSignBlock(Blocks.createDefaultBlockSettings(false, state -> 8), 2, 2, 14, 14, 14, 16)), ModItemGroups.LOGOS
+    );
+    public static final BlockRegistryObject IDFM_TRAM_T1 = MTRFRARegistry.registerBlockWithItem(
+            "idfm_tram_t1", () -> new Block(new ConfigurableSignBlock(Blocks.createDefaultBlockSettings(false, state -> 8), 2, 2, 14, 14, 14, 16)), ModItemGroups.LOGOS
+    );
+    public static final BlockRegistryObject IDFM_TRAM_T2 = MTRFRARegistry.registerBlockWithItem(
+            "idfm_tram_t2", () -> new Block(new ConfigurableSignBlock(Blocks.createDefaultBlockSettings(false, state -> 8), 2, 2, 14, 14, 14, 16)), ModItemGroups.LOGOS
+    );
+    public static final BlockRegistryObject IDFM_TRAM_T3 = MTRFRARegistry.registerBlockWithItem(
+            "idfm_tram_t3", () -> new Block(new ConfigurableSignBlock(Blocks.createDefaultBlockSettings(false, state -> 8), 2, 2, 14, 14, 14, 16)), ModItemGroups.LOGOS
+    );
+    public static final BlockRegistryObject IDFM_TRAM_T3A = MTRFRARegistry.registerBlockWithItem(
+            "idfm_tram_t3a", () -> new Block(new ConfigurableSignBlock(Blocks.createDefaultBlockSettings(false, state -> 8), 2, 2, 14, 14, 14, 16)), ModItemGroups.LOGOS
+    );
+    public static final BlockRegistryObject IDFM_TRAM_T3B = MTRFRARegistry.registerBlockWithItem(
+            "idfm_tram_t3b", () -> new Block(new ConfigurableSignBlock(Blocks.createDefaultBlockSettings(false, state -> 8), 2, 2, 14, 14, 14, 16)), ModItemGroups.LOGOS
+    );
+    public static final BlockRegistryObject IDFM_TRAM_T4 = MTRFRARegistry.registerBlockWithItem(
+            "idfm_tram_t4", () -> new Block(new ConfigurableSignBlock(Blocks.createDefaultBlockSettings(false, state -> 8), 2, 2, 14, 14, 14, 16)), ModItemGroups.LOGOS
+    );
+    public static final BlockRegistryObject IDFM_TRAM_T5 = MTRFRARegistry.registerBlockWithItem(
+            "idfm_tram_t5", () -> new Block(new ConfigurableSignBlock(Blocks.createDefaultBlockSettings(false, state -> 8), 2, 2, 14, 14, 14, 16)), ModItemGroups.LOGOS
+    );
+    public static final BlockRegistryObject IDFM_TRAM_T6 = MTRFRARegistry.registerBlockWithItem(
+            "idfm_tram_t6", () -> new Block(new ConfigurableSignBlock(Blocks.createDefaultBlockSettings(false, state -> 8), 2, 2, 14, 14, 14, 16)), ModItemGroups.LOGOS
+    );
+    public static final BlockRegistryObject IDFM_TRAM_T7 = MTRFRARegistry.registerBlockWithItem(
+            "idfm_tram_t7", () -> new Block(new ConfigurableSignBlock(Blocks.createDefaultBlockSettings(false, state -> 8), 2, 2, 14, 14, 14, 16)), ModItemGroups.LOGOS
+    );
+    public static final BlockRegistryObject IDFM_TRAM_T8 = MTRFRARegistry.registerBlockWithItem(
+            "idfm_tram_t8", () -> new Block(new ConfigurableSignBlock(Blocks.createDefaultBlockSettings(false, state -> 8), 2, 2, 14, 14, 14, 16)), ModItemGroups.LOGOS
+    );
+    public static final BlockRegistryObject IDFM_TRAM_T9 = MTRFRARegistry.registerBlockWithItem(
+            "idfm_tram_t9", () -> new Block(new ConfigurableSignBlock(Blocks.createDefaultBlockSettings(false, state -> 8), 2, 2, 14, 14, 14, 16)), ModItemGroups.LOGOS
+    );
+    public static final BlockRegistryObject IDFM_TRAM_T10 = MTRFRARegistry.registerBlockWithItem(
+            "idfm_tram_t10", () -> new Block(new ConfigurableSignBlock(Blocks.createDefaultBlockSettings(false, state -> 8), 2, 2, 14, 14, 14, 16)), ModItemGroups.LOGOS
+    );
+    public static final BlockRegistryObject IDFM_TRAM_T11 = MTRFRARegistry.registerBlockWithItem(
+            "idfm_tram_t11", () -> new Block(new ConfigurableSignBlock(Blocks.createDefaultBlockSettings(false, state -> 8), 2, 2, 14, 14, 14, 16)), ModItemGroups.LOGOS
+    );
+    public static final BlockRegistryObject IDFM_TRAM_T12 = MTRFRARegistry.registerBlockWithItem(
+            "idfm_tram_t12", () -> new Block(new ConfigurableSignBlock(Blocks.createDefaultBlockSettings(false, state -> 8), 2, 2, 14, 14, 14, 16)), ModItemGroups.LOGOS
+    );
+    public static final BlockRegistryObject IDFM_TRAM_T13 = MTRFRARegistry.registerBlockWithItem(
+            "idfm_tram_t13", () -> new Block(new ConfigurableSignBlock(Blocks.createDefaultBlockSettings(false, state -> 8), 2, 2, 14, 14, 14, 16)), ModItemGroups.LOGOS
+    );
+    public static final BlockRegistryObject IDFM_TRAM_T14 = MTRFRARegistry.registerBlockWithItem(
+            "idfm_tram_t14", () -> new Block(new ConfigurableSignBlock(Blocks.createDefaultBlockSettings(false, state -> 8), 2, 2, 14, 14, 14, 16)), ModItemGroups.LOGOS
+    );
+    public static final BlockRegistryObject IDFM_CABLE = MTRFRARegistry.registerBlockWithItem(
+            "idfm_cable", () -> new Block(new ConfigurableSignBlock(Blocks.createDefaultBlockSettings(false, state -> 8), 2, 2, 14, 14, 14, 16)), ModItemGroups.LOGOS
+    );
+    public static final BlockRegistryObject IDFM_CABLE_1 = MTRFRARegistry.registerBlockWithItem(
+            "idfm_cable_1", () -> new Block(new ConfigurableSignBlock(Blocks.createDefaultBlockSettings(false, state -> 8), 2, 2, 14, 14, 14, 16)), ModItemGroups.LOGOS
+    );
+    public static final BlockRegistryObject IDFM_BUS = MTRFRARegistry.registerBlockWithItem(
+            "idfm_bus", () -> new Block(new ConfigurableSignBlock(Blocks.createDefaultBlockSettings(false, state -> 8), 2, 2, 14, 14, 14, 16)), ModItemGroups.LOGOS
+    );
+
     private ModBlocks() {}
 
     public static void register() {}

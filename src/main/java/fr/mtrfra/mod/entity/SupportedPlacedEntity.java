@@ -112,6 +112,9 @@ public abstract class SupportedPlacedEntity extends EntityExtension {
     private boolean hasSupport() {
         try {
             final World world = getEntityWorld2();
+            if (!world.isChunkLoaded(supportPos.getX() >> 4, supportPos.getZ() >> 4)) {
+                return true;
+            }
             final BlockState state = world.getBlockState(supportPos);
             final VoxelShape shape = state.getOutlineShape(BlockView.cast(world), supportPos);
             return !shape.isEmpty();

@@ -12,9 +12,11 @@ import org.mtr.mapping.mapper.GraphicsHolder;
 import org.mtr.mapping.registry.BlockRegistryObject;
 import net.minecraft.client.renderer.block.BlockRenderDispatcher;
 import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.resources.ResourceLocation;
 import org.mtr.mapping.holder.BlockState;
 import org.mtr.mod.InitClient;
+//? if fabric {
+import net.minecraft.resources.ResourceLocation;
+//? }
 
 import java.util.function.Supplier;
 
@@ -64,9 +66,11 @@ public class CushionEntityRenderer extends EntityRenderer<CushionEntity> {
         return new Identifier(Constants.MOD_ID, "textures/entity/empty.png");
     }
 
+    //? if fabric {
     @Override
     public ResourceLocation getTextureLocation(CushionEntity entity) {
         return (ResourceLocation) getTexture2(entity).data;
     }
+    //? }
 
 }

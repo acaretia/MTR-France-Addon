@@ -1,16 +1,18 @@
 package fr.mtrfra.mod.tab;
 
+import fr.mtrfra.mod.Init;
 import fr.mtrfra.mod.registry.ModItemGroups;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import org.mtr.mapping.registry.BlockRegistryObject;
 import org.mtr.mapping.registry.ItemRegistryObject;
-//? if >=1.20.4 {
+//? if >=1.20.1 {
 import com.mojang.blaze3d.platform.Window;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import fr.mtrfra.mod.util.Constants;
 import net.minecraft.client.Minecraft;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
@@ -20,15 +22,19 @@ import org.joml.Vector3f;
 //? }
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Supplier;
 
 public final class CreativeTabSections {
 
     private static final List<Runnable> PENDING = new ArrayList<>();
     private static final Map<Item, CreativeTabSection> ITEM_SECTIONS = new LinkedHashMap<>();
-    private static boolean resolved = false;
+
+    private static final List<Runnable> PRIORITY_PENDING = new ArrayList<>();
+    private static final Map<Item, Integer> ITEM_PRIORITY = new LinkedHashMap<>();
 
     private CreativeTabSections() {}
 
@@ -41,15 +47,44 @@ public final class CreativeTabSections {
     }
 
     private static Map<Item, CreativeTabSection> itemSections() {
-        if (!resolved) {
-            PENDING.forEach(Runnable::run);
-            resolved = true;
-        }
-
+        runAllUntilResolved(PENDING);
         return ITEM_SECTIONS;
     }
 
-    //? if >=1.20.4 {
+    public static void pinFirst(List<Supplier<Item>> orderedItems) {
+        for (int i = 0; i < orderedItems.size(); i++) {
+            final int priority = i;
+            final Supplier<Item> supplier = orderedItems.get(i);
+            PRIORITY_PENDING.add(() -> ITEM_PRIORITY.put(supplier.get(), priority));
+        }
+    }
+
+    public static Map<Item, Integer> itemPriority() {
+        runAllUntilResolved(PRIORITY_PENDING);
+        return ITEM_PRIORITY;
+    }
+
+    public static List<ItemStack> sortByPriority(java.util.Collection<ItemStack> original) {
+        final Map<Item, Integer> priority = itemPriority();
+        final List<ItemStack> result = new ArrayList<>(original);
+        result.sort(Comparator.comparingInt(stack -> priority.getOrDefault(stack.getItem(), Integer.MAX_VALUE)));
+        return result;
+    }
+
+    private static void runAllUntilResolved(List<Runnable> pending) {
+        final java.util.Iterator<Runnable> iterator = pending.iterator();
+        while (iterator.hasNext()) {
+            final Runnable runnable = iterator.next();
+            try {
+                runnable.run();
+                iterator.remove();
+            } catch (final Exception exception) {
+                Init.LOGGER.warn("CreativeTabSections: registry object not ready yet, will retry", exception);
+            }
+        }
+    }
+
+    //? if >=1.20.1 {
     private static final int ROW_WIDTH = 9;
     private static final int ITEM_SIZE = 18;
     private static final int VISIBLE_ROWS = 5;
@@ -57,6 +92,28 @@ public final class CreativeTabSections {
     private static final Map<CreativeTabSection, Integer> SECTION_ROWS = new LinkedHashMap<>();
 
     public static int currentRow = 0;
+
+    private static int priorityDiagnosticLogsLeft = 5;
+
+    private static void logPriorityDiagnosticsOnce(Map<CreativeTabSection, List<ItemStack>> bySection, Map<Item, Integer> priority) {
+        if (priorityDiagnosticLogsLeft <= 0) {
+            return;
+        }
+        priorityDiagnosticLogsLeft--;
+
+        final List<ItemStack> logosItems = bySection.get(ModItemGroups.LOGOS);
+        final StringBuilder order = new StringBuilder();
+        if (logosItems != null) {
+            for (final ItemStack stack : logosItems) {
+                order.append(BuiltInRegistries.ITEM.getKey(stack.getItem())).append(", ");
+            }
+        }
+
+        Init.LOGGER.info(
+                "CreativeTabSections diagnostics: priority map size={}, still pending={}, LOGOS section item count={}, order before sort=[{}]",
+                priority.size(), PRIORITY_PENDING.size(), logosItems == null ? 0 : logosItems.size(), order
+        );
+    }
 
     public static List<ItemStack> reorderAndPad(java.util.Collection<ItemStack> original) {
         final Map<Item, CreativeTabSection> itemSections = itemSections();
@@ -71,6 +128,12 @@ public final class CreativeTabSections {
             } else {
                 bySection.computeIfAbsent(section, ignored -> new ArrayList<>()).add(stack);
             }
+        }
+
+        final Map<Item, Integer> priority = itemPriority();
+        logPriorityDiagnosticsOnce(bySection, priority);
+        for (final List<ItemStack> items : bySection.values()) {
+            items.sort(Comparator.comparingInt(stack -> priority.getOrDefault(stack.getItem(), Integer.MAX_VALUE)));
         }
 
         SECTION_ROWS.clear();
@@ -103,10 +166,10 @@ public final class CreativeTabSections {
         return result;
     }
 
-    private static final Map<String, ResourceLocation> BANNER_SPRITES = new LinkedHashMap<>();
+    private static final Map<String, ResourceLocation> BANNER_TEXTURES = new LinkedHashMap<>();
 
-    private static ResourceLocation bannerSprite(String texturePath) {
-        return BANNER_SPRITES.computeIfAbsent(texturePath, path -> new ResourceLocation(Constants.MOD_ID, path));
+    private static ResourceLocation bannerTexture(String texturePath) {
+        return BANNER_TEXTURES.computeIfAbsent(texturePath, path -> new ResourceLocation(Constants.MOD_ID, "textures/gui/sprites/" + path + ".png"));
     }
 
     public static void renderBanners(GuiGraphics graphics, int left, int top, int mouseX, int mouseY) {
@@ -124,7 +187,7 @@ public final class CreativeTabSections {
             final Component text = (Component) section.title().data;
             final int textWidth = Minecraft.getInstance().font.width(text);
 
-            graphics.blitSprite(bannerSprite(section.texturePath()), x, y, width, ITEM_SIZE);
+            graphics.blit(bannerTexture(section.texturePath()), x, y, 0.0f, 0.0f, width, ITEM_SIZE, width, ITEM_SIZE);
             graphics.fill(x + 2, y + 2, x + textWidth + 8, y + ITEM_SIZE - 2, section.backgroundColor());
             drawAuraText(graphics, text, x + 5, y + 5, section.titleColor(), darken(section.titleColor(), 0.2f));
         }

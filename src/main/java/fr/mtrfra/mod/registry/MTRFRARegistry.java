@@ -6,7 +6,7 @@ import fr.mtrfra.mod.tab.CreativeTabSections;
 import fr.mtrfra.mod.util.Constants;
 import org.mtr.mapping.holder.Block;
 import org.mtr.mapping.holder.BlockSettings;
-import org.mtr.mapping.holder.BlockState;
+import org.mtr.mapping.holder.Blocks;
 import org.mtr.mapping.holder.EntityType;
 import org.mtr.mapping.holder.Item;
 import org.mtr.mapping.holder.World;
@@ -48,13 +48,13 @@ public final class MTRFRARegistry {
     }
 
     public static BlockRegistryObject registerBlockWithItem(String id, Supplier<Block> supplier, CreativeTabSection section) {
-        final BlockRegistryObject registered = REGISTRY.registerBlockWithBlockItem(Constants.id(id), supplier, ModItemGroups.MAIN);
+        final BlockRegistryObject registered = REGISTRY.registerBlockWithBlockItem(Constants.id(id), supplier, ModItemGroups.tabFor(section));
         CreativeTabSections.recordBlock(registered, section);
         return registered;
     }
 
     public static BlockRegistryObject registerBlockWithItem(String id, Supplier<Block> supplier, BiFunction<Block, ItemSettings, BlockItemExtension> itemFactory, CreativeTabSection section) {
-        final BlockRegistryObject registered = REGISTRY.registerBlockWithBlockItem(Constants.id(id), supplier, itemFactory, ModItemGroups.MAIN);
+        final BlockRegistryObject registered = REGISTRY.registerBlockWithBlockItem(Constants.id(id), supplier, itemFactory, ModItemGroups.tabFor(section));
         CreativeTabSections.recordBlock(registered, section);
         return registered;
     }
@@ -64,7 +64,7 @@ public final class MTRFRARegistry {
     }
 
     public static ItemRegistryObject registerItem(String id, Function<ItemSettings, Item> callback, CreativeTabSection section) {
-        final ItemRegistryObject registered = REGISTRY.registerItem(Constants.id(id), callback, ModItemGroups.MAIN);
+        final ItemRegistryObject registered = REGISTRY.registerItem(Constants.id(id), callback, ModItemGroups.tabFor(section));
         CreativeTabSections.recordItem(registered, section);
         return registered;
     }
@@ -89,8 +89,7 @@ public final class MTRFRARegistry {
 
     public static DecoBlockSet registerDecoBlockSet(String id, Supplier<BlockSettings> settingsSupplier, Function<BlockSettings, ? extends BlockExtension> fullBlockFactory, CreativeTabSection section) {
         final BlockRegistryObject full = registerBlockWithItem(id, () -> new Block(fullBlockFactory.apply(settingsSupplier.get())), section);
-        final BlockState referenceState = full.get().getDefaultState();
-        final BlockRegistryObject stairs = registerBlockWithItem(id + "_stairs", () -> new Block(new StairsBlockExtension(referenceState, settingsSupplier.get())), section);
+        final BlockRegistryObject stairs = registerBlockWithItem(id + "_stairs", () -> new Block(new StairsBlockExtension(Blocks.getStoneMapped().getDefaultState(), settingsSupplier.get())), section);
         final BlockRegistryObject slab = registerBlockWithItem(id + "_slab", () -> new Block(new AxisSlabBlockExtension(settingsSupplier.get())), section);
         return new DecoBlockSet(full, stairs, slab);
     }

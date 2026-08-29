@@ -1,6 +1,6 @@
 package fr.mtrfra.mod.mixin.tab;
 
-//? if >=1.20.4 {
+//? if >=1.20.1 {
 import fr.mtrfra.mod.tab.CreativeTabSections;
 import net.minecraft.client.gui.screens.inventory.CreativeModeInventoryScreen;
 import org.spongepowered.asm.mixin.Mixin;

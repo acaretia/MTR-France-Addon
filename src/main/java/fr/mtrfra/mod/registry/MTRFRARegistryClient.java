@@ -13,7 +13,9 @@ import fr.mtrfra.mod.block.copycat.CopycatBlockBase;
 import fr.mtrfra.mod.block.sign.MotteLightBlock;
 import fr.mtrfra.mod.render.CushionEntityRenderer;
 import fr.mtrfra.mod.item.CopycatLayerBlockItem;
+//? if fabric {
 import net.fabricmc.fabric.api.client.rendering.v1.BuiltinItemRendererRegistry;
+//? }
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.nbt.CompoundTag;
@@ -86,7 +88,24 @@ public final class MTRFRARegistryClient {
                 ModBlocks.GREEN_VENDING_MACHINE, ModBlocks.RED_VENDING_MACHINE,
                 ModBlocks.RATP_SIGN_DOUBLE, ModBlocks.RATP_SIGN_PILLAR, ModBlocks.RATP_SIGN_WALL_RER, ModBlocks.RATP_SIGN_TOP,
                 ModBlocks.RATP_SIGN_WALL_METRO_LARGE, ModBlocks.RATP_SIGN_WALL_METRO_SMALL, ModBlocks.RATP_SIGN_MAP,
-                ModBlocks.RATP_PILLAR_POST, ModBlocks.RATP_PILLAR_POST_BASE
+                ModBlocks.RATP_PILLAR_POST, ModBlocks.RATP_PILLAR_POST_BASE,
+                ModBlocks.IDFM_METRO, ModBlocks.IDFM_METRO_1, ModBlocks.IDFM_METRO_2, ModBlocks.IDFM_METRO_3,
+                ModBlocks.IDFM_METRO_3BIS, ModBlocks.IDFM_METRO_4, ModBlocks.IDFM_METRO_5, ModBlocks.IDFM_METRO_6,
+                ModBlocks.IDFM_METRO_7, ModBlocks.IDFM_METRO_7BIS, ModBlocks.IDFM_METRO_8, ModBlocks.IDFM_METRO_9,
+                ModBlocks.IDFM_METRO_10, ModBlocks.IDFM_METRO_11, ModBlocks.IDFM_METRO_12, ModBlocks.IDFM_METRO_13,
+                ModBlocks.IDFM_METRO_14, ModBlocks.IDFM_METRO_15, ModBlocks.IDFM_METRO_16, ModBlocks.IDFM_METRO_17,
+                ModBlocks.IDFM_METRO_18,
+                ModBlocks.IDFM_RER, ModBlocks.IDFM_RER_A, ModBlocks.IDFM_RER_B, ModBlocks.IDFM_RER_C,
+                ModBlocks.IDFM_RER_D, ModBlocks.IDFM_RER_E,
+                ModBlocks.IDFM_TRAIN, ModBlocks.IDFM_TRAIN_H, ModBlocks.IDFM_TRAIN_J, ModBlocks.IDFM_TRAIN_K,
+                ModBlocks.IDFM_TRAIN_L, ModBlocks.IDFM_TRAIN_N, ModBlocks.IDFM_TRAIN_P, ModBlocks.IDFM_TRAIN_R,
+                ModBlocks.IDFM_TRAIN_U, ModBlocks.IDFM_TRAIN_V,
+                ModBlocks.IDFM_TRAM, ModBlocks.IDFM_TRAM_T1, ModBlocks.IDFM_TRAM_T2, ModBlocks.IDFM_TRAM_T3,
+                ModBlocks.IDFM_TRAM_T3A, ModBlocks.IDFM_TRAM_T3B, ModBlocks.IDFM_TRAM_T4, ModBlocks.IDFM_TRAM_T5,
+                ModBlocks.IDFM_TRAM_T6, ModBlocks.IDFM_TRAM_T7, ModBlocks.IDFM_TRAM_T8, ModBlocks.IDFM_TRAM_T9,
+                ModBlocks.IDFM_TRAM_T10, ModBlocks.IDFM_TRAM_T11, ModBlocks.IDFM_TRAM_T12, ModBlocks.IDFM_TRAM_T13,
+                ModBlocks.IDFM_TRAM_T14,
+                ModBlocks.IDFM_CABLE, ModBlocks.IDFM_CABLE_1, ModBlocks.IDFM_BUS
         }) {
             REGISTRY_CLIENT.registerBlockRenderType(RenderLayer.getCutout(), block);
         }
@@ -99,6 +118,7 @@ public final class MTRFRARegistryClient {
     }
 
     private static void registerCopycatItemPreview(BlockRegistryObject copycatBlock) {
+        //? if fabric {
         final Item item = (Item) copycatBlock.get().asItem().data;
         BuiltinItemRendererRegistry.INSTANCE.register(item, (stack, mode, poseStack, buffers, light, overlay) -> {
             final Minecraft minecraft = Minecraft.getInstance();
@@ -110,6 +130,7 @@ public final class MTRFRARegistryClient {
 
             minecraft.getItemRenderer().render(stack, mode, false, poseStack, buffers, light, overlay, bakedModel);
         });
+        //? }
     }
 
     public static void setupPacketsClient() {

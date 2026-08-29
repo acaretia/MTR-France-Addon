@@ -2,5 +2,6 @@
   "parent": "item/generated",
   "textures": {
     "layer0": "mtrfranceaddon:block/logos/ratp_logo_1951-1960_block"
-  }
+  },
+  "gui_light": "front"
 }
