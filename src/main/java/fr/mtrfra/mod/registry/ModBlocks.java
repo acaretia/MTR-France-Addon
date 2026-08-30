@@ -524,13 +524,13 @@ public final class ModBlocks {
     public static final BlockRegistryObject GREY_ANTHRACITE_LIMESTONE_PAVING_STAIRS = GREY_ANTHRACITE_LIMESTONE_PAVING_SET.stairs();
     public static final BlockRegistryObject GREY_ANTHRACITE_LIMESTONE_PAVING_SLAB = GREY_ANTHRACITE_LIMESTONE_PAVING_SET.slab();
 
-    private static final BlockRegistryObject RATP_TUNNEL_ARROW = MTRFRARegistry.registerBlockWithItem(
+    public static final BlockRegistryObject RATP_TUNNEL_ARROW = MTRFRARegistry.registerBlockWithItem(
             "ratp_tunnel_arrow",
             () -> new Block(new ConfigurableSignBlock(Blocks.createDefaultBlockSettings(false).nonOpaque(), 0, 0, 0, 16, 16, 16)),
             ModItemGroups.STATION_EQUIPMENT
     );
 
-    private static final BlockRegistryObject RATP_TUNNEL_LINE = MTRFRARegistry.registerBlockWithItem(
+    public static final BlockRegistryObject RATP_TUNNEL_LINE = MTRFRARegistry.registerBlockWithItem(
             "ratp_tunnel_line",
             () -> new Block(new ConfigurableSignBlock(Blocks.createDefaultBlockSettings(false).nonOpaque(), 0, 0, 0, 16, 16, 16)),
             ModItemGroups.STATION_EQUIPMENT

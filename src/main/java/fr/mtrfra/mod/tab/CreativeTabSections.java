@@ -12,7 +12,6 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import fr.mtrfra.mod.util.Constants;
 import net.minecraft.client.Minecraft;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
@@ -93,28 +92,6 @@ public final class CreativeTabSections {
 
     public static int currentRow = 0;
 
-    private static int priorityDiagnosticLogsLeft = 5;
-
-    private static void logPriorityDiagnosticsOnce(Map<CreativeTabSection, List<ItemStack>> bySection, Map<Item, Integer> priority) {
-        if (priorityDiagnosticLogsLeft <= 0) {
-            return;
-        }
-        priorityDiagnosticLogsLeft--;
-
-        final List<ItemStack> logosItems = bySection.get(ModItemGroups.LOGOS);
-        final StringBuilder order = new StringBuilder();
-        if (logosItems != null) {
-            for (final ItemStack stack : logosItems) {
-                order.append(BuiltInRegistries.ITEM.getKey(stack.getItem())).append(", ");
-            }
-        }
-
-        Init.LOGGER.info(
-                "CreativeTabSections diagnostics: priority map size={}, still pending={}, LOGOS section item count={}, order before sort=[{}]",
-                priority.size(), PRIORITY_PENDING.size(), logosItems == null ? 0 : logosItems.size(), order
-        );
-    }
-
     public static List<ItemStack> reorderAndPad(java.util.Collection<ItemStack> original) {
         final Map<Item, CreativeTabSection> itemSections = itemSections();
         final Map<CreativeTabSection, List<ItemStack>> bySection = new LinkedHashMap<>();
@@ -131,7 +108,6 @@ public final class CreativeTabSections {
         }
 
         final Map<Item, Integer> priority = itemPriority();
-        logPriorityDiagnosticsOnce(bySection, priority);
         for (final List<ItemStack> items : bySection.values()) {
             items.sort(Comparator.comparingInt(stack -> priority.getOrDefault(stack.getItem(), Integer.MAX_VALUE)));
         }
