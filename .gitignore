@@ -18,6 +18,7 @@ runs/
 run-shared/
 tools/
 CHANGELOG.md
+.env
 
 # IDE
 .idea/
