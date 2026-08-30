@@ -62,7 +62,15 @@ public class RATPTicketBarrierBlock extends BlockTicketBarrier implements BlockW
         if (state == null) {
             return null;
         }
-        if (!context.getWorld().getBlockState(context.getBlockPos().up()).canReplace(context)) {
+        final BlockPos pos = context.getBlockPos();
+        if (!context.getWorld().getBlockState(pos.up()).canReplace(context)) {
+            return null;
+        }
+        final Direction facing = IBlock.getStatePropertySafe(state, FACING);
+        if (!RATPTicketBarrierCollisionExtensionBlock.canPlaceSideCompanions(context, pos, computeShape(state, facing))) {
+            return null;
+        }
+        if (!RATPTicketBarrierCollisionExtensionBlock.canPlaceSideCompanions(context, pos.up(), computeUpperShape(facing))) {
             return null;
         }
         return state;
@@ -151,12 +159,16 @@ public class RATPTicketBarrierBlock extends BlockTicketBarrier implements BlockW
 
     @Override
     public void scheduledTick2(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+        final BlockState currentState = World.cast(world).getBlockState(pos);
+        if (!(currentState.getBlock().data instanceof RATPTicketBarrierBlock)) {
+            return;
+        }
         final PlayerEntity nearby = World.cast(world).getClosestPlayer(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 1.5, false);
         if (nearby != null) {
             scheduleBlockTick(World.cast(world), pos, new Block(this), 40);
             return;
         }
-        World.cast(world).setBlockState(pos, state.with(new Property<>(OPEN.data), EnumTicketBarrierOpen.CLOSED));
+        World.cast(world).setBlockState(pos, currentState.with(new Property<>(OPEN.data), EnumTicketBarrierOpen.CLOSED));
     }
 
     private static final double[] POST_LEFT = {13, 0, -3.5, 16, 30, 19.5};
@@ -175,6 +187,14 @@ public class RATPTicketBarrierBlock extends BlockTicketBarrier implements BlockW
         return shape;
     }
 
+    private VoxelShape computeUpperShape(Direction facing) {
+        VoxelShape shape = box(POST_LEFT_UPPER, facing);
+        if (hasSideCover) {
+            shape = VoxelShapes.union(shape, box(POST_RIGHT_UPPER, facing));
+        }
+        return shape;
+    }
+
     static VoxelShape box(double[] bounds, Direction facing) {
         return IBlock.getVoxelShapeByDirection(bounds[0], bounds[1], bounds[2], bounds[3], bounds[4], bounds[5], facing);
     }
@@ -186,7 +206,13 @@ public class RATPTicketBarrierBlock extends BlockTicketBarrier implements BlockW
 
     @Override
     public VoxelShape getCollisionShape2(BlockState state, BlockView world, BlockPos blockPos, ShapeContext context) {
-        return computeShape(state, IBlock.getStatePropertySafe(state, FACING));
+        final Direction facing = IBlock.getStatePropertySafe(state, FACING);
+        VoxelShape shape = computeShape(state, facing);
+        final EnumTicketBarrierOpen open = IBlock.getStatePropertySafe(state, OPEN);
+        if (open != EnumTicketBarrierOpen.OPEN && open != EnumTicketBarrierOpen.OPEN_CONCESSIONARY) {
+            shape = VoxelShapes.union(shape, box(DOOR_CLOSED, facing));
+        }
+        return shape;
     }
 
     @Override

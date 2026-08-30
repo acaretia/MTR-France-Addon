@@ -15,6 +15,7 @@ import org.mtr.mapping.holder.Direction;
 import org.mtr.mapping.holder.Hand;
 import org.mtr.mapping.holder.Identifier;
 import org.mtr.mapping.holder.IntegerProperty;
+import org.mtr.mapping.holder.ItemPlacementContext;
 import org.mtr.mapping.holder.ItemStack;
 import org.mtr.mapping.holder.LivingEntity;
 import org.mtr.mapping.holder.PlayerEntity;
@@ -45,8 +46,11 @@ public class RATPSignBase extends DirectionalBlock implements BlockWithEntity, H
     private final boolean hasSubtitle;
     private final float extraTitleMargin;
     private final Identifier[] categoryTextures;
+    private final Identifier[] categoryLogoOverlays;
     private final float[] previewUv;
     private final float[] previewPlateBounds;
+    private final float[] previewLogoOverlayRect;
+    private final TextAlignment textAlignment;
 
     public RATPSignBase(BlockSettings blockSettings, int maxCategory, TextLayout[] textLayouts, float textZ, double[] boundingBox, boolean doubleSided) {
         this(blockSettings, maxCategory, textLayouts, textZ, boundingBox, doubleSided, true, 0F, new Identifier[0], new float[]{0F, 0F, 1F, 1F}, new float[]{0F, 0F, 16F, 16F});
@@ -61,6 +65,14 @@ public class RATPSignBase extends DirectionalBlock implements BlockWithEntity, H
     }
 
     public RATPSignBase(BlockSettings blockSettings, int maxCategory, TextLayout[] textLayouts, float textZ, double[] boundingBox, boolean doubleSided, boolean hasSubtitle, float extraTitleMargin, Identifier[] categoryTextures, float[] previewUv, float[] previewPlateBounds) {
+        this(blockSettings, maxCategory, textLayouts, textZ, boundingBox, doubleSided, hasSubtitle, extraTitleMargin, categoryTextures, previewUv, previewPlateBounds, new Identifier[0], new float[]{0F, 0F, 0F, 0F});
+    }
+
+    public RATPSignBase(BlockSettings blockSettings, int maxCategory, TextLayout[] textLayouts, float textZ, double[] boundingBox, boolean doubleSided, boolean hasSubtitle, float extraTitleMargin, Identifier[] categoryTextures, float[] previewUv, float[] previewPlateBounds, Identifier[] categoryLogoOverlays, float[] previewLogoOverlayRect) {
+        this(blockSettings, maxCategory, textLayouts, textZ, boundingBox, doubleSided, hasSubtitle, extraTitleMargin, categoryTextures, previewUv, previewPlateBounds, categoryLogoOverlays, previewLogoOverlayRect, TextAlignment.CENTER);
+    }
+
+    public RATPSignBase(BlockSettings blockSettings, int maxCategory, TextLayout[] textLayouts, float textZ, double[] boundingBox, boolean doubleSided, boolean hasSubtitle, float extraTitleMargin, Identifier[] categoryTextures, float[] previewUv, float[] previewPlateBounds, Identifier[] categoryLogoOverlays, float[] previewLogoOverlayRect, TextAlignment textAlignment) {
         super(blockSettings);
         setDefaultState2(getDefaultState2().with(new Property<>(CATEGORY.data), 0));
         this.maxCategory = maxCategory;
@@ -71,8 +83,11 @@ public class RATPSignBase extends DirectionalBlock implements BlockWithEntity, H
         this.hasSubtitle = hasSubtitle;
         this.extraTitleMargin = extraTitleMargin;
         this.categoryTextures = categoryTextures;
+        this.categoryLogoOverlays = categoryLogoOverlays;
         this.previewUv = previewUv;
         this.previewPlateBounds = previewPlateBounds;
+        this.previewLogoOverlayRect = previewLogoOverlayRect;
+        this.textAlignment = textAlignment;
     }
 
     public int maxCategory() {
@@ -91,12 +106,20 @@ public class RATPSignBase extends DirectionalBlock implements BlockWithEntity, H
         return category >= 0 && category < categoryTextures.length ? categoryTextures[category] : null;
     }
 
+    public Identifier categoryLogoOverlay(int category) {
+        return category >= 0 && category < categoryLogoOverlays.length ? categoryLogoOverlays[category] : null;
+    }
+
     public float[] previewUv() {
         return previewUv;
     }
 
     public float[] previewPlateBounds() {
         return previewPlateBounds;
+    }
+
+    public float[] previewLogoOverlayRect() {
+        return previewLogoOverlayRect;
     }
 
     public TextLayout textLayout(int category) {
@@ -116,9 +139,26 @@ public class RATPSignBase extends DirectionalBlock implements BlockWithEntity, H
         return doubleSided;
     }
 
+    public TextAlignment textAlignment() {
+        return textAlignment;
+    }
+
     @Override
     public BlockEntityExtension createBlockEntity(BlockPos blockPos, BlockState blockState) {
         return new BlockEntityBase(blockPos, blockState);
+    }
+
+    @Override
+    public BlockState getPlacementState2(ItemPlacementContext context) {
+        final BlockState state = super.getPlacementState2(context);
+        if (state == null) {
+            return null;
+        }
+        final Direction facing = IBlock.getStatePropertySafe(state, FACING);
+        if (!RATPSignCollisionExtensionBlock.canPlaceAround(context, context.getBlockPos(), facing, boundingBox())) {
+            return null;
+        }
+        return state;
     }
 
     @Override
@@ -192,21 +232,27 @@ public class RATPSignBase extends DirectionalBlock implements BlockWithEntity, H
         public final float subtitleX;
         public final float subtitleY;
         public final boolean hasSubtitlePosition;
+        public final float titleMaxWidth;
 
         public TextLayout(float titleX, float titleY) {
-            this(titleX, titleY, titleX, titleY, false);
+            this(titleX, titleY, titleX, titleY, false, -1F);
+        }
+
+        public TextLayout(float titleX, float titleY, float titleMaxWidth) {
+            this(titleX, titleY, titleX, titleY, false, titleMaxWidth);
         }
 
         public TextLayout(float titleX, float titleY, float subtitleX, float subtitleY) {
-            this(titleX, titleY, subtitleX, subtitleY, true);
+            this(titleX, titleY, subtitleX, subtitleY, true, -1F);
         }
 
-        private TextLayout(float titleX, float titleY, float subtitleX, float subtitleY, boolean hasSubtitlePosition) {
+        private TextLayout(float titleX, float titleY, float subtitleX, float subtitleY, boolean hasSubtitlePosition, float titleMaxWidth) {
             this.titleX = titleX;
             this.titleY = titleY;
             this.subtitleX = subtitleX;
             this.subtitleY = subtitleY;
             this.hasSubtitlePosition = hasSubtitlePosition;
+            this.titleMaxWidth = titleMaxWidth;
         }
 
     }

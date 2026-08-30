@@ -1,6 +1,7 @@
 package fr.mtrfra.mod.sign;
 
 import fr.mtrfra.mod.block.sign.RATPSignBase;
+import fr.mtrfra.mod.block.sign.TextAlignment;
 import fr.mtrfra.mod.registry.MTRFRARegistryClient;
 import org.mtr.core.data.Station;
 import org.mtr.mapping.holder.BlockPos;
@@ -183,8 +184,8 @@ public class SignConfigScreen extends ScreenExtension {
         if (signBlock == null) {
             return 3F;
         }
-        final float[] uv = signBlock.previewUv();
-        return (uv[2] - uv[0]) / (uv[3] - uv[1]);
+        final float[] plate = signBlock.previewPlateBounds();
+        return (plate[2] - plate[0]) / (plate[3] - plate[1]);
     }
 
     private void drawPreview(GraphicsHolder graphicsHolder) {
@@ -202,6 +203,18 @@ public class SignConfigScreen extends ScreenExtension {
             guiDrawing.beginDrawingRectangle();
             guiDrawing.drawRectangle(previewLeft, previewY, previewRight, previewY + previewHeight, 0xFF1A1A1A);
             guiDrawing.finishDrawingRectangle();
+        }
+
+        final Identifier logoOverlay = signBlock == null ? null : signBlock.categoryLogoOverlay(category);
+        if (logoOverlay != null) {
+            final float[] rect = signBlock.previewLogoOverlayRect();
+            final int overlayLeft = previewLeft + Math.round(rect[0] * (previewRight - previewLeft));
+            final int overlayRight = previewLeft + Math.round(rect[2] * (previewRight - previewLeft));
+            final int overlayTop = previewY + Math.round(rect[1] * previewHeight);
+            final int overlayBottom = previewY + Math.round(rect[3] * previewHeight);
+            guiDrawing.beginDrawingTexture(texturePath(logoOverlay));
+            guiDrawing.drawTexture(overlayLeft, overlayTop, overlayRight, overlayBottom, 0F, 0F, 1F, 1F);
+            guiDrawing.finishDrawingTexture();
         }
 
         final String customTitle = titleField == null ? initialTitle : titleField.getText();
@@ -228,11 +241,26 @@ public class SignConfigScreen extends ScreenExtension {
             titleScreenY = previewY + previewHeight / 2 - 4;
         }
 
+        final float titlePreviewScale = 1.0F;
+        final TextAlignment alignment = signBlock == null ? TextAlignment.CENTER : signBlock.textAlignment();
+        graphicsHolder.push();
+        graphicsHolder.translate(titleScreenX, titleScreenY, 0);
+        graphicsHolder.scale(titlePreviewScale, titlePreviewScale, titlePreviewScale);
         if (hasTitle) {
-            graphicsHolder.drawCenteredText(title, titleScreenX, titleScreenY, 0xFFFFFFFF);
+            if (alignment == TextAlignment.CENTER) {
+                graphicsHolder.drawCenteredText(title, 0, 0, 0xFFFFFFFF);
+            } else {
+                graphicsHolder.drawText(title, (int) alignment.getX(GraphicsHolder.getTextWidth(title)), 0, 0xFFFFFFFF, false, GraphicsHolder.getDefaultLight());
+            }
         } else {
-            graphicsHolder.drawCenteredText(TextHelper.translatable("gui.mtrfranceaddon.panneau.config.preview_placeholder"), titleScreenX, titleScreenY, 0xFF808080);
+            final MutableText placeholder = TextHelper.translatable("gui.mtrfranceaddon.panneau.config.preview_placeholder");
+            if (alignment == TextAlignment.CENTER) {
+                graphicsHolder.drawCenteredText(placeholder, 0, 0, 0xFF808080);
+            } else {
+                graphicsHolder.drawText(placeholder, (int) alignment.getX(GraphicsHolder.getTextWidth(placeholder)), 0, 0xFF808080, false, GraphicsHolder.getDefaultLight());
+            }
         }
+        graphicsHolder.pop();
 
         if (hasPreviewSubtitle) {
             final MutableText formattedSubtitle = TextHelper.literal(subtitle).formatted(TextFormatting.ITALIC);

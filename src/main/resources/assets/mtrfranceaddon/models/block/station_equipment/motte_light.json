@@ -72,7 +72,8 @@
             4,
             0
           ],
-          "texture": "#missing"
+          "texture": "#8",
+          "tintindex": 0
         },
         "down": {
           "uv": [
@@ -330,7 +331,8 @@
             1,
             5
           ],
-          "texture": "#missing"
+          "texture": "#8",
+          "tintindex": 0
         },
         "south": {
           "uv": [
@@ -349,7 +351,8 @@
             2,
             5
           ],
-          "texture": "#missing"
+          "texture": "#8",
+          "tintindex": 0
         },
         "up": {
           "uv": [
@@ -358,7 +361,8 @@
             0,
             2
           ],
-          "texture": "#missing"
+          "texture": "#8",
+          "tintindex": 0
         },
         "down": {
           "uv": [

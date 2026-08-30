@@ -11,6 +11,8 @@ import org.mtr.mapping.holder.World;
 public class LogoEntity extends SupportedPlacedEntity {
 
     private static final double HALF_WIDTH = 0.45;
+    private static final double HALF_WIDTH_SNCF_SIGN = 0.95;
+    private static final double HALF_HEIGHT_SNCF_SIGN = 0.47;
     private static final double HALF_DEPTH = 0.02;
     private static final double HALF_DEPTH_SNCF_SIGN = 0.05;
 
@@ -31,22 +33,30 @@ public class LogoEntity extends SupportedPlacedEntity {
     }
 
     @Override
+    protected boolean requiresSupport() {
+        return this.getType() != ModEntities.LOGO_SNCF_SIGN.get().data;
+    }
+
+    @Override
     protected AABB makeBoundingBox() {
         final double x = getX();
         final double y = getY();
         final double z = getZ();
         final float pitch = getXRot();
-        final double halfDepth = this.getType() == ModEntities.LOGO_SNCF_SIGN.get().data ? HALF_DEPTH_SNCF_SIGN : HALF_DEPTH;
+        final boolean isSncfSign = this.getType() == ModEntities.LOGO_SNCF_SIGN.get().data;
+        final double halfDepth = isSncfSign ? HALF_DEPTH_SNCF_SIGN : HALF_DEPTH;
+        final double halfWidth = isSncfSign ? HALF_WIDTH_SNCF_SIGN : HALF_WIDTH;
+        final double halfHeight = isSncfSign ? HALF_HEIGHT_SNCF_SIGN : HALF_WIDTH;
 
         if (pitch > 45.0F || pitch < -45.0F) {
-            return new AABB(x - HALF_WIDTH, y - halfDepth, z - HALF_WIDTH, x + HALF_WIDTH, y + halfDepth, z + HALF_WIDTH);
+            return new AABB(x - halfWidth, y - halfDepth, z - halfWidth, x + halfWidth, y + halfDepth, z + halfWidth);
         }
 
         final float normalizedYaw = ((getYRot() % 360.0F) + 360.0F) % 360.0F;
         if (normalizedYaw < 45.0F || normalizedYaw >= 315.0F || (normalizedYaw >= 135.0F && normalizedYaw < 225.0F)) {
-            return new AABB(x - HALF_WIDTH, y - HALF_WIDTH, z - halfDepth, x + HALF_WIDTH, y + HALF_WIDTH, z + halfDepth);
+            return new AABB(x - halfWidth, y - halfHeight, z - halfDepth, x + halfWidth, y + halfHeight, z + halfDepth);
         }
-        return new AABB(x - halfDepth, y - HALF_WIDTH, z - HALF_WIDTH, x + halfDepth, y + HALF_WIDTH, z + HALF_WIDTH);
+        return new AABB(x - halfDepth, y - halfHeight, z - halfWidth, x + halfDepth, y + halfHeight, z + halfWidth);
     }
 
     @Override

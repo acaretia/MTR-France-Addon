@@ -6,6 +6,7 @@ import org.mtr.mapping.holder.BlockSettings;
 import org.mtr.mapping.holder.BlockState;
 import org.mtr.mapping.holder.BlockView;
 import org.mtr.mapping.holder.Direction;
+import org.mtr.mapping.holder.ItemPlacementContext;
 import org.mtr.mapping.holder.ItemStack;
 import org.mtr.mapping.holder.LivingEntity;
 import org.mtr.mapping.holder.PlayerEntity;
@@ -51,6 +52,19 @@ public class RATPSignMapBlock extends DirectionalBlock implements HasBoundingBox
     @Override
     public float getAmbientOcclusionLightLevel2(BlockState state, BlockView world, BlockPos pos) {
         return 1;
+    }
+
+    @Override
+    public BlockState getPlacementState2(ItemPlacementContext context) {
+        final BlockState state = super.getPlacementState2(context);
+        if (state == null) {
+            return null;
+        }
+        final Direction facing = IBlock.getStatePropertySafe(state, FACING);
+        if (!RATPSignCollisionExtensionBlock.canPlaceAround(context, context.getBlockPos(), facing, BOUNDING_BOX)) {
+            return null;
+        }
+        return state;
     }
 
     @Override

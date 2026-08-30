@@ -5,8 +5,10 @@ import org.mtr.mapping.holder.BlockRenderType;
 import org.mtr.mapping.holder.BlockState;
 import org.mtr.mapping.holder.BlockView;
 import org.mtr.mapping.holder.Blocks;
+import org.mtr.mapping.holder.BooleanBiFunction;
 import org.mtr.mapping.holder.Box;
 import org.mtr.mapping.holder.Direction;
+import org.mtr.mapping.holder.ItemPlacementContext;
 import org.mtr.mapping.holder.ItemStack;
 import org.mtr.mapping.holder.PlayerEntity;
 import org.mtr.mapping.holder.ShapeContext;
@@ -24,6 +26,11 @@ public class RATPTicketBarrierCollisionExtensionBlock extends BlockExtension {
     @Override
     public BlockRenderType getRenderType2(BlockState state) {
         return BlockRenderType.getInvisibleMapped();
+    }
+
+    @Override
+    public boolean hasDynamicShape() {
+        return true;
     }
 
     @Override
@@ -56,6 +63,9 @@ public class RATPTicketBarrierCollisionExtensionBlock extends BlockExtension {
                 continue;
             }
             final VoxelShape anchorShape = hasCompanionShape.companionShape(world, anchorPos, anchorState);
+            if (anchorShape.isEmpty()) {
+                continue;
+            }
             final Box bounds = anchorShape.getBoundingBox();
             final int dx = pos.getX() - anchorPos.getX();
             final int dy = pos.getY() - anchorPos.getY();
@@ -68,7 +78,9 @@ public class RATPTicketBarrierCollisionExtensionBlock extends BlockExtension {
                             (dy > 0 && bounds.getMaxYMapped() > 1) ||
                             (dy < 0 && bounds.getMinYMapped() < 0);
             if (overlapsHere) {
-                shape = VoxelShapes.union(shape, anchorShape.offset(-dx, -dy, -dz));
+                final VoxelShape localShape = anchorShape.offset(-dx, -dy, -dz);
+                final VoxelShape unitCube = VoxelShapes.cuboid(0, 0, 0, 1, 1, 1);
+                shape = VoxelShapes.union(shape, VoxelShapes.combineAndSimplify(localShape, unitCube, BooleanBiFunction.getAndMapped()));
             }
         }
         return shape;
@@ -95,14 +107,21 @@ public class RATPTicketBarrierCollisionExtensionBlock extends BlockExtension {
         if (!world.isClient()) {
             final BlockPos anchorPos = findAnchorPos(BlockView.cast(world), pos);
             if (anchorPos != null) {
-                world.setBlockState(anchorPos, Blocks.getAirMapped().getDefaultState(), 35);
+                final BlockState anchorState = world.getBlockState(anchorPos);
+                if (anchorState.getBlock().data instanceof BlockExtension anchorBlock) {
+                    anchorBlock.onBreak2(world, anchorPos, anchorState, player);
+                }
+                world.breakBlock(anchorPos, false);
             }
         }
         super.onBreak2(world, pos, state, player);
     }
 
     static void placeAt(World world, BlockPos target) {
-        world.setBlockState(target, fr.mtrfra.mod.registry.ModBlocks.RATP_TICKET_BARRIER_COLLISION_EXTENSION.get().getDefaultState(), 3);
+        final BlockState existing = world.getBlockState(target);
+        if (existing.isAir() || existing.getBlock().data instanceof RATPTicketBarrierCollisionExtensionBlock) {
+            world.setBlockState(target, fr.mtrfra.mod.registry.ModBlocks.RATP_TICKET_BARRIER_COLLISION_EXTENSION.get().getDefaultState(), 3);
+        }
     }
 
     static void removeAt(World world, BlockPos target) {
@@ -111,7 +130,37 @@ public class RATPTicketBarrierCollisionExtensionBlock extends BlockExtension {
         }
     }
 
+    private static boolean canReplaceAt(World world, BlockPos target, ItemPlacementContext context) {
+        final BlockState state = world.getBlockState(target);
+        return state.isAir() || state.canReplace(context);
+    }
+
+    public static boolean canPlaceSideCompanions(ItemPlacementContext context, BlockPos pos, VoxelShape shape) {
+        if (shape.isEmpty()) {
+            return true;
+        }
+        final World world = context.getWorld();
+        final Box bounds = shape.getBoundingBox();
+        boolean canPlace = true;
+        if (bounds.getMinZMapped() < 0) {
+            canPlace &= canReplaceAt(world, pos.offset(Direction.NORTH), context);
+        }
+        if (bounds.getMaxZMapped() > 1) {
+            canPlace &= canReplaceAt(world, pos.offset(Direction.SOUTH), context);
+        }
+        if (bounds.getMinXMapped() < 0) {
+            canPlace &= canReplaceAt(world, pos.offset(Direction.WEST), context);
+        }
+        if (bounds.getMaxXMapped() > 1) {
+            canPlace &= canReplaceAt(world, pos.offset(Direction.EAST), context);
+        }
+        return canPlace;
+    }
+
     public static void placeSideCompanions(World world, BlockPos pos, VoxelShape shape) {
+        if (shape.isEmpty()) {
+            return;
+        }
         final Box bounds = shape.getBoundingBox();
         if (bounds.getMinZMapped() < 0) {
             placeAt(world, pos.offset(Direction.NORTH));
@@ -128,6 +177,9 @@ public class RATPTicketBarrierCollisionExtensionBlock extends BlockExtension {
     }
 
     public static void removeSideCompanions(World world, BlockPos pos, VoxelShape shape) {
+        if (shape.isEmpty()) {
+            return;
+        }
         final Box bounds = shape.getBoundingBox();
         if (bounds.getMinZMapped() < 0) {
             removeAt(world, pos.offset(Direction.NORTH));

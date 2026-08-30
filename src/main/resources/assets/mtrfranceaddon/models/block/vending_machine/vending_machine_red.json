@@ -3,7 +3,8 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [64, 64],
 	"textures": {
-		"4": "mtrfranceaddon:block/vending_machine/vending_machine_red"
+		"4": "mtrfranceaddon:block/vending_machine/vending_machine_red",
+		"particle": "mtrfranceaddon:block/vending_machine/vending_machine_red"
 	},
 	"display": {
 		"thirdperson_righthand": {

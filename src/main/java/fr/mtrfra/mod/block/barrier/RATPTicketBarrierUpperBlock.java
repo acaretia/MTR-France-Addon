@@ -35,6 +35,11 @@ public class RATPTicketBarrierUpperBlock extends BlockExtension implements HasCo
     }
 
     @Override
+    public boolean hasDynamicShape() {
+        return true;
+    }
+
+    @Override
     public VoxelShape getOutlineShape2(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return computeShape(world, pos);
     }
@@ -75,9 +80,14 @@ public class RATPTicketBarrierUpperBlock extends BlockExtension implements HasCo
     @Override
     public void onBreak2(World world, BlockPos pos, BlockState state, PlayerEntity player) {
         if (!world.isClient()) {
+            RATPTicketBarrierCollisionExtensionBlock.removeSideCompanions(world, pos, computeShape(BlockView.cast(world), pos));
             final BlockPos anchorPos = pos.down();
-            final Object anchorBlock = world.getBlockState(anchorPos).getBlock().data;
+            final BlockState anchorState = world.getBlockState(anchorPos);
+            final Object anchorBlock = anchorState.getBlock().data;
             if (anchorBlock instanceof RATPTicketBarrierBlock || anchorBlock instanceof RATPTicketBarrierSideCoverBlock) {
+                if (anchorBlock instanceof HasCompanionShape hasCompanionShape) {
+                    RATPTicketBarrierCollisionExtensionBlock.removeSideCompanions(world, anchorPos, hasCompanionShape.companionShape(BlockView.cast(world), anchorPos, anchorState));
+                }
                 world.setBlockState(anchorPos, Blocks.getAirMapped().getDefaultState(), 35);
             }
         }

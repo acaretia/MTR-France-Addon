@@ -15,7 +15,7 @@ import org.mtr.mod.block.IBlock;
 
 public class RATPSignRenderer extends BlockEntityRenderer<RATPSignBase.BlockEntityBase> {
 
-    private static final float TITLE_SCALE_DEFAULT = 1 / 32F;
+    private static final float TITLE_SCALE_DEFAULT = 1 / 50F;
 
     public RATPSignRenderer(Argument argument) {
         super(argument);
@@ -50,9 +50,26 @@ public class RATPSignRenderer extends BlockEntityRenderer<RATPSignBase.BlockEnti
     }
 
     private static float fitTitleScale(RATPSignBase signBlock, RATPSignBase.TextLayout layout, String title) {
-        final double[] box = signBlock.boundingBox();
-        final float margin = 1.5F + signBlock.extraTitleMargin();
-        final float availableWidth = 2F * Math.min(layout.titleX - (float) box[0] - margin, (float) box[3] - layout.titleX - margin);
+        final float availableWidth;
+        if (layout.titleMaxWidth > 0F) {
+            availableWidth = layout.titleMaxWidth;
+        } else {
+            final double[] box = signBlock.boundingBox();
+            final float margin = 1.5F + signBlock.extraTitleMargin();
+            final float spaceLeft = layout.titleX - (float) box[0] - margin;
+            final float spaceRight = (float) box[3] - layout.titleX - margin;
+            switch (signBlock.textAlignment()) {
+                case LEFT:
+                    availableWidth = spaceLeft;
+                    break;
+                case RIGHT:
+                    availableWidth = spaceRight;
+                    break;
+                default:
+                    availableWidth = 2F * Math.min(spaceLeft, spaceRight);
+                    break;
+            }
+        }
         final float widthAtDefaultScale = GraphicsHolder.getTextWidth(title) * TITLE_SCALE_DEFAULT * 16F;
         if (availableWidth <= 0F || widthAtDefaultScale <= availableWidth || widthAtDefaultScale <= 0F) {
             return TITLE_SCALE_DEFAULT;
@@ -76,7 +93,8 @@ public class RATPSignRenderer extends BlockEntityRenderer<RATPSignBase.BlockEnti
         if (hasTitle) {
             final float titleY = stackedAsOneBlock ? layout.titleY + blockHalfHeight - titleHeight / 2F + 0.2F : layout.titleY;
             pushTextPose(poseStack, rotationDegrees, layout.titleX, titleY, textZ, titleScale);
-            graphicsHolder.drawText(title, -GraphicsHolder.getTextWidth(title) / 2, -4, 0xFFFFFF, false, GraphicsHolder.getDefaultLight());
+            final int titleX = (int) signBlock.textAlignment().getX(GraphicsHolder.getTextWidth(title));
+            graphicsHolder.drawText(title, titleX, -4, 0xFFFFFF, false, GraphicsHolder.getDefaultLight());
             poseStack.popPose();
         }
 

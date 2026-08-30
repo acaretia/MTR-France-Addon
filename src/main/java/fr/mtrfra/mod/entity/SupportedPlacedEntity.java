@@ -8,6 +8,7 @@ import net.minecraft.world.phys.AABB;
 import org.mtr.mapping.holder.BlockPos;
 import org.mtr.mapping.holder.BlockState;
 import org.mtr.mapping.holder.BlockView;
+import org.mtr.mapping.holder.Direction;
 import org.mtr.mapping.holder.EntityType;
 import org.mtr.mapping.holder.Item;
 import org.mtr.mapping.holder.VoxelShape;
@@ -64,13 +65,13 @@ public abstract class SupportedPlacedEntity extends EntityExtension {
             anchorZ = getZ2();
             anchorInitialized = true;
             if (supportPos == null) {
-                supportPos = new BlockPos((int) Math.floor(anchorX), (int) Math.floor(anchorY - 0.01), (int) Math.floor(anchorZ));
+                supportPos = findSupportPos(anchorX, anchorY, anchorZ);
             }
         }
 
         setPosition2(anchorX, anchorY, anchorZ);
 
-        if (lifetimeTicks < 20 || supportPos == null) {
+        if (!requiresSupport() || lifetimeTicks < 20 || supportPos == null) {
             return;
         }
 
@@ -86,6 +87,10 @@ public abstract class SupportedPlacedEntity extends EntityExtension {
     }
 
     protected void onClientTick() {}
+
+    protected boolean requiresSupport() {
+        return true;
+    }
 
     protected AABB makeRotatedBoundingBox(double localMinX, double localMaxX, double localMinZ, double localMaxZ, double height) {
         final double theta = Math.toRadians(-getYRot());
@@ -107,6 +112,26 @@ public abstract class SupportedPlacedEntity extends EntityExtension {
         final double y = getY();
         final double z = getZ();
         return new AABB(x + minOffsetX, y, z + minOffsetZ, x + maxOffsetX, y + height, z + maxOffsetZ);
+    }
+
+    private BlockPos findSupportPos(double x, double y, double z) {
+        final BlockPos center = new BlockPos((int) Math.floor(x), (int) Math.floor(y), (int) Math.floor(z));
+        final World world = getEntityWorld2();
+        for (final Direction direction : Direction.values()) {
+            final BlockPos candidate = center.offset(direction);
+            try {
+                if (!world.isChunkLoaded(candidate.getX() >> 4, candidate.getZ() >> 4)) {
+                    continue;
+                }
+                final BlockState state = world.getBlockState(candidate);
+                if (!state.getOutlineShape(BlockView.cast(world), candidate).isEmpty()) {
+                    return candidate;
+                }
+            } catch (final Exception exception) {
+                Init.LOGGER.warn("{} support candidate check failed for {}", getClass().getSimpleName(), candidate, exception);
+            }
+        }
+        return new BlockPos((int) Math.floor(x), (int) Math.floor(y - 0.01), (int) Math.floor(z));
     }
 
     private boolean hasSupport() {

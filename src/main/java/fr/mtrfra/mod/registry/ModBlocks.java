@@ -26,8 +26,10 @@ import fr.mtrfra.mod.block.base.HangingSignBlock;
 import fr.mtrfra.mod.block.sign.RATPSignBase;
 import fr.mtrfra.mod.block.sign.RATPSignCollisionExtensionBlock;
 import fr.mtrfra.mod.block.sign.RATPSignMapBlock;
+import fr.mtrfra.mod.block.sign.TextAlignment;
 import fr.mtrfra.mod.block.sign.RATPPillarPostBaseBlock;
 import fr.mtrfra.mod.block.sign.RATPPillarPostBlock;
+import fr.mtrfra.mod.block.sign.SNCFPoleBlock;
 import fr.mtrfra.mod.block.sign.TransilienPoleBlock;
 import fr.mtrfra.mod.item.CopycatLayerBlockItem;
 import fr.mtrfra.mod.item.MotteLightStationColorBlockItem;
@@ -515,6 +517,13 @@ public final class ModBlocks {
     public static final BlockRegistryObject ANTHRACITE_LIMESTONE_PAVING_STAIRS = ANTHRACITE_LIMESTONE_PAVING_SET.stairs();
     public static final BlockRegistryObject ANTHRACITE_LIMESTONE_PAVING_SLAB = ANTHRACITE_LIMESTONE_PAVING_SET.slab();
 
+    private static final MTRFRARegistry.DecoBlockSet GREY_ANTHRACITE_LIMESTONE_PAVING_SET = MTRFRARegistry.registerDecoBlockSet(
+            "grey_anthracite_limestone_paving", () -> Blocks.createDefaultBlockSettings(false), AxisBlock::new, ModItemGroups.BUILDING_MATERIALS
+    );
+    public static final BlockRegistryObject GREY_ANTHRACITE_LIMESTONE_PAVING = GREY_ANTHRACITE_LIMESTONE_PAVING_SET.full();
+    public static final BlockRegistryObject GREY_ANTHRACITE_LIMESTONE_PAVING_STAIRS = GREY_ANTHRACITE_LIMESTONE_PAVING_SET.stairs();
+    public static final BlockRegistryObject GREY_ANTHRACITE_LIMESTONE_PAVING_SLAB = GREY_ANTHRACITE_LIMESTONE_PAVING_SET.slab();
+
     private static final BlockRegistryObject RATP_TUNNEL_ARROW = MTRFRARegistry.registerBlockWithItem(
             "ratp_tunnel_arrow",
             () -> new Block(new ConfigurableSignBlock(Blocks.createDefaultBlockSettings(false).nonOpaque(), 0, 0, 0, 16, 16, 16)),
@@ -583,9 +592,36 @@ public final class ModBlocks {
             new RATPSignBase.TextLayout(8F, 7.0F, 8F, 12.05F)
     };
 
+    private static final RATPSignBase.TextLayout[] SNCF_SIGN_LAYOUT_DOUBLE = {
+            new RATPSignBase.TextLayout(30.0F, 5.0F, 44.0F),
+            new RATPSignBase.TextLayout(30.0F, 5.0F, 35.25F)
+    };
+    private static final RATPSignBase.TextLayout[] SNCF_SIGN_LAYOUT_WALL = {
+            new RATPSignBase.TextLayout(29.0F, 5.0F, 42.0F),
+            new RATPSignBase.TextLayout(29.0F, 5.0F, 34.0F)
+    };
+
     private static Identifier ratpSignTexture(String path) {
         return new Identifier("mtrfranceaddon:block/panneau_ratp/" + path);
     }
+
+    private static Identifier sncfSignTexture(String path) {
+        return new Identifier("mtrfranceaddon:block/panneau_sncf/" + path);
+    }
+
+    private static final Identifier[] SNCF_SIGN_TEXTURES_DOUBLE = {
+            sncfSignTexture("panneau_sncf"),
+            sncfSignTexture("panneau_sncf")
+    };
+    private static final Identifier[] SNCF_SIGN_LOGO_OVERLAYS_DOUBLE = {
+            null,
+            sncfSignTexture("logo_sncf")
+    };
+    private static final float[] PREVIEW_LOGO_OVERLAY_RECT_SNCF = {0.784F, 0.25F, 0.95F, 0.75F};
+    private static final Identifier[] SNCF_SIGN_TEXTURES_WALL = {
+            sncfSignTexture("panneau_sncf"),
+            sncfSignTexture("panneau_sncf")
+    };
 
     private static final Identifier[] RATP_SIGN_TEXTURES_DOUBLE = {
             ratpSignTexture("panneau_ratp_double"),
@@ -655,6 +691,9 @@ public final class ModBlocks {
     private static final float[] PREVIEW_PLATE_BOUNDS_WALL_METRO_LARGE = {-16F, 1F, 32F, 15F};
     private static final float[] PREVIEW_PLATE_BOUNDS_WALL_METRO_SMALL = {-8F, 3F, 24F, 13F};
     private static final float[] PREVIEW_PLATE_BOUNDS_TRANSILIEN = {-4F, 0F, 20F, 6F};
+    private static final float[] PREVIEW_UV_SNCF_DOUBLE = {0F, 0F, 1F, 0.5F};
+    private static final float[] PREVIEW_UV_SNCF_WALL = {0F, 0F, 6F / 16F, 1.5F / 16F};
+    private static final float[] PREVIEW_PLATE_BOUNDS_SNCF_WALL = {-4F, 0F, 20F, 16F};
 
     public static final BlockRegistryObject RATP_SIGN_DOUBLE = MTRFRARegistry.registerBlockWithItem(
             "panneau_ratp_double", () -> new Block(new RATPSignBase(Blocks.createDefaultBlockSettings(false).nonOpaque(), 7, RATP_SIGN_LAYOUT_DOUBLE, 6.999F, new double[]{-16, 0, 7, 32, 9, 9}, true, true, 1F, RATP_SIGN_TEXTURES_DOUBLE, PREVIEW_UV_DOUBLE_PILLAR_WALL_RER_TOP, PREVIEW_PLATE_BOUNDS_DOUBLE)), ModItemGroups.STATION_EQUIPMENT
@@ -688,6 +727,15 @@ public final class ModBlocks {
     );
     public static final BlockRegistryObject TRANSILIEN_POLE = MTRFRARegistry.registerBlockWithItem(
             "pilier_transilien", () -> new Block(new TransilienPoleBlock(Blocks.createDefaultBlockSettings(true))), ModItemGroups.STATION_EQUIPMENT
+    );
+    public static final BlockRegistryObject SNCF_SIGN_DOUBLE = MTRFRARegistry.registerBlockWithItem(
+            "panneau_sncf_double", () -> new Block(new RATPSignBase(Blocks.createDefaultBlockSettings(false).nonOpaque(), 1, SNCF_SIGN_LAYOUT_DOUBLE, 7.999F, new double[]{-16, 0, 7, 32, 9, 9}, true, false, 0F, SNCF_SIGN_TEXTURES_DOUBLE, PREVIEW_UV_SNCF_DOUBLE, PREVIEW_PLATE_BOUNDS_DOUBLE, SNCF_SIGN_LOGO_OVERLAYS_DOUBLE, PREVIEW_LOGO_OVERLAY_RECT_SNCF, TextAlignment.LEFT)), ModItemGroups.STATION_EQUIPMENT
+    );
+    public static final BlockRegistryObject SNCF_SIGN_WALL = MTRFRARegistry.registerBlockWithItem(
+            "panneau_sncf_mur", () -> new Block(new RATPSignBase(Blocks.createDefaultBlockSettings(false).nonOpaque(), 1, SNCF_SIGN_LAYOUT_WALL, 15.499F, new double[]{-15, 1, 15.5, 31, 9, 16}, false, false, 0F, SNCF_SIGN_TEXTURES_WALL, PREVIEW_UV_SNCF_DOUBLE, PREVIEW_PLATE_BOUNDS_DOUBLE, SNCF_SIGN_LOGO_OVERLAYS_DOUBLE, PREVIEW_LOGO_OVERLAY_RECT_SNCF, TextAlignment.LEFT)), ModItemGroups.STATION_EQUIPMENT
+    );
+    public static final BlockRegistryObject SNCF_POLE = MTRFRARegistry.registerBlockWithItem(
+            "pilier_sncf", () -> new Block(new SNCFPoleBlock(Blocks.createDefaultBlockSettings(true))), ModItemGroups.STATION_EQUIPMENT
     );
     public static final BlockRegistryObject RATP_SIGN_COLLISION_EXTENSION = MTRFRARegistry.registerBlock(
             "panneau_ratp_collision_extension", () -> new Block(new RATPSignCollisionExtensionBlock())

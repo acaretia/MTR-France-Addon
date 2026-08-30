@@ -87,7 +87,7 @@ public final class MTRFRARegistryClient {
                 ModBlocks.SIGN_SPEED_300_GALLOWS, ModBlocks.SIGN_SQUARE_GALLOWS,
                 ModBlocks.GREEN_VENDING_MACHINE, ModBlocks.RED_VENDING_MACHINE,
                 ModBlocks.RATP_SIGN_DOUBLE, ModBlocks.RATP_SIGN_PILLAR, ModBlocks.RATP_SIGN_WALL_RER, ModBlocks.RATP_SIGN_TOP,
-                ModBlocks.RATP_SIGN_WALL_METRO_LARGE, ModBlocks.RATP_SIGN_WALL_METRO_SMALL, ModBlocks.RATP_SIGN_MAP,
+                ModBlocks.RATP_SIGN_WALL_METRO_LARGE, ModBlocks.RATP_SIGN_WALL_METRO_SMALL, ModBlocks.RATP_SIGN_MAP, ModBlocks.SNCF_SIGN_DOUBLE, ModBlocks.SNCF_SIGN_WALL,
                 ModBlocks.RATP_PILLAR_POST, ModBlocks.RATP_PILLAR_POST_BASE,
                 ModBlocks.IDFM_METRO, ModBlocks.IDFM_METRO_1, ModBlocks.IDFM_METRO_2, ModBlocks.IDFM_METRO_3,
                 ModBlocks.IDFM_METRO_3BIS, ModBlocks.IDFM_METRO_4, ModBlocks.IDFM_METRO_5, ModBlocks.IDFM_METRO_6,

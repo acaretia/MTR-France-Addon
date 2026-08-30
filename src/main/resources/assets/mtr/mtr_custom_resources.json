@@ -34612,6 +34612,237 @@
       "legacyConstantPlaybackSpeed": false,
       "legacyDoorSoundBaseResource": "",
       "legacyDoorCloseSoundTime": 0
+    },
+    {
+      "id": "mercedes-benz_ecitaro_rht_ratp",
+      "name": "Mercedes-Benz eCitaro RHT (RATP)",
+      "color": "5DC2AF",
+      "transportMode": "TRAIN",
+      "length": 12.0,
+      "width": 2.0,
+      "bogie1Position": -4.0,
+      "bogie2Position": 4.0,
+      "couplingPadding1": 0.0,
+      "couplingPadding2": 0.0,
+      "description": "",
+      "wikipediaArticle": "https://en.wikipedia.org/wiki/Mercedes-Benz_Citaro",
+      "tags": [],
+      "models": [
+        {
+          "modelResource": "mtr:french_buses/ecitaro_rht_ratp.bbmodel",
+          "textureResource": "mtr:french_buses/ecitaro_rht_ratp.png",
+          "modelPropertiesResource": "mtr:french_buses/properties_citaro_rht_ratp.json",
+          "positionDefinitionsResource": "mtr:french_buses/definition_7f355e23.json",
+          "flipTextureV": true
+        }
+      ],
+      "bogie1Models": [],
+      "bogie2Models": [],
+      "hasGangway1": false,
+      "hasGangway2": false,
+      "hasBarrier1": false,
+      "hasBarrier2": false,
+      "legacyRiderOffset": -0.5,
+      "bveSoundBaseResource": "",
+      "legacySpeedSoundBaseResource": "",
+      "legacySpeedSoundCount": 1,
+      "legacyUseAccelerationSoundsWhenCoasting": false,
+      "legacyConstantPlaybackSpeed": false,
+      "legacyDoorSoundBaseResource": "",
+      "legacyDoorCloseSoundTime": 0.0,
+      "scriptId": "ecitaro_rht_ratp_lcd"
+    },
+    {
+      "id": "mercedes-benz_ecitaro_rht_star",
+      "name": "Mercedes-Benz eCitaro RHT (STAR)",
+      "color": "15CBCF",
+      "transportMode": "TRAIN",
+      "length": 12.0,
+      "width": 2.0,
+      "bogie1Position": -4.0,
+      "bogie2Position": 4.0,
+      "couplingPadding1": 0.0,
+      "couplingPadding2": 0.0,
+      "description": "",
+      "wikipediaArticle": "https://en.wikipedia.org/wiki/Mercedes-Benz_Citaro",
+      "tags": [],
+      "models": [
+        {
+          "modelResource": "mtr:french_buses/ecitaro_rht_france.bbmodel",
+          "textureResource": "mtr:french_buses/ecitaro_rht_star.png",
+          "modelPropertiesResource": "mtr:french_buses/properties_citaro_rht_france.json",
+          "positionDefinitionsResource": "mtr:french_buses/definition_7f355e23.json",
+          "flipTextureV": true
+        }
+      ],
+      "bogie1Models": [],
+      "bogie2Models": [],
+      "hasGangway1": false,
+      "hasGangway2": false,
+      "hasBarrier1": false,
+      "hasBarrier2": false,
+      "legacyRiderOffset": -0.5,
+      "bveSoundBaseResource": "",
+      "legacySpeedSoundBaseResource": "",
+      "legacySpeedSoundCount": 1,
+      "legacyUseAccelerationSoundsWhenCoasting": false,
+      "legacyConstantPlaybackSpeed": false,
+      "legacyDoorSoundBaseResource": "",
+      "legacyDoorCloseSoundTime": 0.0,
+      "scriptId": "ecitaro_rht_ratp_lcd"
+    },
+    {
+      "id": "mercedes-benz_ecitaro_rht_chronostar",
+      "name": "Mercedes-Benz eCitaro RHT (Chronostar)",
+      "color": "CB8E2D",
+      "transportMode": "TRAIN",
+      "length": 12.0,
+      "width": 2.0,
+      "bogie1Position": -4.0,
+      "bogie2Position": 4.0,
+      "couplingPadding1": 0.0,
+      "couplingPadding2": 0.0,
+      "description": "",
+      "wikipediaArticle": "https://en.wikipedia.org/wiki/Mercedes-Benz_Citaro",
+      "tags": [],
+      "models": [
+        {
+          "modelResource": "mtr:french_buses/ecitaro_rht_france.bbmodel",
+          "textureResource": "mtr:french_buses/ecitaro_rht_chronostar.png",
+          "modelPropertiesResource": "mtr:french_buses/properties_citaro_rht_france.json",
+          "positionDefinitionsResource": "mtr:french_buses/definition_7f355e23.json",
+          "flipTextureV": true
+        }
+      ],
+      "bogie1Models": [],
+      "bogie2Models": [],
+      "hasGangway1": false,
+      "hasGangway2": false,
+      "hasBarrier1": false,
+      "hasBarrier2": false,
+      "legacyRiderOffset": -0.5,
+      "bveSoundBaseResource": "",
+      "legacySpeedSoundBaseResource": "",
+      "legacySpeedSoundCount": 1,
+      "legacyUseAccelerationSoundsWhenCoasting": false,
+      "legacyConstantPlaybackSpeed": false,
+      "legacyDoorSoundBaseResource": "",
+      "legacyDoorCloseSoundTime": 0.0,
+      "scriptId": "ecitaro_rht_ratp_lcd"
+    },
+    {
+      "id": "man_lions_city_12e_lht",
+      "name": "MAN Lion's City 12E LHT",
+      "color": "FFFFFF",
+      "transportMode": "TRAIN",
+      "length": 12.0,
+      "width": 2.0,
+      "bogie1Position": -4.0,
+      "bogie2Position": 4.0,
+      "couplingPadding1": 0.0,
+      "couplingPadding2": 0.0,
+      "description": "",
+      "wikipediaArticle": "https://en.wikipedia.org/wiki/MAN_Lion%27s_City",
+      "tags": [],
+      "models": [
+        {
+          "modelResource": "mtr:french_buses/lions_city_lht.bbmodel",
+          "textureResource": "mtr:french_buses/lions_city_lht.png",
+          "modelPropertiesResource": "mtr:french_buses/properties_3378c7.json",
+          "positionDefinitionsResource": "mtr:french_buses/definition_33403e37.json",
+          "flipTextureV": true
+        }
+      ],
+      "bogie1Models": [],
+      "bogie2Models": [],
+      "hasGangway1": false,
+      "hasGangway2": false,
+      "hasBarrier1": false,
+      "hasBarrier2": false,
+      "legacyRiderOffset": -0.5,
+      "bveSoundBaseResource": "",
+      "legacySpeedSoundBaseResource": "",
+      "legacySpeedSoundCount": 1,
+      "legacyUseAccelerationSoundsWhenCoasting": false,
+      "legacyConstantPlaybackSpeed": false,
+      "legacyDoorSoundBaseResource": "",
+      "legacyDoorCloseSoundTime": 0.0
+    },
+    {
+      "id": "mcv_c127_ev_lht",
+      "name": "MCV C127 EV LHT",
+      "color": "FFFFFF",
+      "transportMode": "TRAIN",
+      "length": 12.0,
+      "width": 2.0,
+      "bogie1Position": -4.0,
+      "bogie2Position": 4.0,
+      "couplingPadding1": 0.0,
+      "couplingPadding2": 0.0,
+      "description": "",
+      "wikipediaArticle": "",
+      "tags": [],
+      "models": [
+        {
+          "modelResource": "mtr:french_buses/c127_lht.bbmodel",
+          "textureResource": "mtr:french_buses/c127_lht.png",
+          "modelPropertiesResource": "mtr:french_buses/properties_2ded653e.json",
+          "positionDefinitionsResource": "mtr:french_buses/definition_f6a5702.json",
+          "flipTextureV": true
+        }
+      ],
+      "bogie1Models": [],
+      "bogie2Models": [],
+      "hasGangway1": false,
+      "hasGangway2": false,
+      "hasBarrier1": false,
+      "hasBarrier2": false,
+      "legacyRiderOffset": -0.5,
+      "bveSoundBaseResource": "",
+      "legacySpeedSoundBaseResource": "",
+      "legacySpeedSoundCount": 1,
+      "legacyUseAccelerationSoundsWhenCoasting": false,
+      "legacyConstantPlaybackSpeed": false,
+      "legacyDoorSoundBaseResource": "",
+      "legacyDoorCloseSoundTime": 0.0
+    },
+    {
+      "id": "mcv_c127_ev_rht",
+      "name": "MCV C127 EV RHT",
+      "color": "FFFFFF",
+      "transportMode": "TRAIN",
+      "length": 12.0,
+      "width": 2.0,
+      "bogie1Position": -4.0,
+      "bogie2Position": 4.0,
+      "couplingPadding1": 0.0,
+      "couplingPadding2": 0.0,
+      "description": "",
+      "wikipediaArticle": "",
+      "tags": [],
+      "models": [
+        {
+          "modelResource": "mtr:french_buses/c127_rht.bbmodel",
+          "textureResource": "mtr:french_buses/c127_rht.png",
+          "modelPropertiesResource": "mtr:french_buses/properties_94062288.json",
+          "positionDefinitionsResource": "mtr:french_buses/definition_305e9df8.json",
+          "flipTextureV": true
+        }
+      ],
+      "bogie1Models": [],
+      "bogie2Models": [],
+      "hasGangway1": false,
+      "hasGangway2": false,
+      "hasBarrier1": false,
+      "hasBarrier2": false,
+      "legacyRiderOffset": -0.5,
+      "bveSoundBaseResource": "",
+      "legacySpeedSoundBaseResource": "",
+      "legacySpeedSoundCount": 1,
+      "legacyUseAccelerationSoundsWhenCoasting": false,
+      "legacyConstantPlaybackSpeed": false,
+      "legacyDoorSoundBaseResource": "",
+      "legacyDoorCloseSoundTime": 0.0
     }
   ],
   "rails": [
@@ -40410,6 +40641,18 @@
       "scriptLocations": [
         "mtr:scripts/mp05_ecran_station_v1.js"
       ]
+    },
+    {
+      "id": "ecitaro_rht_ratp_lcd",
+      "prependExpressions": [
+        "print('Hello world')"
+      ],
+      "scriptLocations": [
+        "mtr:french_buses/js/ecitaro_rht_ratp_lcd/main.js"
+      ],
+      "input": {
+        "yearEra": 2025
+      }
     }
   ]
 }

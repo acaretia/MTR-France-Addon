@@ -32,7 +32,17 @@ public class RATPTicketBarrierSideCoverBlock extends DirectionalBlock implements
         if (state == null) {
             return null;
         }
-        if (!context.getWorld().getBlockState(context.getBlockPos().up()).canReplace(context)) {
+        final BlockPos pos = context.getBlockPos();
+        if (!context.getWorld().getBlockState(pos.up()).canReplace(context)) {
+            return null;
+        }
+        final Direction facing = IBlock.getStatePropertySafe(state, FACING);
+        final VoxelShape groundShape = IBlock.getVoxelShapeByDirection(POST[0], POST[1], POST[2], POST[3], POST[4], POST[5], facing);
+        if (!RATPTicketBarrierCollisionExtensionBlock.canPlaceSideCompanions(context, pos, groundShape)) {
+            return null;
+        }
+        final VoxelShape upperShape = IBlock.getVoxelShapeByDirection(POST_UPPER[0], POST_UPPER[1], POST_UPPER[2], POST_UPPER[3], POST_UPPER[4], POST_UPPER[5], facing);
+        if (!RATPTicketBarrierCollisionExtensionBlock.canPlaceSideCompanions(context, pos.up(), upperShape)) {
             return null;
         }
         return state;
